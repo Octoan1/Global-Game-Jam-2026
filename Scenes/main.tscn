@@ -5,13 +5,12 @@
 [ext_resource type="PackedScene" uid="uid://spfqakfdgeq1" path="res://Entities/Player 2/player2.tscn" id="3_8gbba"]
 
 [node name="Main" type="Node2D" unique_id=1364276378]
-scale = Vector2(0.5, 0.5)
 
 [node name="Player1" parent="." unique_id=501140443 instance=ExtResource("1_jjgbg")]
-position = Vector2(304, -8)
+position = Vector2(37, 19)
 
 [node name="Floor" parent="." unique_id=1824682230 instance=ExtResource("2_bo1nx")]
-position = Vector2(442, 984)
+position = Vector2(183, 458)
 
 [node name="Player2" parent="." unique_id=1845162299 instance=ExtResource("3_8gbba")]
-position = Vector2(736, -20)
+position = Vector2(251, 16)

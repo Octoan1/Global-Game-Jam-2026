@@ -1,11 +1,11 @@
 [gd_scene format=3 uid="uid://ir766e3jwv8n"]
 
-[ext_resource type="Texture2D" uid="uid://xhnnobk8qh2t" path="res://Assets/mask.jpg" id="1_ukl5x"]
+[ext_resource type="Texture2D" uid="uid://dnk35gv5otpds" path="res://Aseprite/Player/mask.png" id="1_ukl5x"]
 
 [node name="Mask" type="RigidBody2D" unique_id=197885753]
 
 [node name="Sprite2D" type="Sprite2D" parent="." unique_id=1700264781]
 texture = ExtResource("1_ukl5x")
 
-[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="." unique_id=1946189731]
-polygon = PackedVector2Array(-180, -180, -180, 180, 180, 180, 180, -180)
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="." unique_id=1890234413]
+polygon = PackedVector2Array(-7, -11, -7, -9, -11, -6, -11, -0.19999981, -2, 8.799999, -2, 10.4, 0.70000076, 11.4, 9, 1, 12.4, 1, 7, -8.5, 7, -11)
