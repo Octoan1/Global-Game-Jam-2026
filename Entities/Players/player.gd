@@ -33,10 +33,12 @@ func _physics_process(delta: float) -> void:
 		self.set_collision_layer_value(2, true)
 		self.set_collision_layer_value(3, false)
 		self.set_collision_mask_value(1, true)
+		self.set_collision_mask_value(3, false)
 	else:
 		self.set_collision_layer_value(3, true)
 		self.set_collision_layer_value(2, false)
 		self.set_collision_mask_value(1, false)
+		self.set_collision_mask_value(3, true)
 	
 	# Add the gravity.
 	if not is_on_floor() and mask:

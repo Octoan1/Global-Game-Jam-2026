@@ -5,7 +5,7 @@
 [ext_resource type="PackedScene" uid="uid://spfqakfdgeq1" path="res://Entities/Players/player2.tscn" id="3_8gbba"]
 [ext_resource type="Texture2D" uid="uid://dwjdlqk7ymxl8" path="res://Aseprite/Environment/Tilemap/Tilemap.png" id="4_jjvhh"]
 
-[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_kry3j"]
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_jjvhh"]
 texture = ExtResource("4_jjvhh")
 0:0/0 = 0
 0:0/0/terrain_set = 0
@@ -386,7 +386,7 @@ terrain_set_0/terrain_0/name = "Real Walls"
 terrain_set_0/terrain_0/color = Color(0.419809, 0.01945558, 0.31512094, 1)
 terrain_set_0/terrain_1/name = "Ghost Walls 1"
 terrain_set_0/terrain_1/color = Color(0.2862138, 0.40377316, 0.82391006, 1)
-sources/0 = SubResource("TileSetAtlasSource_kry3j")
+sources/0 = SubResource("TileSetAtlasSource_jjvhh")
 
 [node name="Main" type="Node2D" unique_id=1364276378]
 
