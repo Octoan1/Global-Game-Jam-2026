@@ -28,7 +28,6 @@ func _physics_process(_delta: float) -> void:
 	
 
 func _on_body_entered(body):
-	print(body.name)
 	if body.name == "Player2" or body.name == "Player1":
 		print("hit")
 		emit_signal("hit_player", body)
