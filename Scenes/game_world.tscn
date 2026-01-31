@@ -1,0 +1,20 @@
+[gd_scene format=3 uid="uid://38xv66o60rwq"]
+
+[ext_resource type="PackedScene" uid="uid://blg4ddq8suart" path="res://Objects/Level Things/level_manager.tscn" id="1_p4c8d"]
+[ext_resource type="PackedScene" uid="uid://dfg58lmub4mlf" path="res://Entities/Players/player1.tscn" id="2_f1ejf"]
+[ext_resource type="PackedScene" uid="uid://spfqakfdgeq1" path="res://Entities/Players/player2.tscn" id="3_d0bjv"]
+[ext_resource type="PackedScene" uid="uid://dcrp8y2ts0weu" path="res://Scenes/Levels/level_1.tscn" id="4_hy2kt"]
+
+[node name="GameWorld" type="Node2D" unique_id=311252913]
+
+[node name="LevelManager" parent="." unique_id=2114957057 instance=ExtResource("1_p4c8d")]
+
+[node name="Player1" parent="." unique_id=501140443 instance=ExtResource("2_f1ejf")]
+z_index = 1
+position = Vector2(19, 212)
+
+[node name="Player2" parent="." unique_id=1845162299 instance=ExtResource("3_d0bjv")]
+z_index = 1
+position = Vector2(49, 212)
+
+[node name="Level1" parent="." unique_id=1906136548 instance=ExtResource("4_hy2kt")]

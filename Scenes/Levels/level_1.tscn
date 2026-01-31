@@ -1,11 +1,10 @@
-[gd_scene format=4 uid="uid://38xv66o60rwq"]
+[gd_scene format=4 uid="uid://dcrp8y2ts0weu"]
 
-[ext_resource type="PackedScene" uid="uid://dfg58lmub4mlf" path="res://Entities/Players/player1.tscn" id="1_xfk5q"]
-[ext_resource type="PackedScene" uid="uid://spfqakfdgeq1" path="res://Entities/Players/player2.tscn" id="2_7p6j4"]
-[ext_resource type="Texture2D" uid="uid://dwjdlqk7ymxl8" path="res://Aseprite/Environment/Tilemap/Tilemap.png" id="3_6444e"]
+[ext_resource type="Texture2D" uid="uid://dwjdlqk7ymxl8" path="res://Aseprite/Environment/Tilemap/Tilemap.png" id="1_4dpyx"]
+[ext_resource type="PackedScene" uid="uid://liirdi4so46o" path="res://Objects/Level Things/exit_area.tscn" id="2_3mqfk"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_xfk5q"]
-texture = ExtResource("3_6444e")
+texture = ExtResource("1_4dpyx")
 0:0/0 = 0
 0:0/0/terrain_set = 0
 0:0/0/terrain = 0
@@ -378,7 +377,7 @@ texture = ExtResource("3_6444e")
 [sub_resource type="TileSet" id="TileSet_7p6j4"]
 physics_layer_0/collision_layer = 1
 physics_layer_0/collision_mask = 2
-physics_layer_1/collision_layer = 4
+physics_layer_1/collision_layer = 16
 physics_layer_1/collision_mask = 4
 terrain_set_0/mode = 0
 terrain_set_0/terrain_0/name = "Real Walls"
@@ -387,21 +386,31 @@ terrain_set_0/terrain_1/name = "Ghost Walls 1"
 terrain_set_0/terrain_1/color = Color(0.2862138, 0.40377316, 0.82391006, 1)
 sources/0 = SubResource("TileSetAtlasSource_xfk5q")
 
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_7p6j4"]
+texture = ExtResource("1_4dpyx")
+1:8/0 = 0
+1:8/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
+2:8/0 = 0
+2:8/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
+1:9/0 = 0
+1:9/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
+2:9/0 = 0
+2:9/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
+
 [sub_resource type="TileSet" id="TileSet_xfk5q"]
+physics_layer_0/collision_layer = 0
+physics_layer_0/collision_mask = 0
+sources/0 = SubResource("TileSetAtlasSource_7p6j4")
 
-[node name="Level1" type="Node2D" unique_id=311252913]
+[node name="Level1" type="Node2D" unique_id=1906136548]
 
-[node name="Player1" parent="." unique_id=501140443 instance=ExtResource("1_xfk5q")]
-z_index = 1
-position = Vector2(37, 19)
-
-[node name="Player2" parent="." unique_id=1845162299 instance=ExtResource("2_7p6j4")]
-z_index = 1
-position = Vector2(251, 16)
-
-[node name="Walls" type="TileMapLayer" parent="." unique_id=2078212062]
-tile_map_data = PackedByteArray("AAAAAA4AAAABAAAAAAABAA4AAAABAAAAAAACAA4AAAABAAAAAAADAA4AAAABAAAAAAAEAA4AAAABAAAAAAAFAA4AAAABAAAAAAAGAA4AAAABAAAAAAAHAA4AAAABAAAAAAAIAA4AAAABAAAAAAAJAA4AAAAFAAIAAAAKAA4AAAADAAIAAAALAA4AAAABAAAAAAAMAA4AAAABAAAAAAANAA4AAAABAAAAAAAOAA4AAAABAAAAAAAPAA4AAAABAAAAAAAQAA4AAAABAAAAAAARAA4AAAABAAAAAAASAA4AAAABAAAAAAATAA4AAAABAAAAAAAKAA0AAAACAAEAAAAJAA0AAAAAAAEAAAAJAAwAAAAAAAEAAAAJAAsAAAAAAAEAAAAJAAoAAAAAAAAAAAAKAAoAAAACAAAAAAAKAAsAAAACAAEAAAAKAAwAAAACAAEAAAABAAoAAAABAAQAAAACAAoAAAABAAQAAAADAAoAAAABAAQAAAAEAAoAAAABAAQAAAAFAAoAAAABAAQAAAABAAsAAAABAAQAAAA=")
+[node name="Walls" type="TileMapLayer" parent="." unique_id=758775280]
+tile_map_data = PackedByteArray("AAAAAA4AAAABAAAAAAABAA4AAAABAAAAAAACAA4AAAABAAAAAAADAA4AAAABAAAAAAAEAA4AAAABAAAAAAAFAA4AAAABAAAAAAAGAA4AAAABAAAAAAAHAA4AAAABAAAAAAAIAA4AAAABAAAAAAAJAA4AAAAFAAIAAAAKAA4AAAADAAIAAAALAA4AAAABAAAAAAAMAA4AAAABAAAAAAANAA4AAAABAAAAAAAOAA4AAAABAAAAAAAPAA4AAAABAAAAAAAQAA4AAAABAAAAAAARAA4AAAABAAAAAAASAA4AAAABAAAAAAATAA4AAAABAAAAAAAKAA0AAAACAAEAAAAJAA0AAAAAAAEAAAAJAAwAAAAAAAEAAAAJAAsAAAAAAAEAAAAJAAoAAAAAAAAAAAAKAAoAAAACAAAAAAAKAAsAAAACAAEAAAAKAAwAAAACAAEAAAA=")
 tile_set = SubResource("TileSet_7p6j4")
 
-[node name="TileMapLayer" type="TileMapLayer" parent="." unique_id=836643618]
+[node name="LevelExit" type="TileMapLayer" parent="." unique_id=2034227848]
+tile_map_data = PackedByteArray("AAAQAAwAAAABAAgAAAAQAA0AAAABAAkAAAARAAwAAAACAAgAAAARAA0AAAACAAkAAAA=")
 tile_set = SubResource("TileSet_xfk5q")
+
+[node name="ExitArea" parent="." unique_id=2084659212 instance=ExtResource("2_3mqfk")]
+unique_name_in_owner = true
