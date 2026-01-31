@@ -13,7 +13,6 @@ func _return_to_thrower():
 	if thrower == null:
 		return
 	self.set_collision_mask_value(1, false)
-	collision_mask = 0
 	var direction = (thrower.global_position - global_position).normalized()
 	linear_velocity = direction * 200
 
@@ -29,12 +28,13 @@ func _physics_process(_delta: float) -> void:
 	
 
 func _on_body_entered(body):
+	print(body.name)
 	if body.name == "Player2" or body.name == "Player1":
 		print("hit")
 		emit_signal("hit_player", body)
 		queue_free()
 		returning = false
-	if body.name == "Floor" and thrower != null:
+	if body.name == "Walls" and thrower != null:
 		returning = true
 		_return_to_thrower()
 		
