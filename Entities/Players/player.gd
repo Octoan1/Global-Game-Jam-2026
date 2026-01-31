@@ -76,7 +76,7 @@ func _physics_process(delta: float) -> void:
 		sprite.flip_h = prev_dir < 0
 		prev_dir = direction
 	else:
-		animated.stop()
+		animated.play("Idle")
 		velocity.x = move_toward(velocity.x, 0, SPEED)
 	
 	#ghost movement
@@ -107,12 +107,19 @@ func _physics_process(delta: float) -> void:
 		else:
 			var h_dir := Input.get_axis("p1_move_left_k" if joystick_id == 0 else "p2_move_left_k", "p1_move_right_k" if joystick_id == 0 else "p2_move_right_k")
 			var v_dir := Input.get_axis("p1_move_up" if joystick_id == 0 else "p2_move_up", "p1_move_down" if joystick_id == 0 else "p2_move_down")
-			var moving_away_x = h_dir != 0 and sign(h_dir) == -sign(to_other.x)
-			var moving_away_y = v_dir != 0 and sign(v_dir) == -sign(to_other.y)
-			if (players_dist < _get_max_distance() or not moving_away_x):
-				velocity.x = h_dir * GSPEED
-			if (players_dist < _get_max_distance() or not moving_away_y):
-				velocity.y = v_dir * GSPEED
+			var desired_velocity = Vector2(h_dir, v_dir) * GSPEED
+
+			if desired_velocity != Vector2.ZERO:
+				var move_dir = desired_velocity.normalized()
+				moving_away = move_dir.dot(to_other) < 0
+
+				if players_dist < _get_max_distance() or not moving_away:
+					velocity = desired_velocity
+				else:
+					velocity = Vector2.ZERO
+			else:
+				velocity.x = 0
+				velocity.y = 0
 			if h_dir != 0:
 				sprite.flip_h = prev_dir < 0
 			prev_dir = h_dir
