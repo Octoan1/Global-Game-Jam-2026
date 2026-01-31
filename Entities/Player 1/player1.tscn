@@ -1,0 +1,13 @@
+[gd_scene format=3 uid="uid://dfg58lmub4mlf"]
+
+[ext_resource type="Texture2D" uid="uid://gbedgjm3h1x" path="res://Monster.jpg" id="1_tahci"]
+[ext_resource type="Script" uid="uid://bn1k6elpp2y4r" path="res://Entities/Player 1/player_1.gd" id="1_yscd2"]
+
+[node name="Player1" type="CharacterBody2D" unique_id=501140443]
+script = ExtResource("1_yscd2")
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=1173643154]
+texture = ExtResource("1_tahci")
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="." unique_id=51822595]
+polygon = PackedVector2Array(-180, -180, -180, 180, 180, 180, 180, -180)
