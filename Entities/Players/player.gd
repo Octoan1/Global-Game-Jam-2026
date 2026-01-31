@@ -6,6 +6,7 @@ const GSPEED = 3
 const JUMP_VELOCITY = -400.0
 @export var mask = true
 @onready var throwing = false
+@onready var ammo = 1
 
 #Arrow
 @export var thickness := 2.0
@@ -22,13 +23,16 @@ var arrow_length = 0.0
 @export var ghost_tex: Texture2D
 @onready var sprite: Sprite2D = $Sprite
 
+#Throwing
+@export var mask_scene: PackedScene
+
 func _physics_process(delta: float) -> void:
 	if mask:
-		self.set_collision_layer_value(1, true)
-		self.set_collision_layer_value(2, false)
-	else:
 		self.set_collision_layer_value(2, true)
-		self.set_collision_layer_value(1, false)
+		self.set_collision_layer_value(3, false)
+	else:
+		self.set_collision_layer_value(3, true)
+		self.set_collision_layer_value(2, false)
 	
 	# Add the gravity.
 	if not is_on_floor() and mask:
@@ -57,13 +61,14 @@ func _physics_process(delta: float) -> void:
 		self.global_position.x += stick.x * GSPEED
 		self.global_position.y += stick.y * GSPEED
 		
-		
+	var arrow = _update_arrow()
+	if Input.is_action_just_pressed("p1_throw" if joystick_id == 0 else "p2_throw") and throwing:
+		_throw_mask(arrow[0], arrow[1])
 	if Input.is_action_just_pressed("p1_throw" if joystick_id == 0 else "p2_throw") and mask:
 		throwing = true
+		_update_arrow()
 	if Input.is_action_just_pressed("p1_back" if joystick_id == 0 else "p2_back") and throwing:
 		throwing = false
-		
-	_update_arrow()
 	
 	if Input.is_action_just_pressed("ui_accept"):
 		mask = !mask
@@ -101,7 +106,7 @@ func _update_arrow():
 		
 	arrow_dir = Vector2(pointer.global_position.x, pointer.global_position.y).normalized()
 	arrow_length = Vector2(pointer.global_position.x, pointer.global_position.y).length()
-	
+	return [Vector2(pointer.global_position.x, pointer.global_position.y) / arrow_length, arrow_length * 10]
 	
 func _draw():
 	if arrow_length == 0 or not throwing:
@@ -124,3 +129,23 @@ func _update_sprite():
 		sprite.texture = real_tex
 	else:
 		sprite.texture = ghost_tex
+
+func _throw_mask(direction: Vector2, speed: float):
+	if not throwing or ammo == 0:
+		return
+	ammo = 0
+	var projectile = mask_scene.instantiate()
+	self.add_child(projectile)
+	projectile.global_position = global_position
+	projectile.throw(direction, speed, self)
+	
+	projectile.connect("hit_player", Callable(self, "_on_mask_hit"))
+
+func _on_mask_hit(body):
+	if body == self:
+		return
+	mask = false
+	throwing = false
+	queue_redraw()
+	body.mask = true
+	body.ammo = 1
