@@ -13,7 +13,6 @@ func _return_to_thrower():
 	if thrower == null:
 		return
 	self.set_collision_mask_value(1, false)
-	collision_mask = 0
 	var direction = (thrower.global_position - global_position).normalized()
 	linear_velocity = direction * 200
 
