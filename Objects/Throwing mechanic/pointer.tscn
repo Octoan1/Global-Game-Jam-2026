@@ -1,9 +1,0 @@
-[gd_scene format=3 uid="uid://bdgyo6upfxhlx"]
-
-[ext_resource type="Texture2D" uid="uid://bj635jllmgy6n" path="res://Assets/triangle.png" id="1_b81uj"]
-
-[node name="Pointer" type="Node2D" unique_id=1407398232]
-
-[node name="Sprite2D" type="Sprite2D" parent="." unique_id=1599900510]
-visible = false
-texture = ExtResource("1_b81uj")
