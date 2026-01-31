@@ -1,6 +1,6 @@
 [gd_scene format=3 uid="uid://beqjmypf74ye8"]
 
-[ext_resource type="Texture2D" uid="uid://dmgdh4espw2wo" path="res://black-square-with-fleck-pattern.jpg" id="1_jfecv"]
+[ext_resource type="Texture2D" uid="uid://dmgdh4espw2wo" path="res://Assets/black-square-with-fleck-pattern.jpg" id="1_jfecv"]
 
 [node name="Floor" type="StaticBody2D" unique_id=1824682230]
 

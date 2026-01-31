@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://dmgdh4espw2wo"
-path="res://.godot/imported/black-square-with-fleck-pattern.jpg-50ae071e79332c789b1aedeea370c581.ctex"
+uid="uid://xhnnobk8qh2t"
+path="res://.godot/imported/mask.jpg-12c6be6968cd02864d2111ba4143334c.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://black-square-with-fleck-pattern.jpg"
-dest_files=["res://.godot/imported/black-square-with-fleck-pattern.jpg-50ae071e79332c789b1aedeea370c581.ctex"]
+source_file="res://Assets/mask.jpg"
+dest_files=["res://.godot/imported/mask.jpg-12c6be6968cd02864d2111ba4143334c.ctex"]
 
 [params]
 
