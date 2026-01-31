@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://pelbol6dtsld"
-path="res://.godot/imported/dingle.png-9170cc92741e11cb517d425a62399684.ctex"
+uid="uid://bqrg3jrwvampx"
+path="res://.godot/imported/doo.png-48163bf902df5d8a7d76dd49e6842d43.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Aseprite/Player/dingle.png"
-dest_files=["res://.godot/imported/dingle.png-9170cc92741e11cb517d425a62399684.ctex"]
+source_file="res://Aseprite/Player/Doo/doo.png"
+dest_files=["res://.godot/imported/doo.png-48163bf902df5d8a7d76dd49e6842d43.ctex"]
 
 [params]
 
