@@ -4,6 +4,7 @@
 [ext_resource type="PackedScene" uid="uid://spfqakfdgeq1" path="res://Entities/Players/player2.tscn" id="3_8gbba"]
 [ext_resource type="Texture2D" uid="uid://dwjdlqk7ymxl8" path="res://Aseprite/Environment/Tilemap/Tilemap.png" id="4_jjvhh"]
 [ext_resource type="Texture2D" uid="uid://cu44wfwxwtmja" path="res://Aseprite/Environment/flat_background.png" id="4_kry3j"]
+[ext_resource type="Texture2D" uid="uid://bmv5avhirqnqk" path="res://Aseprite/Environment/flat_background_green.png" id="5_kry3j"]
 
 [sub_resource type="Resource" id="Resource_jjvhh"]
 metadata/__load_path__ = "res://Aseprite/Player/dingle.png"
@@ -411,9 +412,18 @@ tile_map_data = PackedByteArray("AAAYABAAAAAEAAAAAAAYAA8AAAABAAEAAAAYAA4AAAABAAE
 tile_set = SubResource("TileSet_21xkr")
 
 [node name="TextureRect" type="TextureRect" parent="." unique_id=1715107295]
+visible = false
 z_index = -1
 offset_right = 320.0
 offset_bottom = 240.0
 size_flags_horizontal = 3
 texture = ExtResource("4_kry3j")
+metadata/_edit_use_anchors_ = true
+
+[node name="TextureRect2" type="TextureRect" parent="." unique_id=1426815198]
+z_index = -1
+offset_right = 320.0
+offset_bottom = 240.0
+size_flags_horizontal = 3
+texture = ExtResource("5_kry3j")
 metadata/_edit_use_anchors_ = true
