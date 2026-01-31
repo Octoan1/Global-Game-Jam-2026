@@ -1,7 +1,6 @@
 [gd_scene format=4 uid="uid://dpncuafgait5d"]
 
 [ext_resource type="PackedScene" uid="uid://dfg58lmub4mlf" path="res://Entities/Players/player1.tscn" id="1_jjgbg"]
-[ext_resource type="PackedScene" uid="uid://beqjmypf74ye8" path="res://Objects/Floor/floor.tscn" id="2_bo1nx"]
 [ext_resource type="PackedScene" uid="uid://spfqakfdgeq1" path="res://Entities/Players/player2.tscn" id="3_8gbba"]
 [ext_resource type="Texture2D" uid="uid://dwjdlqk7ymxl8" path="res://Aseprite/Environment/Tilemap/Tilemap.png" id="4_jjvhh"]
 
@@ -393,11 +392,6 @@ sources/0 = SubResource("TileSetAtlasSource_jjvhh")
 [node name="Player1" parent="." unique_id=501140443 instance=ExtResource("1_jjgbg")]
 z_index = 1
 position = Vector2(37, 19)
-
-[node name="Floor" parent="." unique_id=1824682230 instance=ExtResource("2_bo1nx")]
-process_mode = 4
-visible = false
-position = Vector2(183, 458)
 
 [node name="Player2" parent="." unique_id=1845162299 instance=ExtResource("3_8gbba")]
 z_index = 1
