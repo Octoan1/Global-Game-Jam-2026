@@ -1,19 +1,19 @@
 [gd_scene format=3 uid="uid://dfg58lmub4mlf"]
 
 [ext_resource type="Script" uid="uid://bn1k6elpp2y4r" path="res://Entities/Players/player.gd" id="1_yscd2"]
-[ext_resource type="PackedScene" uid="uid://bdgyo6upfxhlx" path="res://Objects/Throwing mechanic/pointer.tscn" id="2_gcmpk"]
-[ext_resource type="PackedScene" uid="uid://dxjsg3ac18lih" path="res://Objects/Throwing mechanic/throwing_arrow.tscn" id="3_k3pxy"]
+[ext_resource type="Texture2D" uid="uid://co0lum64xquic" path="res://Aseprite/Player/dingle_ghost.png" id="3_2m8x8"]
 [ext_resource type="Texture2D" uid="uid://pelbol6dtsld" path="res://Aseprite/Player/dingle.png" id="4_k3pxy"]
 
 [node name="Player1" type="CharacterBody2D" unique_id=501140443]
 script = ExtResource("1_yscd2")
-pointer_scene = ExtResource("2_gcmpk")
-arrow_scene = ExtResource("3_k3pxy")
+arrow_color = Color(1, 0, 0, 1)
+real_tex = ExtResource("4_k3pxy")
+ghost_tex = ExtResource("3_2m8x8")
 
-[node name="Sprite2D" type="Sprite2D" parent="." unique_id=1173643154]
+[node name="Sprite" type="Sprite2D" parent="." unique_id=1173643154]
 texture = ExtResource("4_k3pxy")
 
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="." unique_id=169720816]
-polygon = PackedVector2Array(5, -11, -6, -11, -10, -8, -11, -7, -11, -3, -11, 4, -8, 8, -6, 12, -3, 12, -1, 12, 2, 12, 5, 12, 9, 6, 10, 4, 10, -3, 9, -6, 8, -8)
+polygon = PackedVector2Array(-11, -11, -11, 12, 10, 12, 10, -11)
 
-[node name="Pointer" type="Node2D" parent="." unique_id=1183985087]
+[node name="Pointer" type="Node2D" parent="." unique_id=1747528626]
