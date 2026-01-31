@@ -33,7 +33,6 @@ folder_colors={
 "res://Objects/": "red",
 "res://Scenes/": "green",
 "res://Tileset/": "pink"
-"res://UI/": "yellow"
 }
 
 [input]
