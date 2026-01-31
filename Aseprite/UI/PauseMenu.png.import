@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://ckfq66gp8pw6x"
-path="res://.godot/imported/doo_walk-Sheet.png-50a7f326ba38d2f75cbfbdef17ef26c0.ctex"
+uid="uid://nqdyg67jv1y4"
+path="res://.godot/imported/PauseMenu.png-24648d948d13b47e2514c9ed0030950e.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Aseprite/Player/doo_walk-Sheet.png"
-dest_files=["res://.godot/imported/doo_walk-Sheet.png-50a7f326ba38d2f75cbfbdef17ef26c0.ctex"]
+source_file="res://Aseprite/UI/PauseMenu.png"
+dest_files=["res://.godot/imported/PauseMenu.png-24648d948d13b47e2514c9ed0030950e.ctex"]
 
 [params]
 

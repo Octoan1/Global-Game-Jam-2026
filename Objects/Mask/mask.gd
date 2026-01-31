@@ -29,11 +29,10 @@ func _physics_process(_delta: float) -> void:
 
 func _on_body_entered(body):
 	if body.name == "Player2" or body.name == "Player1":
-		print("hit")
 		emit_signal("hit_player", body)
 		queue_free()
 		returning = false
-	if body.name == "Floor" and thrower != null:
+	if body.name == "Walls" and thrower != null:
 		returning = true
 		_return_to_thrower()
 		
