@@ -1,9 +1,46 @@
 [gd_scene format=3 uid="uid://spfqakfdgeq1"]
 
 [ext_resource type="Script" uid="uid://bn1k6elpp2y4r" path="res://Entities/Players/player.gd" id="1_fgtas"]
-[ext_resource type="Texture2D" uid="uid://cfthi572frcg2" path="res://Aseprite/Player/doo_ghost.png" id="2_fgtas"]
-[ext_resource type="Texture2D" uid="uid://bqrg3jrwvampx" path="res://Aseprite/Player/doo.png" id="2_vq5c7"]
+[ext_resource type="Texture2D" uid="uid://cfthi572frcg2" path="res://Aseprite/Player/Doo/doo_ghost.png" id="2_fgtas"]
+[ext_resource type="Texture2D" uid="uid://bqrg3jrwvampx" path="res://Aseprite/Player/Doo/doo.png" id="2_vq5c7"]
 [ext_resource type="PackedScene" uid="uid://ir766e3jwv8n" path="res://Objects/Mask/mask.tscn" id="4_vps4q"]
+[ext_resource type="Texture2D" uid="uid://ckfq66gp8pw6x" path="res://Aseprite/Player/Doo/doo_walk-Sheet.png" id="5_mep1w"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_6tcry"]
+atlas = ExtResource("5_mep1w")
+region = Rect2(0, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_8ot8d"]
+atlas = ExtResource("5_mep1w")
+region = Rect2(32, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_jcshi"]
+atlas = ExtResource("5_mep1w")
+region = Rect2(64, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_b43ch"]
+atlas = ExtResource("5_mep1w")
+region = Rect2(96, 0, 32, 32)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_swfhw"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_6tcry")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_8ot8d")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_jcshi")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_b43ch")
+}],
+"loop": true,
+"name": &"Walk",
+"speed": 5.0
+}]
 
 [node name="Player2" type="CharacterBody2D" unique_id=1845162299]
 collision_layer = 4
@@ -21,3 +58,8 @@ texture = ExtResource("2_fgtas")
 polygon = PackedVector2Array(-11, -11, -11, 12, 10, 12, 10, -11)
 
 [node name="Pointer" type="Node2D" parent="." unique_id=398357479]
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=965665565]
+visible = false
+sprite_frames = SubResource("SpriteFrames_swfhw")
+animation = &"Walk"
