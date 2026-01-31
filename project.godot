@@ -19,13 +19,15 @@ config/icon="uid://crdj27kmweie4"
 
 window/size/viewport_width=320
 window/size/viewport_height=240
+window/size/window_width_override=1280
+window/size/window_height_override=960
 window/stretch/mode="viewport"
 window/stretch/scale_mode="integer"
 
 [file_customization]
 
 folder_colors={
-"res://Assets/": "yellow",
+"res://Aseprite/": "orange",
 "res://Entities/": "purple",
 "res://Objects/": "red",
 "res://Scenes/": "green"
