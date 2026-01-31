@@ -23,9 +23,15 @@ var arrow_length = 0.0
 @export var real_tex: Texture2D
 @export var ghost_tex: Texture2D
 @onready var sprite: Sprite2D = $Sprite
+@onready var animated: AnimatedSprite2D = $AnimatedSprite2D
+var prev_dir = 1
 
 #Throwing
 @export var mask_scene: PackedScene
+
+#Camera
+@onready var camera: Camera2D = $"../Camera2D"
+@onready var cam_size = camera.get_viewport_rect().size * camera.zoom
 
 func _physics_process(delta: float) -> void:
 	_update_inputs()
@@ -44,7 +50,6 @@ func _physics_process(delta: float) -> void:
 	if not is_on_floor() and mask:
 		velocity += get_gravity() * delta
 		
-
 	# Handle jump.
 	if controller:
 		if Input.is_action_pressed("p1_jump_c" if joystick_id == 0 else "p2_jump_c") and is_on_floor() and not throwing and mask:
@@ -55,16 +60,26 @@ func _physics_process(delta: float) -> void:
 
 	# Get the input direction and handle the movement/deceleration.
 	# As good practice, you should replace UI actions with custom gameplay actions.
+	var other = _get_other_player()
+	var players_dist = global_position.distance_to(other.global_position)
+	var to_other = (_get_other_player().global_position - global_position).normalized()
 	var direction
 	if controller:
 		direction = Input.get_axis("p1_move_left_c" if joystick_id == 0 else "p2_move_left_c", "p1_move_right_c" if joystick_id == 0 else "p2_move_right_c")
 	else:
 		direction = Input.get_axis("p1_move_left_k" if joystick_id == 0 else "p2_move_left_k", "p1_move_right_k" if joystick_id == 0 else "p2_move_right_k")
-	if direction and not throwing and mask:
+	var moving_away = direction != 0 and sign(direction) == -sign(to_other.x)
+	if direction and not throwing and mask and (players_dist < _get_max_distance() or not moving_away):
+		animated.play("Walk")
 		velocity.x = direction * SPEED
+		animated.flip_h = prev_dir < 0
+		sprite.flip_h = prev_dir < 0
+		prev_dir = direction
 	else:
+		animated.stop()
 		velocity.x = move_toward(velocity.x, 0, SPEED)
 	
+	#ghost movement
 	if not mask:
 		if controller:
 			var stick = Vector2(
@@ -73,14 +88,34 @@ func _physics_process(delta: float) -> void:
 			)
 			if stick.length() < deadzone:
 				stick = Vector2.ZERO
-			velocity.x = stick.x * SPEED
-			velocity.y = stick.y * SPEED
+			var desired_velocity = stick * GSPEED
+
+			if desired_velocity != Vector2.ZERO:
+				var move_dir = desired_velocity.normalized()
+				moving_away = move_dir.dot(to_other) < 0
+
+				if players_dist < _get_max_distance() or not moving_away:
+					velocity = desired_velocity
+				else:
+					velocity = Vector2.ZERO
+			else:
+				velocity.x = 0
+				velocity.y = 0
+			if stick.x != 0:
+				sprite.flip_h = prev_dir < 0
+			prev_dir = stick.x
 		else:
 			var h_dir := Input.get_axis("p1_move_left_k" if joystick_id == 0 else "p2_move_left_k", "p1_move_right_k" if joystick_id == 0 else "p2_move_right_k")
 			var v_dir := Input.get_axis("p1_move_up" if joystick_id == 0 else "p2_move_up", "p1_move_down" if joystick_id == 0 else "p2_move_down")
-		
-			velocity.x = h_dir * GSPEED
-			velocity.y = v_dir * GSPEED
+			var moving_away_x = h_dir != 0 and sign(h_dir) == -sign(to_other.x)
+			var moving_away_y = v_dir != 0 and sign(v_dir) == -sign(to_other.y)
+			if (players_dist < _get_max_distance() or not moving_away_x):
+				velocity.x = h_dir * GSPEED
+			if (players_dist < _get_max_distance() or not moving_away_y):
+				velocity.y = v_dir * GSPEED
+			if h_dir != 0:
+				sprite.flip_h = prev_dir < 0
+			prev_dir = h_dir
 		
 	var arrow = _update_arrow()
 	if controller:
@@ -194,3 +229,9 @@ func _update_inputs():
 		controller = true
 	if Input.is_action_just_pressed("p1_connect_keyboard" if joystick_id == 0 else "p2_connect_keyboard"):
 		controller = false
+
+func _get_max_distance():
+	return min(cam_size.x, cam_size.y) - 30
+
+func _get_other_player():
+	return $"../Player2" if joystick_id == 0 else $"../Player1"
