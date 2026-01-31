@@ -1,6 +1,6 @@
 [gd_scene format=3 uid="uid://spfqakfdgeq1"]
 
-[ext_resource type="Script" uid="uid://bn1k6elpp2y4r" path="res://Entities/Player 1/player.gd" id="1_fgtas"]
+[ext_resource type="Script" uid="uid://bn1k6elpp2y4r" path="res://Entities/Players/player.gd" id="1_fgtas"]
 [ext_resource type="Texture2D" uid="uid://cfthi572frcg2" path="res://Aseprite/Player/doo_ghost.png" id="2_fgtas"]
 
 [node name="Player2" type="CharacterBody2D" unique_id=1845162299]
@@ -14,3 +14,5 @@ texture = ExtResource("2_fgtas")
 
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="." unique_id=1201107125]
 polygon = PackedVector2Array(3, -14, -5, -16, -8, -9, -10, -5, -10, 0, -7, 5, -2, 8, 2, 8, 5, 6, 7, 4, 8, 2, 8, -7, 5, -12)
+
+[node name="Pointer" type="Node2D" parent="." unique_id=398357479]
