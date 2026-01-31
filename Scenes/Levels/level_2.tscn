@@ -1,11 +1,11 @@
-[gd_scene format=4 uid="uid://dcrp8y2ts0weu"]
+[gd_scene format=4 uid="uid://c6x3lxnpa22nq"]
 
-[ext_resource type="Script" uid="uid://cjiat2yv0tcle" path="res://Scenes/Levels/level_data.gd" id="1_3mqfk"]
-[ext_resource type="Texture2D" uid="uid://dwjdlqk7ymxl8" path="res://Aseprite/Environment/Tilemap/Tilemap.png" id="1_4dpyx"]
-[ext_resource type="PackedScene" uid="uid://liirdi4so46o" path="res://Objects/Level Things/exit_area.tscn" id="2_3mqfk"]
+[ext_resource type="Script" uid="uid://cjiat2yv0tcle" path="res://Scenes/Levels/level_data.gd" id="1_oylv5"]
+[ext_resource type="Texture2D" uid="uid://dwjdlqk7ymxl8" path="res://Aseprite/Environment/Tilemap/Tilemap.png" id="1_ucdhh"]
+[ext_resource type="PackedScene" uid="uid://liirdi4so46o" path="res://Objects/Level Things/exit_area.tscn" id="2_oylv5"]
 
-[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_4dpyx"]
-texture = ExtResource("1_4dpyx")
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_w2ac1"]
+texture = ExtResource("1_ucdhh")
 0:0/0 = 0
 0:0/0/terrain_set = 0
 0:0/0/terrain = 0
@@ -375,7 +375,7 @@ texture = ExtResource("1_4dpyx")
 8:4/0/physics_layer_1/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
 8:4/0/terrains_peering_bit/bottom_side = 1
 
-[sub_resource type="TileSet" id="TileSet_7p6j4"]
+[sub_resource type="TileSet" id="TileSet_ovj6s"]
 physics_layer_0/collision_layer = 1
 physics_layer_0/collision_mask = 2
 physics_layer_1/collision_layer = 16
@@ -385,10 +385,10 @@ terrain_set_0/terrain_0/name = "Real Walls"
 terrain_set_0/terrain_0/color = Color(0.419809, 0.01945558, 0.31512094, 1)
 terrain_set_0/terrain_1/name = "Ghost Walls 1"
 terrain_set_0/terrain_1/color = Color(0.2862138, 0.40377316, 0.82391006, 1)
-sources/0 = SubResource("TileSetAtlasSource_4dpyx")
+sources/0 = SubResource("TileSetAtlasSource_w2ac1")
 
-[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_3mqfk"]
-texture = ExtResource("1_4dpyx")
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_8qsmg"]
+texture = ExtResource("1_ucdhh")
 1:8/0 = 0
 1:8/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
 2:8/0 = 0
@@ -398,24 +398,25 @@ texture = ExtResource("1_4dpyx")
 2:9/0 = 0
 2:9/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
 
-[sub_resource type="TileSet" id="TileSet_xfk5q"]
+[sub_resource type="TileSet" id="TileSet_fphuk"]
 physics_layer_0/collision_layer = 0
 physics_layer_0/collision_mask = 0
-sources/0 = SubResource("TileSetAtlasSource_3mqfk")
+sources/0 = SubResource("TileSetAtlasSource_8qsmg")
 
-[node name="Level1" type="Node2D" unique_id=1906136548]
-script = ExtResource("1_3mqfk")
+[node name="Level2" type="Node2D" unique_id=1624626228]
+script = ExtResource("1_oylv5")
 player_1_spawn = Vector2(12, 164)
 player_2_spawn = Vector2(36, 164)
 
-[node name="ExitArea" parent="." unique_id=2084659212 instance=ExtResource("2_3mqfk")]
+[node name="ExitArea" parent="." unique_id=2084659212 instance=ExtResource("2_oylv5")]
 unique_name_in_owner = true
-next_level_id = 2
+position = Vector2(32, -48)
+next_level_id = 3
 
-[node name="Walls" type="TileMapLayer" parent="." unique_id=758775280]
-tile_map_data = PackedByteArray("AAAAAA4AAAABAAAAAAABAA4AAAABAAAAAAACAA4AAAABAAAAAAADAA4AAAABAAAAAAAEAA4AAAABAAAAAAAFAA4AAAABAAAAAAAGAA4AAAABAAAAAAAHAA4AAAABAAAAAAAIAA4AAAABAAAAAAAJAA4AAAAFAAIAAAAKAA4AAAADAAIAAAALAA4AAAABAAAAAAAMAA4AAAABAAAAAAANAA4AAAABAAAAAAAOAA4AAAABAAAAAAAPAA4AAAABAAAAAAAQAA4AAAABAAAAAAARAA4AAAABAAAAAAASAA4AAAABAAAAAAATAA4AAAABAAAAAAAKAA0AAAACAAEAAAAJAA0AAAAAAAEAAAAJAAwAAAAAAAEAAAAJAAsAAAAAAAEAAAAJAAoAAAAAAAAAAAAKAAoAAAACAAAAAAAKAAsAAAACAAEAAAAKAAwAAAACAAEAAAA=")
-tile_set = SubResource("TileSet_7p6j4")
+[node name="Walls" type="TileMapLayer" parent="." unique_id=1148790277]
+tile_map_data = PackedByteArray("AAAAAA4AAAAAAAEAAAAAAA0AAAAAAAEAAAAAAAwAAAAAAAEAAAAAAAsAAAAAAAAAAAABAAsAAAABAAAAAAACAAsAAAACAAAAAAACAAwAAAACAAEAAAACAA0AAAACAAEAAAACAA4AAAACAAEAAAAJAAsAAAABAAAAAAATAA4AAAACAAEAAAATAA0AAAACAAEAAAATAAwAAAACAAEAAAATAAsAAAACAAAAAAASAAsAAAABAAAAAAARAAsAAAAAAAAAAAARAAwAAAAAAAEAAAARAA0AAAAAAAEAAAARAA4AAAAAAAEAAAALAAsAAAACAAAAAAALAAwAAAACAAEAAAALAA0AAAACAAEAAAALAA4AAAACAAEAAAAKAAsAAAABAAAAAAAIAAsAAAAAAAAAAAAIAAwAAAAAAAEAAAAIAA0AAAAAAAEAAAAIAA4AAAAAAAEAAAAKAAwAAAABAAEAAAAKAA0AAAABAAEAAAAKAA4AAAABAAEAAAAJAA4AAAABAAEAAAAJAA0AAAABAAEAAAAJAAwAAAABAAEAAAABAAwAAAABAAEAAAABAA0AAAABAAEAAAABAA4AAAABAAEAAAASAAwAAAABAAEAAAASAA0AAAABAAEAAAASAA4AAAABAAEAAAA=")
+tile_set = SubResource("TileSet_ovj6s")
 
-[node name="LevelExit" type="TileMapLayer" parent="." unique_id=2034227848]
-tile_map_data = PackedByteArray("AAAQAAwAAAABAAgAAAAQAA0AAAABAAkAAAARAAwAAAACAAgAAAARAA0AAAACAAkAAAA=")
-tile_set = SubResource("TileSet_xfk5q")
+[node name="LevelExit" type="TileMapLayer" parent="." unique_id=1439619174]
+tile_map_data = PackedByteArray("AAASAAkAAAABAAgAAAASAAoAAAABAAkAAAATAAkAAAACAAgAAAATAAoAAAACAAkAAAA=")
+tile_set = SubResource("TileSet_fphuk")
