@@ -8,4 +8,5 @@
 texture = ExtResource("1_jfecv")
 
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="." unique_id=939208792]
+visible = false
 polygon = PackedVector2Array(-307.5, -307.5, -307.5, 307.5, 307.5, 307.5, 307.5, -307.5)
