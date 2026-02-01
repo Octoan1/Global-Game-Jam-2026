@@ -1,10 +1,11 @@
-[gd_scene format=3 uid="uid://38xv66o60rwq"]
+[gd_scene format=3 uid="uid://dp2lxphokmjf7"]
 
-[ext_resource type="PackedScene" uid="uid://blg4ddq8suart" path="res://Objects/Level Things/level_manager.tscn" id="1_p4c8d"]
+[ext_resource type="PackedScene" path="res://Objects/Level Things/level_manager.tscn" id="1_p4c8d"]
 [ext_resource type="PackedScene" uid="uid://dfg58lmub4mlf" path="res://Entities/Players/player1.tscn" id="2_f1ejf"]
 [ext_resource type="Texture2D" uid="uid://cu44wfwxwtmja" path="res://Aseprite/Environment/flat_background.png" id="2_p4c8d"]
 [ext_resource type="PackedScene" uid="uid://spfqakfdgeq1" path="res://Entities/Players/player2.tscn" id="3_d0bjv"]
 [ext_resource type="PackedScene" uid="uid://dcrp8y2ts0weu" path="res://Scenes/Levels/level_1.tscn" id="4_hy2kt"]
+<<<<<<< Updated upstream
 [ext_resource type="Script" path="res://Scenes/camera_2d.gd" id="6_d0bjv"]
 [ext_resource type="Script" uid="uid://dujl3b6wk6lq" path="res://Scenes/tether.gd" id="7_27os8"]
 
@@ -13,6 +14,10 @@ metadata/__load_path__ = "res://Aseprite/Player/dingle.png"
 
 [sub_resource type="Resource" id="Resource_27os8"]
 metadata/__load_path__ = "res://Aseprite/Player/dingle_ghost.png"
+=======
+[ext_resource type="Script" uid="uid://eaeyihiq0nd7" path="res://Scenes/camera_2d.gd" id="6_d0bjv"]
+[ext_resource type="Script" uid="uid://dujl3b6wk6lq" path="res://Scenes/tether.gd" id="7_27os8"]
+>>>>>>> Stashed changes
 
 [node name="GameWorld" type="Node2D" unique_id=311252913]
 
@@ -36,6 +41,7 @@ script = ExtResource("7_27os8")
 
 [node name="Player1" parent="." unique_id=501140443 instance=ExtResource("2_f1ejf")]
 z_index = 1
+<<<<<<< Updated upstream
 position = Vector2(20, 212)
 mask = true
 real_tex = SubResource("Resource_d0bjv")
@@ -44,3 +50,24 @@ ghost_tex = SubResource("Resource_27os8")
 [node name="Player2" parent="." unique_id=1845162299 instance=ExtResource("3_d0bjv")]
 z_index = 1
 position = Vector2(50, 212)
+=======
+position = Vector2(19, 212)
+mask = true
+thickness = 2.0
+max_length = 50.0
+joystick_id = 0
+deadzone = 0.2
+
+[node name="Player2" parent="." unique_id=1845162299 instance=ExtResource("3_d0bjv")]
+z_index = 1
+position = Vector2(49, 212)
+
+[node name="Level1" parent="." unique_id=1906136548 instance=ExtResource("4_hy2kt")]
+
+[node name="Camera2D" type="Camera2D" parent="." unique_id=277453534]
+enabled = false
+script = ExtResource("6_d0bjv")
+
+[node name="Tether" type="Node2D" parent="." unique_id=877659908]
+script = ExtResource("7_27os8")
+>>>>>>> Stashed changes
