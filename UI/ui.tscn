@@ -17,6 +17,8 @@
 [ext_resource type="AudioStream" uid="uid://drkpnvvi66aa7" path="res://Sound/SFX/UI/UIAccept.mp3" id="14_o2t6a"]
 [ext_resource type="AudioStream" uid="uid://s441jqhif6hj" path="res://Sound/SFX/UI/UIClick.wav" id="15_8gukh"]
 [ext_resource type="AudioStream" uid="uid://cwsjdqkxdmnlo" path="res://Sound/SFX/UI/GameStart.wav" id="16_8gkfd"]
+[ext_resource type="AudioStream" uid="uid://4p5jp4c0nqfp" path="res://Sound/song.ogg" id="18_0tr35"]
+[ext_resource type="AudioStream" uid="uid://cdtpfm71pyom5" path="res://Sound/birds.ogg" id="19_7j5ik"]
 
 [sub_resource type="StyleBoxTexture" id="StyleBoxTexture_3sbvi"]
 texture = ExtResource("4_hat8c")
@@ -37,8 +39,18 @@ grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_o2jkc")
 
+[node name="MainBG" type="TextureRect" parent="." unique_id=399972628]
+layout_mode = 0
+offset_right = 320.0
+offset_bottom = 240.0
+size_flags_horizontal = 3
+mouse_filter = 2
+texture = ExtResource("14_8gukh")
+metadata/_edit_use_anchors_ = true
+
 [node name="PauseCenter" type="CenterContainer" parent="." unique_id=691167076]
 process_mode = 2
+visible = false
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -155,13 +167,6 @@ offset_right = 68.0
 grow_horizontal = 2
 grow_vertical = 0
 
-[node name="LevelBackground2" type="TextureRect" parent="MainCenter" unique_id=399972628]
-layout_mode = 2
-size_flags_horizontal = 3
-mouse_filter = 2
-texture = ExtResource("14_8gukh")
-metadata/_edit_use_anchors_ = true
-
 [node name="MainMenu" type="VBoxContainer" parent="MainCenter" unique_id=727198819]
 layout_mode = 2
 alignment = 1
@@ -262,6 +267,15 @@ bus = &"SFX"
 [node name="GameStart" type="AudioStreamPlayer2D" parent="." unique_id=329283665]
 stream = ExtResource("16_8gkfd")
 bus = &"SFX"
+
+[node name="Music" type="AudioStreamPlayer2D" parent="." unique_id=1003611714]
+stream = ExtResource("18_0tr35")
+volume_db = -15.0
+
+[node name="MainMuicAmbient" type="AudioStreamPlayer2D" parent="." unique_id=1100796650]
+stream = ExtResource("19_7j5ik")
+volume_db = -15.0
+bus = &"Music"
 
 [connection signal="focus_entered" from="PauseCenter/PauseMenu/CenterResume/PauseResume" to="." method="_on_pause_resume_focus_entered"]
 [connection signal="mouse_entered" from="PauseCenter/PauseMenu/CenterResume/PauseResume" to="." method="_on_pause_resume_mouse_entered"]
