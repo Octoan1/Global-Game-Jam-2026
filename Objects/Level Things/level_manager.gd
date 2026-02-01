@@ -8,6 +8,7 @@ var level_name_tree: String = "Level1"
 var level_path_tree: String = "../" + level_name_tree
 var level_path_file: String = "res://Scenes/Levels/" + current_level_name + ".tscn"
 var target_node: Node
+@onready var remove_node: Node = $"../Level1"
 
 func _ready():
 	update_vars(1)
@@ -23,9 +24,8 @@ func update_vars(level_id:int):
 	level_path_file = "res://Scenes/Levels/" + current_level_name + ".tscn"
 
 func next_level(next_level_id, player1_position, player2_position):
-	
+	print("Going to level: ", next_level_id)
 	# delete current level from scene tree
-	var remove_node = get_node(level_path_tree)
 	remove_node.queue_free()
 	
 	# update paths and names
@@ -38,8 +38,11 @@ func next_level(next_level_id, player1_position, player2_position):
 	call_deferred("add_child", level_instantiate)
 	
 	# connect the new level's exit area signal
-	target_node = get_node(level_path_tree)
+	#target_node = get_node(level_path_tree)
 	#target_node.get_child(0).connect("exit_level", next_level)
+	level_instantiate.get_child(0).connect("exit_level", next_level)
+	
+	remove_node = level_instantiate
 	
 	# access desired player position for the new level
 	# and set the player position to that

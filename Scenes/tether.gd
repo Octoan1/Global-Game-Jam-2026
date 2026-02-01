@@ -21,7 +21,6 @@ func _draw():
 		return
 
 	var dist = player1.global_position.distance_to(player2.global_position)
-	print(str(dist) + ", " + str(min(cam_size.x, cam_size.y) - 30))
 	if dist < min(cam_size.x, cam_size.y) - 30:
 		return
 
