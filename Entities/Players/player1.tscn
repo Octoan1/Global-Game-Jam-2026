@@ -4,7 +4,24 @@
 [ext_resource type="Texture2D" uid="uid://co0lum64xquic" path="res://Aseprite/Player/Dingle/dingle_ghost.png" id="3_2m8x8"]
 [ext_resource type="Texture2D" uid="uid://pelbol6dtsld" path="res://Aseprite/Player/Dingle/dingle.png" id="4_k3pxy"]
 [ext_resource type="PackedScene" uid="uid://ir766e3jwv8n" path="res://Objects/Mask/mask.tscn" id="4_xwwn8"]
+[ext_resource type="Texture2D" uid="uid://bqwpikbrdth8b" path="res://Aseprite/Player/Dingle/dingle_idle-Sheet.png" id="5_ktqc6"]
 [ext_resource type="Texture2D" uid="uid://kdkvyeuk03i1" path="res://Aseprite/Player/Dingle/dingle_walk-Sheet.png" id="5_ndun7"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_2g48j"]
+atlas = ExtResource("5_ktqc6")
+region = Rect2(0, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_e6s7n"]
+atlas = ExtResource("5_ktqc6")
+region = Rect2(32, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_cdada"]
+atlas = ExtResource("5_ktqc6")
+region = Rect2(64, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_wbpkj"]
+atlas = ExtResource("5_ktqc6")
+region = Rect2(96, 0, 32, 32)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_ktqc6"]
 atlas = ExtResource("5_ndun7")
@@ -26,6 +43,23 @@ region = Rect2(96, 0, 32, 32)
 animations = [{
 "frames": [{
 "duration": 1.0,
+"texture": SubResource("AtlasTexture_2g48j")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_e6s7n")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_cdada")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_wbpkj")
+}],
+"loop": true,
+"name": &"Idle",
+"speed": 6.0
+}, {
+"frames": [{
+"duration": 1.0,
 "texture": SubResource("AtlasTexture_ktqc6")
 }, {
 "duration": 1.0,
@@ -39,23 +73,19 @@ animations = [{
 }],
 "loop": true,
 "name": &"Walk",
-"speed": 5.0
+"speed": 6.0
 }]
 
 [node name="Player1" type="CharacterBody2D" unique_id=501140443]
 collision_layer = 2
 script = ExtResource("1_yscd2")
-mask = null
-thickness = null
-max_length = null
-joystick_id = null
-deadzone = null
 arrow_color = Color(1, 0, 0, 1)
 real_tex = ExtResource("4_k3pxy")
 ghost_tex = ExtResource("3_2m8x8")
 mask_scene = ExtResource("4_xwwn8")
 
 [node name="Sprite" type="Sprite2D" parent="." unique_id=1173643154]
+visible = false
 texture = ExtResource("4_k3pxy")
 
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="." unique_id=169720816]
@@ -64,6 +94,7 @@ polygon = PackedVector2Array(-11, -11, -11, 12, 10, 12, 10, -11)
 [node name="Pointer" type="Node2D" parent="." unique_id=1747528626]
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=936637707]
-visible = false
 sprite_frames = SubResource("SpriteFrames_2g48j")
-animation = &"Walk"
+animation = &"Idle"
+autoplay = "Idle"
+frame_progress = 0.15274191

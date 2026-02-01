@@ -79,7 +79,7 @@ func _physics_process(delta: float) -> void:
 		sprite.flip_h = prev_dir < 0
 		prev_dir = direction
 	else:
-		animated.stop()
+		animated.play("Idle")
 		velocity.x = move_toward(velocity.x, 0, SPEED)
 	
 	#ghost movement

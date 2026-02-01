@@ -3,9 +3,9 @@
 [ext_resource type="PackedScene" uid="uid://dfg58lmub4mlf" path="res://Entities/Players/player1.tscn" id="1_jjgbg"]
 [ext_resource type="PackedScene" uid="uid://spfqakfdgeq1" path="res://Entities/Players/player2.tscn" id="3_8gbba"]
 [ext_resource type="Texture2D" uid="uid://dwjdlqk7ymxl8" path="res://Aseprite/Environment/Tilemap/Tilemap.png" id="4_jjvhh"]
-[ext_resource type="Script" path="res://Scenes/camera_2d.gd" id="5_21xkr"]
+[ext_resource type="Script" uid="uid://eaeyihiq0nd7" path="res://Scenes/camera_2d.gd" id="5_21xkr"]
 [ext_resource type="Texture2D" uid="uid://bmv5avhirqnqk" path="res://Aseprite/Environment/flat_background_green.png" id="5_kry3j"]
-[ext_resource type="Script" path="res://Scenes/tether.gd" id="6_21xkr"]
+[ext_resource type="Script" uid="uid://dujl3b6wk6lq" path="res://Scenes/tether.gd" id="6_21xkr"]
 
 [sub_resource type="Resource" id="Resource_jjvhh"]
 metadata/__load_path__ = "res://Aseprite/Player/dingle.png"
@@ -402,6 +402,10 @@ sources/0 = SubResource("TileSetAtlasSource_jjvhh")
 z_index = 1
 position = Vector2(37, 19)
 mask = true
+thickness = 2.0
+max_length = 50.0
+joystick_id = 0
+deadzone = 0.2
 real_tex = SubResource("Resource_jjvhh")
 ghost_tex = SubResource("Resource_kry3j")
 
