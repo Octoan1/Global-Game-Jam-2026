@@ -37,8 +37,7 @@ var prev_dir = 1
 
 func _ready() -> void:
 	animated.animation_finished.connect(_on_animation_finished)
-<<<<<<< Updated upstream
-=======
+
 	if not mask:
 		var pile = pile_scene.instantiate()
 		var parent = self.get_parent()
@@ -51,7 +50,7 @@ func _ready() -> void:
 		animated.play("Idle")
 		animated.modulate.a = 1
 	
->>>>>>> Stashed changes
+
 
 func _physics_process(delta: float) -> void:
 	_update_inputs()
@@ -260,11 +259,9 @@ func _on_mask_hit(body):
 		return
 	mask = false
 	throwing = false
-<<<<<<< Updated upstream
-=======
+
 	animated.modulate.a = .8
 	animated.play("Become_Ghost")
->>>>>>> Stashed changes
 	queue_redraw()
 	body.animated.play("Unpoof")
 	body.mask = true
@@ -285,8 +282,7 @@ func _get_other_player():
 func _on_animation_finished():
 	if animated.animation == "Unpoof":
 		animated.play("Idle")
-<<<<<<< Updated upstream
-=======
+
 	if animated.animation == "Become_Ghost":
 		animated.play("Ghost_Idle")
 		
@@ -295,4 +291,4 @@ func unpoof_from_leaves():
 	mask = true
 	animated.modulate.a = 1
 	animated.play("Unpoof")
->>>>>>> Stashed changes
+
