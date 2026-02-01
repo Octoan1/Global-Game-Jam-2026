@@ -6,6 +6,7 @@
 [ext_resource type="Script" uid="uid://eaeyihiq0nd7" path="res://Scenes/camera_2d.gd" id="5_21xkr"]
 [ext_resource type="Texture2D" uid="uid://bmv5avhirqnqk" path="res://Aseprite/Environment/flat_background_green.png" id="5_kry3j"]
 [ext_resource type="Script" uid="uid://dujl3b6wk6lq" path="res://Scenes/tether.gd" id="6_21xkr"]
+[ext_resource type="PackedScene" uid="uid://b0u4oebqc8klt" path="res://UI/ui.tscn" id="7_6bp64"]
 
 [sub_resource type="Resource" id="Resource_jjvhh"]
 metadata/__load_path__ = "res://Aseprite/Player/dingle.png"
@@ -401,11 +402,6 @@ sources/0 = SubResource("TileSetAtlasSource_jjvhh")
 [node name="Player1" parent="." unique_id=501140443 instance=ExtResource("1_jjgbg")]
 z_index = 1
 position = Vector2(37, 19)
-mask = true
-thickness = 2.0
-max_length = 50.0
-joystick_id = 0
-deadzone = 0.2
 real_tex = SubResource("Resource_jjvhh")
 ghost_tex = SubResource("Resource_kry3j")
 
@@ -430,3 +426,14 @@ script = ExtResource("5_21xkr")
 
 [node name="Tether" type="Node2D" parent="." unique_id=577630155]
 script = ExtResource("6_21xkr")
+
+[node name="UI" parent="." unique_id=1993868164 instance=ExtResource("7_6bp64")]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = 154.0
+offset_top = 120.0
+offset_right = 154.0
+offset_bottom = 120.0

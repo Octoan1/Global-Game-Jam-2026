@@ -13,6 +13,9 @@
 [ext_resource type="Texture2D" uid="uid://brlgxksnb4j1f" path="res://Aseprite/UI/PauseMenuQuitOutline.png" id="9_h81ot"]
 [ext_resource type="Texture2D" uid="uid://c7slnks7y5hss" path="res://Aseprite/UI/MainMenuPlay.png" id="11_0w6e5"]
 [ext_resource type="Texture2D" uid="uid://cypcg8we4qoco" path="res://Aseprite/UI/MainMenuPlayOutline.png" id="12_o2jkc"]
+[ext_resource type="AudioStream" uid="uid://drkpnvvi66aa7" path="res://Sound/SFX/UI/UIAccept.mp3" id="14_o2t6a"]
+[ext_resource type="AudioStream" uid="uid://s441jqhif6hj" path="res://Sound/SFX/UI/UIClick.wav" id="15_8gukh"]
+[ext_resource type="AudioStream" uid="uid://cwsjdqkxdmnlo" path="res://Sound/SFX/UI/GameStart.wav" id="16_8gkfd"]
 
 [sub_resource type="StyleBoxTexture" id="StyleBoxTexture_3sbvi"]
 texture = ExtResource("4_hat8c")
@@ -24,6 +27,7 @@ texture_margin_top = 4.0
 texture_margin_right = 102.0
 
 [node name="UI" type="Control" unique_id=1993868164]
+process_mode = 3
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
@@ -33,6 +37,7 @@ grow_vertical = 2
 script = ExtResource("1_o2jkc")
 
 [node name="PauseCenter" type="CenterContainer" parent="." unique_id=691167076]
+process_mode = 2
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -132,6 +137,7 @@ texture_hover = ExtResource("9_h81ot")
 texture_focused = ExtResource("9_h81ot")
 
 [node name="MainCenter" type="CenterContainer" parent="." unique_id=42359563]
+visible = false
 layout_mode = 1
 anchors_preset = 7
 anchor_left = 0.5
@@ -228,4 +234,14 @@ theme_override_styles/slider = SubResource("StyleBoxTexture_h81ot")
 value = 50.0
 ticks_position = 3
 
-[node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="." unique_id=1640980330]
+[node name="UIAccept" type="AudioStreamPlayer2D" parent="." unique_id=1640980330]
+stream = ExtResource("14_o2t6a")
+bus = &"SFX"
+
+[node name="UIClick" type="AudioStreamPlayer2D" parent="." unique_id=1156174875]
+stream = ExtResource("15_8gukh")
+bus = &"SFX"
+
+[node name="GameStart" type="AudioStreamPlayer2D" parent="." unique_id=329283665]
+stream = ExtResource("16_8gkfd")
+bus = &"SFX"
