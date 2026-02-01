@@ -2,7 +2,7 @@ extends CharacterBody2D
 
 #Player
 const SPEED = 100.0
-const GSPEED = 150.0
+const GSPEED = 125.0
 const JUMP_VELOCITY = -200.0
 @export var mask = true
 @onready var throwing = false
@@ -112,7 +112,10 @@ func _physics_process(delta: float) -> void:
 			else:
 				velocity.x = stick.x * GSPEED
 				velocity.y = stick.y * GSPEED
-			animated.play("Ghost_Move")
+			if velocity == Vector2.ZERO:
+				animated.play("Idle")
+			else:
+				animated.play("Ghost_Move")
 			if stick.x != 0:
 				animated.flip_h = prev_dir < 0
 			prev_dir = stick.x
@@ -136,7 +139,10 @@ func _physics_process(delta: float) -> void:
 			else:
 				velocity.x = h_dir * GSPEED
 				velocity.y = v_dir * GSPEED
-			animated.play("Ghost_Move")
+			if velocity == Vector2.ZERO:
+				animated.play("Idle")
+			else:
+				animated.play("Ghost_Move")
 			if h_dir != 0:
 				animated.flip_h = prev_dir < 0
 			prev_dir = h_dir
