@@ -12,7 +12,7 @@
 [ext_resource type="AudioStream" uid="uid://iiangmoo7lj6" path="res://Sound/footstep6.ogg" id="10_2g48j"]
 [ext_resource type="AudioStream" uid="uid://3mqi17tfdeiy" path="res://Sound/SFX/jump3.ogg" id="11_e6s7n"]
 [ext_resource type="AudioStream" uid="uid://d3pamiks1b4k0" path="res://Sound/reform.ogg" id="12_cdada"]
-[ext_resource type="AudioStream" uid="uid://cra0i4icr3bvl" path="res://Sound/mask-equip.ogg" id="13_wbpkj"]
+[ext_resource type="AudioStream" uid="uid://b7c6uhuqxa72r" path="res://Sound/swoop.ogg" id="13_wbpkj"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_07fpm"]
 atlas = ExtResource("5_2g48j")

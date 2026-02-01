@@ -133,6 +133,8 @@ func _physics_process(delta: float) -> void:
 					await_walk = true
 					await get_tree().create_timer(0.325).timeout
 					await_walk = false
+					
+		
 		
 		
 	else:
@@ -322,7 +324,7 @@ func _on_mask_hit(body):
 	body.animated.play("Unpoof")
 	
 	#play mask equip sound
-	mask_equip_sound.play()
+	#mask_equip_sound.play()
 	
 	body.ammo = 1
 	body.emit_signal("gather_leaves")
