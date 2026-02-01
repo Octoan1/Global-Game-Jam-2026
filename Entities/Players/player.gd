@@ -43,6 +43,11 @@ signal remove_leaves
 #Sound
 @onready var walk_sound = $WalkSound
 var await_walk = false
+@onready var jump_sound = $JumpSound
+#@onready var poof_sound = $PoofSound
+@onready var reform_sound = $ReformSound
+@onready var mask_equip_sound = $MaskEquipSound
+
 
 
 func _ready() -> void:
@@ -92,9 +97,11 @@ func _physics_process(delta: float) -> void:
 	if controller:
 		if Input.is_action_pressed("p1_jump_c" if joystick_id == 0 else "p2_jump_c") and is_on_floor() and not throwing and not waiting and mask:
 			velocity.y = JUMP_VELOCITY
+			jump_sound.play()
 	else:
 		if Input.is_action_pressed("p1_jump_k" if joystick_id == 0 else "p2_jump_k") and is_on_floor() and not throwing and not waiting and mask:
 			velocity.y = JUMP_VELOCITY
+			jump_sound.play()
 
 	# Get the input direction and handle the movement/deceleration.
 	# As good practice, you should replace UI actions with custom gameplay actions.
@@ -290,6 +297,10 @@ func _throw_mask(direction: Vector2, speed: float):
 	projectile.global_position = global_position
 	projectile.throw(direction, speed, self)
 	animated.play("Poof")
+	
+	#play poof sound
+	#poof_sound.play()
+	
 	projectile.connect("hit_player", Callable(self, "_on_mask_hit"))
 
 func _on_mask_hit(body):
@@ -303,6 +314,10 @@ func _on_mask_hit(body):
 	z_index = -1
 	queue_redraw()
 	body.animated.play("Unpoof")
+	
+	#play mask equip sound
+	mask_equip_sound.play()
+	
 	body.ammo = 1
 	body.emit_signal("gather_leaves")
 	var pile = pile_scene.instantiate()
@@ -348,3 +363,7 @@ func unpoof_from_leaves():
 	mask = true
 	animated.modulate.a = 1
 	animated.play("Unpoof")
+	
+	#play reform sound
+	reform_sound.play()
+	

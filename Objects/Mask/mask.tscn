@@ -2,6 +2,7 @@
 
 [ext_resource type="Texture2D" uid="uid://dnk35gv5otpds" path="res://Aseprite/Player/mask.png" id="1_ukl5x"]
 [ext_resource type="Script" uid="uid://dbu332g7lsym2" path="res://Objects/Mask/mask.gd" id="1_yjocg"]
+[ext_resource type="AudioStream" uid="uid://b7c6uhuqxa72r" path="res://Sound/swoop.ogg" id="3_r8ckj"]
 
 [node name="Mask" type="RigidBody2D" unique_id=197885753]
 collision_layer = 8
@@ -15,5 +16,13 @@ texture = ExtResource("1_ukl5x")
 
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="." unique_id=1890234413]
 polygon = PackedVector2Array(-5, -7, -7, -5, -7, -1, -5, 1, -2, 4, 0, 7, 1, 7, 3, 4, 5, 1, 7, -1, 7, -5, 5, -7)
+
+[node name="ThrowSound" type="AudioStreamPlayer" parent="." unique_id=836478824]
+stream = ExtResource("3_r8ckj")
+bus = &"SFX"
+
+[node name="ReturnSound" type="AudioStreamPlayer" parent="." unique_id=1740609145]
+stream = ExtResource("3_r8ckj")
+bus = &"SFX"
 
 [connection signal="body_entered" from="." to="." method="_on_body_entered"]

@@ -19,8 +19,9 @@ func _ready():
 	
 	if target_node:
 		target_node.get_child(0).connect("exit_level", next_level)
-		target_node.get_child(1).connect("player1_reset", reset_player1)
-		target_node.get_child(1).connect("player2_reset", reset_player2)
+		#target_node.get_child(1).connect("player1_reset", reset_player1)
+		#target_node.get_child(1).connect("player2_reset", reset_player2)
+		target_node.get_child(1).connect("player_reset", reset_players)
 
 func update_vars(level_id:int):
 	current_level_name = "level_" + str(level_id)

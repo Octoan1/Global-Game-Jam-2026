@@ -2,6 +2,7 @@ extends Area2D
 
 signal player1_reset
 signal player2_reset
+signal player_reset
 
 @onready var dingle_dies = $DingleDies
 @onready var doo_dies = $DooDies
@@ -18,7 +19,8 @@ func _on_body_entered(body):
 				sound_ready = false
 				await get_tree().create_timer(1).timeout
 				sound_ready = true
-			player1_reset.emit()
+			#player1_reset.emit()
+			player_reset.emit()
 		
 		
 		if body.name == "Player2":
@@ -29,4 +31,5 @@ func _on_body_entered(body):
 				sound_ready = false
 				await get_tree().create_timer(1).timeout
 				sound_ready = true
-			player2_reset.emit()
+			#player2_reset.emit()
+			player_reset.emit()

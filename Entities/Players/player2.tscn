@@ -10,7 +10,10 @@
 [ext_resource type="Texture2D" uid="uid://ys5rj70sdnb1" path="res://Aseprite/Player/Doo/Normal/doo_idle-Sheet.png" id="6_b43ch"]
 [ext_resource type="Texture2D" uid="uid://myswj4faflo5" path="res://Aseprite/Player/Doo/Transition/doo_poofed-Sheet.png" id="7_swfhw"]
 [ext_resource type="Texture2D" uid="uid://d4jtx3b13rafk" path="res://Aseprite/Player/Doo/Normal/doo_walk-Sheet.png" id="8_jcshi"]
-[ext_resource type="AudioStream" uid="uid://bar4xufjgyo7t" path="res://Sound/SFX/footstep4.ogg" id="11_0la2m"]
+[ext_resource type="AudioStream" uid="uid://iiangmoo7lj6" path="res://Sound/footstep6.ogg" id="11_ny7qr"]
+[ext_resource type="AudioStream" uid="uid://3mqi17tfdeiy" path="res://Sound/SFX/jump3.ogg" id="12_ny7qr"]
+[ext_resource type="AudioStream" uid="uid://d3pamiks1b4k0" path="res://Sound/reform.ogg" id="13_0yl1h"]
+[ext_resource type="AudioStream" uid="uid://cra0i4icr3bvl" path="res://Sound/mask-equip.ogg" id="14_im3ef"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_rp3go"]
 atlas = ExtResource("5_swfhw")
@@ -322,5 +325,21 @@ animation = &"Ghost_Move"
 frame_progress = 0.09804523
 
 [node name="WalkSound" type="AudioStreamPlayer" parent="." unique_id=190349772]
-stream = ExtResource("11_0la2m")
+stream = ExtResource("11_ny7qr")
+bus = &"SFX"
+
+[node name="JumpSound" type="AudioStreamPlayer" parent="." unique_id=2064145273]
+stream = ExtResource("12_ny7qr")
+volume_db = -7.0
+bus = &"SFX"
+
+[node name="PoofSound" type="AudioStreamPlayer" parent="." unique_id=1047441868]
+bus = &"SFX"
+
+[node name="ReformSound" type="AudioStreamPlayer" parent="." unique_id=1256530323]
+stream = ExtResource("13_0yl1h")
+bus = &"SFX"
+
+[node name="MaskEquipSound" type="AudioStreamPlayer" parent="." unique_id=1328519367]
+stream = ExtResource("14_im3ef")
 bus = &"SFX"

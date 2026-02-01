@@ -48,7 +48,7 @@ func _on_body_entered(body):
 		
 	
 	if(player1_detected and player2_detected):
-		await get_tree().create_timer(1).timeout
+		await get_tree().create_timer(0.5).timeout
 		exit_level.emit(next_level_id, player1_pos, player2_pos)
 		print("Going to level: ", next_level_id)
 		#queue_free()
