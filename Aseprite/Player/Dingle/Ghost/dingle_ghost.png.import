@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://dmg3qe84q1rgd"
-path="res://.godot/imported/doo_ghost_walk-Sheet.png-c49c66b0b7183f06263959fa5d006cf8.ctex"
+uid="uid://co0lum64xquic"
+path="res://.godot/imported/dingle_ghost.png-1080092fcbbd2b26c6748f0abba10d71.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Aseprite/Player/Doo/doo_ghost_walk-Sheet.png"
-dest_files=["res://.godot/imported/doo_ghost_walk-Sheet.png-c49c66b0b7183f06263959fa5d006cf8.ctex"]
+source_file="res://Aseprite/Player/Dingle/Ghost/dingle_ghost.png"
+dest_files=["res://.godot/imported/dingle_ghost.png-1080092fcbbd2b26c6748f0abba10d71.ctex"]
 
 [params]
 

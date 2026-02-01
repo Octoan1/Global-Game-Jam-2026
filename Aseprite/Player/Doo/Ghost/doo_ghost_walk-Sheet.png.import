@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://myswj4faflo5"
-path="res://.godot/imported/doo_poofed-Sheet.png-53a9c8754955f18d8ef44ca619c3ae4e.ctex"
+uid="uid://dmg3qe84q1rgd"
+path="res://.godot/imported/doo_ghost_walk-Sheet.png-b0399b0e11d86a09d52aa4af111cd112.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Aseprite/Player/Doo/doo_poofed-Sheet.png"
-dest_files=["res://.godot/imported/doo_poofed-Sheet.png-53a9c8754955f18d8ef44ca619c3ae4e.ctex"]
+source_file="res://Aseprite/Player/Doo/Ghost/doo_ghost_walk-Sheet.png"
+dest_files=["res://.godot/imported/doo_ghost_walk-Sheet.png-b0399b0e11d86a09d52aa4af111cd112.ctex"]
 
 [params]
 
