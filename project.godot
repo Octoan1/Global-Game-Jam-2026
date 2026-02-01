@@ -13,7 +13,7 @@ config_version=5
 config/name="Global-Game-Jam"
 run/main_scene="uid://dpncuafgait5d"
 config/features=PackedStringArray("4.6", "Forward Plus")
-config/icon="uid://crdj27kmweie4"
+config/icon="uid://dkl0ln8csvkbb"
 
 [audio]
 

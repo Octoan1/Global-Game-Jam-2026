@@ -43,7 +43,6 @@ ghost_tex = SubResource("Resource_27os8")
 pile_scene = ExtResource("7_rr1si")
 
 [node name="Player2" parent="." unique_id=1845162299 instance=ExtResource("3_d0bjv")]
-z_index = 1
 position = Vector2(50, 212)
 pile_scene = ExtResource("7_rr1si")
 
