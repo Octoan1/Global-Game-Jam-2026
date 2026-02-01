@@ -8,7 +8,7 @@
 [ext_resource type="Texture2D" uid="uid://kdkvyeuk03i1" path="res://Aseprite/Player/Dingle/Normal/dingle_walk-Sheet.png" id="5_ndun7"]
 [ext_resource type="Texture2D" uid="uid://bnrurhr2kt2x4" path="res://Aseprite/Player/Dingle/Ghost/dingle_ghost_walk-Sheet.png" id="5_rpa8b"]
 [ext_resource type="Texture2D" uid="uid://ehab72wgl0wf" path="res://Aseprite/Player/Dingle/Ghost/dingle_ghost_idle-Sheet.png" id="5_yicrl"]
-[ext_resource type="Texture2D" uid="uid://dn7tee30eiels" path="res://Aseprite/Player/Dingle/Normal/dingle_poofed-Sheet.png" id="7_yicrl"]
+[ext_resource type="Texture2D" uid="uid://dn7tee30eiels" path="res://Aseprite/Player/Dingle/Transition/dingle_poofed-Sheet.png" id="7_yicrl"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_07fpm"]
 atlas = ExtResource("5_2g48j")
