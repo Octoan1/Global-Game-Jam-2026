@@ -2,6 +2,7 @@ extends Node
 
 @onready var player_1 = $"../Player1"
 @onready var player_2 = $"../Player2"
+@onready var fade_to_black = $FadeToBlack
 
 var current_level_name: String = "level_1"
 var level_name_tree: String = "Level1"
@@ -10,15 +11,21 @@ var level_path_file: String = "res://Scenes/Levels/" + current_level_name + ".ts
 var target_node: Node
 @onready var remove_node: Node = $"../Level1"
 
+var fade_now = false
+var done_fading = true
+
 var player1_spawn: Vector2 = Vector2(20,212)
 var player2_spawn: Vector2 = Vector2(50,212)
 
 func _ready():
+	fade_to_black.color.a = 0.0
 	update_vars(1)
 	target_node = get_node(level_path_tree)
 	
 	if target_node:
 		target_node.get_child(0).connect("exit_level", next_level)
+		target_node.get_child(0).connect("fade_to_black", level_transition)
+		target_node.get_child(0).connect("stop_players", stop_players)
 		#target_node.get_child(1).connect("player1_reset", reset_player1)
 		#target_node.get_child(1).connect("player2_reset", reset_player2)
 		target_node.get_child(1).connect("player_reset", reset_players)
@@ -53,8 +60,11 @@ func next_level(next_level_id, player1_position, player2_position):
 	#target_node = get_node(level_path_tree)
 	#target_node.get_child(0).connect("exit_level", next_level)
 	level_instantiate.get_child(0).connect("exit_level", next_level)
-	level_instantiate.get_child(1).connect("player1_reset", reset_player1)
-	level_instantiate.get_child(1).connect("player2_reset", reset_player2)
+	level_instantiate.get_child(0).connect("fade_to_black", level_transition)
+	level_instantiate.get_child(0).connect("stop_players", stop_players)
+	#level_instantiate.get_child(1).connect("player1_reset", reset_player1)
+	#level_instantiate.get_child(1).connect("player2_reset", reset_player2)
+	level_instantiate.get_child(1).connect("player_reset", reset_players)
 	
 	remove_node = level_instantiate
 	
@@ -62,6 +72,35 @@ func next_level(next_level_id, player1_position, player2_position):
 	# and set the player position to that
 	#reset_players()
 	
+
+func _process(delta):
+	if fade_now == true and fade_to_black.color.a < 1:
+		fade_to_black.color.a += 0.01
+		done_fading = false
+		
+		if(fade_to_black.color.a >= 1):
+			await get_tree().create_timer(0.5).timeout
+			fade_now = false
+			
+	
+	if fade_to_black.color.a >= 0 and fade_now == false:
+		fade_to_black.color.a -= 0.01
+	
+	if fade_to_black.color.a <= 0:
+			done_fading = true
+	
+	if done_fading == true:
+		player_1.set_physics_process(true)
+		player_2.set_physics_process(true)
+	
+
+func stop_players():
+	player_1.set_physics_process(false)
+	player_2.set_physics_process(false)
+
+func level_transition():
+	fade_now = true
+	fade_to_black.color.a = 0
 
 func reset_player1():
 	player_1.global_position = player1_spawn

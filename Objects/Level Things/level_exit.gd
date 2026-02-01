@@ -6,6 +6,8 @@ var player2_detected = false
 var activate_exit = false
 
 signal exit_level(next: int, current: int)
+signal fade_to_black
+signal stop_players
 
 @export var next_level_id: int
 #@export var current_level_id: int
@@ -30,25 +32,19 @@ func _ready():
 func _on_body_entered(body):
 	if activate_exit == true:
 		if body.name == "Player1":
-			if await_dingle_sound == false:
-				dingle_complete.play()
-				await_dingle_sound = true
-				await get_tree().create_timer(1).timeout
-				await_dingle_sound = false
+			dingle_complete.play()
 			player1_detected = true
 	
 	
 		if body.name == "Player2":
-			if await_doo_sound == false:
-				doo_complete.play()
-				await_doo_sound = true
-				await get_tree().create_timer(1).timeout
-				await_doo_sound = false
+			doo_complete.play()
 			player2_detected = true
 		
 	
 	if(player1_detected and player2_detected):
-		await get_tree().create_timer(0.5).timeout
+		stop_players.emit()
+		fade_to_black.emit()
+		await get_tree().create_timer(1).timeout
 		exit_level.emit(next_level_id, player1_pos, player2_pos)
 		print("Going to level: ", next_level_id)
 		#queue_free()

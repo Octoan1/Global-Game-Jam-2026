@@ -4,3 +4,13 @@
 
 [node name="LevelManager" type="Node" unique_id=2114957057]
 script = ExtResource("1_r35yi")
+
+[node name="FadeToBlack" type="ColorRect" parent="." unique_id=1628316039]
+process_mode = 3
+z_index = 40
+offset_left = -4.0
+offset_top = -2.0
+offset_right = 36.0
+offset_bottom = 38.0
+scale = Vector2(8.2, 6.1599984)
+color = Color(0, 0, 0, 1)
