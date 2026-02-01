@@ -394,8 +394,8 @@ sources/0 = SubResource("TileSetAtlasSource_w2ac1")
 
 [node name="Level2" type="Node2D" unique_id=1624626228]
 script = ExtResource("1_oylv5")
-player_1_spawn = Vector2(65, 212)
-player_2_spawn = Vector2(65, 70)
+player_1_spawn = Vector2(65, 196)
+player_2_spawn = Vector2(65, 54)
 
 [node name="ExitArea" parent="." unique_id=2084659212 instance=ExtResource("2_oylv5")]
 unique_name_in_owner = true

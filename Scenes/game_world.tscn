@@ -37,13 +37,13 @@ script = ExtResource("6_d0bjv")
 script = ExtResource("7_27os8")
 
 [node name="Player1" parent="." unique_id=501140443 instance=ExtResource("2_f1ejf")]
-position = Vector2(20, 212)
+position = Vector2(24, 196)
 real_tex = SubResource("Resource_d0bjv")
 ghost_tex = SubResource("Resource_27os8")
 pile_scene = ExtResource("7_rr1si")
 
 [node name="Player2" parent="." unique_id=1845162299 instance=ExtResource("3_d0bjv")]
-position = Vector2(50, 212)
+position = Vector2(54, 196)
 pile_scene = ExtResource("7_rr1si")
 
 [node name="CanvasLayer" type="CanvasLayer" parent="." unique_id=372853444]
