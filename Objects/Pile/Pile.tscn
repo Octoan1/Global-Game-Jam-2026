@@ -2,6 +2,11 @@
 
 [ext_resource type="Texture2D" uid="uid://dn7tee30eiels" path="res://Aseprite/Player/Dingle/Normal/dingle_poofed-Sheet.png" id="1_8wtjx"]
 [ext_resource type="Script" uid="uid://crfqgcd5g025t" path="res://Objects/Pile/pile.gd" id="1_wslh4"]
+[ext_resource type="Texture2D" uid="uid://myswj4faflo5" path="res://Aseprite/Player/Doo/Normal/doo_poofed-Sheet.png" id="2_r03kp"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_vmjvf"]
+atlas = ExtResource("2_r03kp")
+region = Rect2(96, 0, 32, 32)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_wslh4"]
 atlas = ExtResource("1_8wtjx")
@@ -11,10 +16,18 @@ region = Rect2(96, 0, 32, 32)
 animations = [{
 "frames": [{
 "duration": 1.0,
+"texture": SubResource("AtlasTexture_vmjvf")
+}],
+"loop": true,
+"name": &"Blue",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
 "texture": SubResource("AtlasTexture_wslh4")
 }],
 "loop": true,
-"name": &"Pile",
+"name": &"Red",
 "speed": 5.0
 }]
 
@@ -26,8 +39,7 @@ script = ExtResource("1_wslh4")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=756965035]
 sprite_frames = SubResource("SpriteFrames_r03kp")
-animation = &"Pile"
-autoplay = "Pile"
+animation = &"Red"
 
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="." unique_id=1836554734]
 polygon = PackedVector2Array(-14, 12, 14, 12, 14, 10, 9, 5, 2, 2, -2, 2, -7, 4, -10, 6, -14, 10)

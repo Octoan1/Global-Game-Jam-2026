@@ -4,16 +4,17 @@ extends RigidBody2D
 var player: CharacterBody2D
 var flying = false
 var connected = false
-
-func _ready():
-	if player:
-		player.gather_leaves.connect(_on_player_gather_leaves)
-		connected = true
+var red: bool
+@onready var sprite: AnimatedSprite2D = $AnimatedSprite2D
 		
 func _process(delta):
 	if not connected:
 		player.gather_leaves.connect(_on_player_gather_leaves)
 		connected = true
+		if red:
+			sprite.play("Red")
+		else:
+			sprite.play("Blue")
 	if not flying or not player:
 		return
 
