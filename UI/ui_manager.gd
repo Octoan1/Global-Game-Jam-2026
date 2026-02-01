@@ -26,7 +26,6 @@ extends Control
 @onready var music := AudioServer.get_bus_index("Music")
 @onready var sfx := AudioServer.get_bus_index("SFX")
 
-
 @onready var menu: bool = false
 
 # Called when the node enters the scene tree for the first time.
@@ -34,8 +33,6 @@ func _ready() -> void:
 	pause_center.visible = false
 	get_tree().paused = true
 	main_play.grab_focus()
-	
-
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
