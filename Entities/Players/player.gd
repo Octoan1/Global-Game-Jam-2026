@@ -277,6 +277,7 @@ func _on_mask_hit(body):
 	mask = false
 	throwing = false
 	animated.play("Become_Ghost")
+	z_index = -1
 	queue_redraw()
 	body.animated.play("Unpoof")
 	body.ammo = 1
@@ -304,6 +305,7 @@ func _on_animation_finished():
 	if animated.animation == "Unpoof":
 		animated.play("Idle")
 	if animated.animation == "Become_Ghost":
+		z_index = 1
 		animated.play("Ghost_Idle")
 		
 func unpoof_from_leaves():
