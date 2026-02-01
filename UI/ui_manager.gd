@@ -14,6 +14,8 @@ extends Control
 @onready var main_music: Slider = $MainCenter/MainMenu/CenterSound/Sound/CenterSliders/VBoxContainer/MainMusicVolume
 @onready var main_sfx: Slider = $MainCenter/MainMenu/CenterSound/Sound/CenterSliders/VBoxContainer/MainSFXVolume
 @onready var main_bg: TextureRect = $MainBG
+@onready var logo: TextureRect = $Logo
+
 
 
 #Ready Pause
@@ -62,6 +64,7 @@ func _on_main_play_pressed() -> void:
 	main_ambient.stop()
 	game_music.play()
 	main_bg.visible = false
+	logo.visible = false
 	main_center.PROCESS_MODE_DISABLED
 func _on_main_play_focus_entered() -> void:
 	ui_click.play()
