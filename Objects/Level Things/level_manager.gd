@@ -10,6 +10,9 @@ var level_path_file: String = "res://Scenes/Levels/" + current_level_name + ".ts
 var target_node: Node
 @onready var remove_node: Node = $"../Level1"
 
+var player1_spawn: Vector2
+var player2_spawn: Vector2
+
 func _ready():
 	update_vars(1)
 	target_node = get_node(level_path_tree)
@@ -22,8 +25,12 @@ func update_vars(level_id:int):
 	level_name_tree = "Level" + str(level_id)
 	level_path_tree = "../" + level_name_tree
 	level_path_file = "res://Scenes/Levels/" + current_level_name + ".tscn"
+	
 
 func next_level(next_level_id, player1_position, player2_position):
+	player1_spawn = player1_position
+	player2_spawn = player2_position
+	
 	print("Going to level: ", next_level_id)
 	# delete current level from scene tree
 	remove_node.queue_free()
@@ -41,16 +48,20 @@ func next_level(next_level_id, player1_position, player2_position):
 	#target_node = get_node(level_path_tree)
 	#target_node.get_child(0).connect("exit_level", next_level)
 	level_instantiate.get_child(0).connect("exit_level", next_level)
+	level_instantiate.get_child(1).connect("player_reset", reset_players)
 	
 	remove_node = level_instantiate
 	
 	# access desired player position for the new level
 	# and set the player position to that
-	print(player1_position)
-	print(player2_position)
-	player_1.global_position = player1_position
-	player_2.global_position = player2_position
+	reset_players()
 	
 
-func remove_level(level_id):
-	pass
+func reset_players():
+	player_1.global_position = player1_spawn
+	player_2.global_position = player1_spawn
+	
+	player_1.mask = true
+	player_2.mask = false
+	player_1.ammo = 1
+	player_2.ammo = 0

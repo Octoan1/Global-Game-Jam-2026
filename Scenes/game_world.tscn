@@ -1,11 +1,11 @@
 [gd_scene format=3 uid="uid://38xv66o60rwq"]
 
 [ext_resource type="PackedScene" uid="uid://blg4ddq8suart" path="res://Objects/Level Things/level_manager.tscn" id="1_p4c8d"]
+[ext_resource type="Texture2D" uid="uid://bmv5avhirqnqk" path="res://Aseprite/Environment/flat_background_green.png" id="2_d0bjv"]
 [ext_resource type="PackedScene" uid="uid://dfg58lmub4mlf" path="res://Entities/Players/player1.tscn" id="2_f1ejf"]
-[ext_resource type="Texture2D" uid="uid://cu44wfwxwtmja" path="res://Aseprite/Environment/flat_background.png" id="2_p4c8d"]
 [ext_resource type="PackedScene" uid="uid://spfqakfdgeq1" path="res://Entities/Players/player2.tscn" id="3_d0bjv"]
 [ext_resource type="PackedScene" uid="uid://dcrp8y2ts0weu" path="res://Scenes/Levels/level_1.tscn" id="4_hy2kt"]
-[ext_resource type="Script" path="res://Scenes/camera_2d.gd" id="6_d0bjv"]
+[ext_resource type="Script" uid="uid://eaeyihiq0nd7" path="res://Scenes/camera_2d.gd" id="6_d0bjv"]
 [ext_resource type="Script" uid="uid://dujl3b6wk6lq" path="res://Scenes/tether.gd" id="7_27os8"]
 
 [sub_resource type="Resource" id="Resource_d0bjv"]
@@ -18,12 +18,12 @@ metadata/__load_path__ = "res://Aseprite/Player/dingle_ghost.png"
 
 [node name="LevelManager" parent="." unique_id=2114957057 instance=ExtResource("1_p4c8d")]
 
-[node name="LevelBackground" type="TextureRect" parent="." unique_id=591115775]
+[node name="LevelBackground" type="TextureRect" parent="." unique_id=2143649183]
 z_index = -1
 offset_right = 320.0
 offset_bottom = 240.0
 size_flags_horizontal = 3
-texture = ExtResource("2_p4c8d")
+texture = ExtResource("2_d0bjv")
 metadata/_edit_use_anchors_ = true
 
 [node name="Level1" parent="." unique_id=1906136548 instance=ExtResource("4_hy2kt")]
@@ -38,6 +38,10 @@ script = ExtResource("7_27os8")
 z_index = 1
 position = Vector2(20, 212)
 mask = true
+thickness = 2.0
+max_length = 50.0
+joystick_id = 0
+deadzone = 0.2
 real_tex = SubResource("Resource_d0bjv")
 ghost_tex = SubResource("Resource_27os8")
 
