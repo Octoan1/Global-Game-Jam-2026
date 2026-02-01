@@ -400,6 +400,8 @@ position = Vector2(37, 19)
 real_tex = SubResource("Resource_jjvhh")
 ghost_tex = SubResource("Resource_kry3j")
 pile_scene = ExtResource("2_6bp64")
+f1ea43cbbe5a58b06373b611d04d27da1b2cf284
+
 [node name="Player2" parent="." unique_id=1845162299 instance=ExtResource("3_8gbba")]
 z_index = 1
 position = Vector2(251, 16)
