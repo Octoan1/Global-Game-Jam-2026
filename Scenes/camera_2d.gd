@@ -9,5 +9,9 @@ func _ready() -> void:
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(delta: float) -> void:
-	global_position = (player1.global_position + player2.global_position) * 0.5
+func _process(_delta: float) -> void:
+	if player1.camera_on:
+		self.enabled = true
+		global_position = (player1.global_position + player2.global_position) * 0.5
+	else:
+		self.enabled = false
