@@ -59,7 +59,7 @@ func next_level(next_level_id, player1_position, player2_position):
 
 func reset_players():
 	player_1.global_position = player1_spawn
-	player_2.global_position = player1_spawn
+	player_2.global_position = player2_spawn
 	
 	player_1.mask = true
 	player_2.mask = false
