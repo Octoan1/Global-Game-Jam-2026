@@ -3,9 +3,10 @@ extends CharacterBody2D
 #Player
 const SPEED = 100.0
 const GSPEED = 150.0
-const JUMP_VELOCITY = -400.0
+const JUMP_VELOCITY = -200.0
 @export var mask = true
 @onready var throwing = false
+@onready var waiting = false
 @onready var ammo = 1
 var controller = true
 
@@ -30,6 +31,7 @@ var prev_dir = 1
 @export var mask_scene: PackedScene
 
 #Camera
+@export var camera_on = false
 @onready var camera: Camera2D = $"../Camera2D"
 @onready var cam_size = camera.get_viewport_rect().size * camera.zoom
 
@@ -48,18 +50,19 @@ func _physics_process(delta: float) -> void:
 	
 	# Add the gravity.
 	if not is_on_floor() and mask:
-		velocity += get_gravity() * delta
+		velocity += get_gravity() * delta / 2
 		
 	# Handle jump.
 	if controller:
-		if Input.is_action_pressed("p1_jump_c" if joystick_id == 0 else "p2_jump_c") and is_on_floor() and not throwing and mask:
+		if Input.is_action_pressed("p1_jump_c" if joystick_id == 0 else "p2_jump_c") and is_on_floor() and not throwing and not waiting and mask:
 			velocity.y = JUMP_VELOCITY
 	else:
-		if Input.is_action_pressed("p1_jump_k" if joystick_id == 0 else "p2_jump_k") and is_on_floor() and not throwing and mask:
+		if Input.is_action_pressed("p1_jump_k" if joystick_id == 0 else "p2_jump_k") and is_on_floor() and not throwing and not waiting and mask:
 			velocity.y = JUMP_VELOCITY
 
 	# Get the input direction and handle the movement/deceleration.
 	# As good practice, you should replace UI actions with custom gameplay actions.
+	
 	var other = _get_other_player()
 	var players_dist = global_position.distance_to(other.global_position)
 	var to_other = (_get_other_player().global_position - global_position).normalized()
@@ -69,7 +72,7 @@ func _physics_process(delta: float) -> void:
 	else:
 		direction = Input.get_axis("p1_move_left_k" if joystick_id == 0 else "p2_move_left_k", "p1_move_right_k" if joystick_id == 0 else "p2_move_right_k")
 	var moving_away = direction != 0 and sign(direction) == -sign(to_other.x)
-	if direction and not throwing and mask and (players_dist < _get_max_distance() or not moving_away):
+	if direction and not throwing and not waiting and mask and ((players_dist < _get_max_distance() or not moving_away) or not camera_on):
 		animated.play("Walk")
 		velocity.x = direction * SPEED
 		animated.flip_h = prev_dir < 0
@@ -88,30 +91,45 @@ func _physics_process(delta: float) -> void:
 			)
 			if stick.length() < deadzone:
 				stick = Vector2.ZERO
-			var desired_velocity = stick * GSPEED
+			if camera_on:
+				var desired_velocity = stick * GSPEED
 
-			if desired_velocity != Vector2.ZERO:
-				var move_dir = desired_velocity.normalized()
-				moving_away = move_dir.dot(to_other) < 0
+				if desired_velocity != Vector2.ZERO:
+					var move_dir = desired_velocity.normalized()
+					moving_away = move_dir.dot(to_other) < 0
 
-				if players_dist < _get_max_distance() or not moving_away:
-					velocity = desired_velocity
+					if players_dist < _get_max_distance() or not moving_away:
+						velocity = desired_velocity
+					else:
+						velocity = Vector2.ZERO
 				else:
-					velocity = Vector2.ZERO
+					velocity.x = 0
+					velocity.y = 0
 			else:
-				velocity.x = 0
-				velocity.y = 0
+				velocity.x = stick.x * GSPEED
+				velocity.y = stick.y * GSPEED
 			if stick.x != 0:
 				sprite.flip_h = prev_dir < 0
 			prev_dir = stick.x
 		else:
 			var h_dir := Input.get_axis("p1_move_left_k" if joystick_id == 0 else "p2_move_left_k", "p1_move_right_k" if joystick_id == 0 else "p2_move_right_k")
 			var v_dir := Input.get_axis("p1_move_up" if joystick_id == 0 else "p2_move_up", "p1_move_down" if joystick_id == 0 else "p2_move_down")
-			var moving_away_x = h_dir != 0 and sign(h_dir) == -sign(to_other.x)
-			var moving_away_y = v_dir != 0 and sign(v_dir) == -sign(to_other.y)
-			if (players_dist < _get_max_distance() or not moving_away_x):
+			var desired_velocity = Vector2(h_dir, v_dir) * GSPEED
+
+			if camera_on:
+				if desired_velocity != Vector2.ZERO:
+					var move_dir = desired_velocity.normalized()
+					moving_away = move_dir.dot(to_other) < 0
+
+					if players_dist < _get_max_distance() or not moving_away:
+						velocity = desired_velocity
+					else:
+						velocity = Vector2.ZERO
+				else:
+					velocity.x = 0
+					velocity.y = 0
+			else:
 				velocity.x = h_dir * GSPEED
-			if (players_dist < _get_max_distance() or not moving_away_y):
 				velocity.y = v_dir * GSPEED
 			if h_dir != 0:
 				sprite.flip_h = prev_dir < 0
@@ -121,7 +139,7 @@ func _physics_process(delta: float) -> void:
 	if controller:
 		if Input.is_action_just_pressed("p1_throw_c" if joystick_id == 0 else "p2_throw_c") and throwing:
 			_throw_mask(arrow[0], arrow[1])
-		elif Input.is_action_just_pressed("p1_throw_c" if joystick_id == 0 else "p2_throw_c") and mask:
+		elif Input.is_action_just_pressed("p1_throw_c" if joystick_id == 0 else "p2_throw_c") and mask and not waiting:
 			throwing = true
 			_update_arrow()
 		if Input.is_action_just_pressed("p1_back_c" if joystick_id == 0 else "p2_back_c") and throwing:
@@ -129,7 +147,7 @@ func _physics_process(delta: float) -> void:
 	else:
 		if Input.is_action_just_pressed("p1_throw_k" if joystick_id == 0 else "p2_throw_k") and throwing:
 			_throw_mask(arrow[0], arrow[1])
-		elif Input.is_action_just_pressed("p1_throw_k" if joystick_id == 0 else "p2_throw_k") and mask:
+		elif Input.is_action_just_pressed("p1_throw_k" if joystick_id == 0 else "p2_throw_k") and mask and not waiting:
 			throwing = true
 			_update_arrow()
 		if Input.is_action_just_pressed("p1_back_k" if joystick_id == 0 else "p2_back_k") and throwing:
@@ -159,8 +177,8 @@ func _update_arrow():
 		if stick.length() < deadzone:
 			stick = Vector2.ZERO
 			
-		pointer.global_position.x += stick.x
-		pointer.global_position.y += stick.y
+		pointer.global_position.x += stick.x * 2
+		pointer.global_position.y += stick.y * 2
 	#Get keyboard input
 	else:
 		var h_dir := Input.get_axis("p1_move_left_k" if joystick_id == 0 else "p2_move_left_k", "p1_move_right_k" if joystick_id == 0 else "p2_move_right_k")
@@ -207,6 +225,7 @@ func _throw_mask(direction: Vector2, speed: float):
 		return
 	ammo = 0
 	throwing = false
+	waiting = true
 	queue_redraw()
 	var projectile = mask_scene.instantiate()
 	self.add_child(projectile)

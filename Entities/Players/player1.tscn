@@ -45,11 +45,6 @@ animations = [{
 [node name="Player1" type="CharacterBody2D" unique_id=501140443]
 collision_layer = 2
 script = ExtResource("1_yscd2")
-mask = null
-thickness = null
-max_length = null
-joystick_id = null
-deadzone = null
 arrow_color = Color(1, 0, 0, 1)
 real_tex = ExtResource("4_k3pxy")
 ghost_tex = ExtResource("3_2m8x8")
