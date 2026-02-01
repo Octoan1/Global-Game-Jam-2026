@@ -18,8 +18,10 @@ shape = SubResource("RectangleShape2D_cyadu")
 
 [node name="DingleDies" type="AudioStreamPlayer" parent="." unique_id=27185175]
 stream = ExtResource("2_ydahn")
+bus = &"SFX"
 
 [node name="DooDies" type="AudioStreamPlayer" parent="." unique_id=1345938207]
 stream = ExtResource("3_l47p1")
+bus = &"SFX"
 
 [connection signal="body_entered" from="." to="." method="_on_body_entered"]

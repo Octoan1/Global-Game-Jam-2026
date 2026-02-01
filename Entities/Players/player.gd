@@ -39,6 +39,10 @@ signal gather_leaves
 @onready var camera: Camera2D = $"../Camera2D"
 @onready var cam_size = camera.get_viewport_rect().size * camera.zoom
 
+#Sound
+@onready var walk_sound = $WalkSound
+
+
 func _ready() -> void:
 	animated.animation_finished.connect(_on_animation_finished)
 	if not mask:
@@ -94,6 +98,12 @@ func _physics_process(delta: float) -> void:
 		animated.flip_h = prev_dir < 0
 		sprite.flip_h = prev_dir < 0
 		prev_dir = direction
+		
+		if walk_sound.has_stream_playback() == false:
+			if is_on_floor():
+				walk_sound.play()
+		
+		
 	else:
 		if mask and not waiting and animated.animation != "Unpoof":
 			animated.play("Idle")
