@@ -313,7 +313,8 @@ polygon = PackedVector2Array(-11, -11, -11, 12, 10, 12, 10, -11)
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=936637707]
 sprite_frames = SubResource("SpriteFrames_2g48j")
-animation = &"Walk"
+animation = &"Ghost_Move"
+frame_progress = 0.83778954
 
 [node name="WalkSound" type="AudioStreamPlayer" parent="." unique_id=1809939202]
 stream = ExtResource("10_2g48j")

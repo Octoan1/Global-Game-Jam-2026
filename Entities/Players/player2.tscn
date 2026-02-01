@@ -296,6 +296,7 @@ animations = [{
 }]
 
 [node name="Player2" type="CharacterBody2D" unique_id=1845162299]
+z_index = 1
 collision_layer = 4
 script = ExtResource("1_fgtas")
 mask = false
@@ -317,8 +318,8 @@ polygon = PackedVector2Array(-11, -11, -11, 12, 10, 12, 10, -11)
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=965665565]
 z_index = 1
 sprite_frames = SubResource("SpriteFrames_swfhw")
-animation = &"Walk"
-frame_progress = 0.03392532
+animation = &"Ghost_Move"
+frame_progress = 0.09804523
 
 [node name="WalkSound" type="AudioStreamPlayer" parent="." unique_id=190349772]
 stream = ExtResource("11_0la2m")

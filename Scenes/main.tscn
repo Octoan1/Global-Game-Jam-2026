@@ -422,7 +422,6 @@ sources/0 = SubResource("TileSetAtlasSource_jjvhh")
 [node name="Main" type="Node2D" unique_id=1364276378]
 
 [node name="Player1" parent="." unique_id=501140443 instance=ExtResource("1_jjgbg")]
-z_index = 1
 position = Vector2(251, 16)
 real_tex = ExtResource("2_ynf5e")
 ghost_tex = ExtResource("3_hptm8")
@@ -437,7 +436,7 @@ tile_map_data = PackedByteArray("AAAYABAAAAAEAAAAAAAYAA8AAAABAAEAAAAYAA4AAAABAAE
 tile_set = SubResource("TileSet_21xkr")
 
 [node name="TextureRect2" type="TextureRect" parent="." unique_id=1426815198]
-z_index = -1
+z_index = -2
 offset_right = 320.0
 offset_bottom = 240.0
 size_flags_horizontal = 3
