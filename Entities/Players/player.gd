@@ -2,11 +2,12 @@ extends CharacterBody2D
 
 #Player
 const SPEED = 100.0
-const GSPEED = 150.0
+const GSPEED = 125.0
 const JUMP_VELOCITY = -200.0
 @export var mask = true
 @onready var throwing = false
 @onready var waiting = false
+@onready var respawning = false
 @onready var ammo = 1
 var controller = true
 
@@ -29,6 +30,8 @@ var prev_dir = 1
 
 #Throwing
 @export var mask_scene: PackedScene
+@export var pile_scene: PackedScene
+signal gather_leaves
 
 #Camera
 @export var camera_on = false
@@ -37,6 +40,12 @@ var prev_dir = 1
 
 func _ready() -> void:
 	animated.animation_finished.connect(_on_animation_finished)
+	if not mask:
+		var pile = pile_scene.instantiate()
+		var parent = self.get_parent()
+		parent.add_child.call_deferred(pile)
+		pile.player = self
+		pile.global_position = global_position
 
 func _physics_process(delta: float) -> void:
 	_update_inputs()
@@ -87,7 +96,7 @@ func _physics_process(delta: float) -> void:
 		velocity.x = move_toward(velocity.x, 0, SPEED)
 	
 	#ghost movement
-	if not mask:
+	if not mask and not respawning:
 		if controller:
 			var stick = Vector2(
 			Input.get_joy_axis(joystick_id, JOY_AXIS_LEFT_X),
@@ -112,7 +121,10 @@ func _physics_process(delta: float) -> void:
 			else:
 				velocity.x = stick.x * GSPEED
 				velocity.y = stick.y * GSPEED
-			animated.play("Ghost_Move")
+			if velocity == Vector2.ZERO:
+				animated.play("Ghost_Idle")
+			else:
+				animated.play("Ghost_Move")
 			if stick.x != 0:
 				animated.flip_h = prev_dir < 0
 			prev_dir = stick.x
@@ -136,11 +148,15 @@ func _physics_process(delta: float) -> void:
 			else:
 				velocity.x = h_dir * GSPEED
 				velocity.y = v_dir * GSPEED
-			animated.play("Ghost_Move")
+			if velocity == Vector2.ZERO:
+				animated.play("Ghost_Idle")
+			else:
+				animated.play("Ghost_Move")
 			if h_dir != 0:
 				animated.flip_h = prev_dir < 0
 			prev_dir = h_dir
-		
+	if respawning:
+		animated.play("Ghost_Idle")
 	var arrow = _update_arrow()
 	if controller:
 		if Input.is_action_just_pressed("p1_throw_c" if joystick_id == 0 else "p2_throw_c") and throwing:
@@ -247,8 +263,13 @@ func _on_mask_hit(body):
 	throwing = false
 	queue_redraw()
 	body.animated.play("Unpoof")
-	body.mask = true
 	body.ammo = 1
+	body.emit_signal("gather_leaves")
+	var pile = pile_scene.instantiate()
+	var parent = self.get_parent()
+	parent.add_child(pile)
+	pile.player = self
+	pile.global_position = global_position
 
 func _update_inputs():
 	if Input.is_action_just_pressed("p1_connect_controller" if joystick_id == 0 else "p2_connect_controller"):
@@ -265,3 +286,8 @@ func _get_other_player():
 func _on_animation_finished():
 	if animated.animation == "Unpoof":
 		animated.play("Idle")
+		
+func unpoof_from_leaves():
+	respawning = false
+	mask = true
+	animated.play("Unpoof")

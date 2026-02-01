@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://dn7tee30eiels"
-path="res://.godot/imported/dingle_poofed-Sheet.png-f873392d20a8c886ad21242b7c8b7c24.ctex"
+uid="uid://bu57o874woypj"
+path="res://.godot/imported/dingle_normal_to_ghost-Sheet.png-9a35a1b937e671b68ae62643b8f90f67.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Aseprite/Player/Dingle/Normal/dingle_poofed-Sheet.png"
-dest_files=["res://.godot/imported/dingle_poofed-Sheet.png-f873392d20a8c886ad21242b7c8b7c24.ctex"]
+source_file="res://Aseprite/Player/Dingle/Transition/dingle_normal_to_ghost-Sheet.png"
+dest_files=["res://.godot/imported/dingle_normal_to_ghost-Sheet.png-9a35a1b937e671b68ae62643b8f90f67.ctex"]
 
 [params]
 
