@@ -72,10 +72,12 @@ func reset_players():
 		player_2.global_position = player2_spawn
 		player_1.ammo = 1
 		player_2.ammo = 0
+		player_2.update_pile(player_2)
 	
 	if(player_2.mask == true):
 		player_1.global_position = player2_spawn
 		player_2.global_position = player1_spawn
 		player_2.ammo = 1
 		player_1.ammo = 0
+		player_1.update_pile(player_1)
 	

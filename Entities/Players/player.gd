@@ -33,6 +33,7 @@ var prev_dir = 1
 @export var pile_scene: PackedScene
 @warning_ignore("unused_signal")
 signal gather_leaves
+signal remove_leaves
 
 #Camera
 @export var camera_on = false
@@ -41,6 +42,7 @@ signal gather_leaves
 
 #Sound
 @onready var walk_sound = $WalkSound
+var await_walk = false
 
 
 func _ready() -> void:
@@ -54,6 +56,20 @@ func _ready() -> void:
 		animated.play("Ghost_Idle")
 	else:
 		animated.play("Idle")
+
+	if not mask:
+		var pile = pile_scene.instantiate()
+		var parent = self.get_parent()
+		parent.add_child.call_deferred(pile)
+		pile.player = self
+		pile.global_position = global_position
+		animated.play("Ghost_Idle")
+		animated.modulate.a = 0.8
+	else:
+		animated.play("Idle")
+		animated.modulate.a = 1
+	
+
 
 func _physics_process(delta: float) -> void:
 	_update_inputs()
@@ -99,9 +115,14 @@ func _physics_process(delta: float) -> void:
 		sprite.flip_h = prev_dir < 0
 		prev_dir = direction
 		
-		if walk_sound.has_stream_playback() == false:
-			if is_on_floor():
-				walk_sound.play()
+		if await_walk == false:
+			if walk_sound.has_stream_playback() == false:
+				if is_on_floor():
+					walk_sound.pitch_scale = randf_range(0.9, 1.1)
+					walk_sound.play()
+					await_walk = true
+					await get_tree().create_timer(0.325).timeout
+					await_walk = false
 		
 		
 	else:
@@ -276,7 +297,10 @@ func _on_mask_hit(body):
 		return
 	mask = false
 	throwing = false
+
+	animated.modulate.a = .8
 	animated.play("Become_Ghost")
+	z_index = -1
 	queue_redraw()
 	body.animated.play("Unpoof")
 	body.ammo = 1
@@ -287,6 +311,18 @@ func _on_mask_hit(body):
 	pile.player = self
 	pile.red = self.joystick_id == 0
 	pile.global_position = global_position
+
+func update_pile(player):
+	# creating new pile at the player
+	var pile = pile_scene.instantiate()
+	var parent = self.get_parent()
+	parent.add_child.call_deferred(pile)
+	pile.player = self
+	pile.red = self.joystick_id == 0
+	pile.global_position = global_position
+	
+	# deleting old pile
+	player.emit_signal("remove_leaves")
 
 func _update_inputs():
 	if Input.is_action_just_pressed("p1_connect_controller" if joystick_id == 0 else "p2_connect_controller"):
@@ -304,9 +340,11 @@ func _on_animation_finished():
 	if animated.animation == "Unpoof":
 		animated.play("Idle")
 	if animated.animation == "Become_Ghost":
+		z_index = 1
 		animated.play("Ghost_Idle")
 		
 func unpoof_from_leaves():
 	respawning = false
 	mask = true
+	animated.modulate.a = 1
 	animated.play("Unpoof")
