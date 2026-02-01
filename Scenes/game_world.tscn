@@ -48,4 +48,6 @@ z_index = 1
 position = Vector2(50, 212)
 pile_scene = ExtResource("7_rr1si")
 
-[node name="UI" parent="." unique_id=1993868164 instance=ExtResource("8_27os8")]
+[node name="CanvasLayer" type="CanvasLayer" parent="." unique_id=372853444]
+
+[node name="UI" parent="CanvasLayer" unique_id=1993868164 instance=ExtResource("8_27os8")]

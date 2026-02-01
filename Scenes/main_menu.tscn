@@ -1,4 +1,4 @@
-[gd_scene format=3 uid="uid://bphgwt6vbfi6v"]
+[gd_scene format=3 uid="uid://rq3pr2iokkc0"]
 
 [ext_resource type="PackedScene" uid="uid://b0u4oebqc8klt" path="res://UI/ui.tscn" id="1_48xlc"]
 [ext_resource type="Texture2D" uid="uid://bmv5avhirqnqk" path="res://Aseprite/Environment/flat_background_green.png" id="2_1ehe0"]
@@ -10,9 +10,9 @@
 [node name="UI" parent="CanvasLayer" unique_id=1993868164 instance=ExtResource("1_48xlc")]
 
 [node name="LevelBackground" type="TextureRect" parent="." unique_id=1768474991]
-z_index = -1
 offset_right = 320.0
 offset_bottom = 240.0
 size_flags_horizontal = 3
+mouse_filter = 2
 texture = ExtResource("2_1ehe0")
 metadata/_edit_use_anchors_ = true
