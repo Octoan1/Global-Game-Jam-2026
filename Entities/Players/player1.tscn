@@ -6,6 +6,24 @@
 [ext_resource type="PackedScene" uid="uid://ir766e3jwv8n" path="res://Objects/Mask/mask.tscn" id="4_xwwn8"]
 [ext_resource type="Texture2D" uid="uid://bqwpikbrdth8b" path="res://Aseprite/Player/Dingle/dingle_idle-Sheet.png" id="5_ktqc6"]
 [ext_resource type="Texture2D" uid="uid://kdkvyeuk03i1" path="res://Aseprite/Player/Dingle/dingle_walk-Sheet.png" id="5_ndun7"]
+[ext_resource type="Texture2D" uid="uid://bnrurhr2kt2x4" path="res://Aseprite/Player/Dingle/dingle_ghost_walk-Sheet.png" id="5_rpa8b"]
+[ext_resource type="Texture2D" uid="uid://dn7tee30eiels" path="res://Aseprite/Player/Dingle/dingle_poofed-Sheet.png" id="7_yicrl"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_suhm7"]
+atlas = ExtResource("5_rpa8b")
+region = Rect2(0, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_bjc7u"]
+atlas = ExtResource("5_rpa8b")
+region = Rect2(32, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_fnkd4"]
+atlas = ExtResource("5_rpa8b")
+region = Rect2(64, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_8y7qi"]
+atlas = ExtResource("5_rpa8b")
+region = Rect2(96, 0, 32, 32)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_2g48j"]
 atlas = ExtResource("5_ktqc6")
@@ -22,6 +40,38 @@ region = Rect2(64, 0, 32, 32)
 [sub_resource type="AtlasTexture" id="AtlasTexture_wbpkj"]
 atlas = ExtResource("5_ktqc6")
 region = Rect2(96, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_53ihx"]
+atlas = ExtResource("7_yicrl")
+region = Rect2(0, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_vimb5"]
+atlas = ExtResource("7_yicrl")
+region = Rect2(32, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_uy017"]
+atlas = ExtResource("7_yicrl")
+region = Rect2(64, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_bvkpd"]
+atlas = ExtResource("7_yicrl")
+region = Rect2(96, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_jcvgl"]
+atlas = ExtResource("7_yicrl")
+region = Rect2(96, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_qxtqi"]
+atlas = ExtResource("7_yicrl")
+region = Rect2(64, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_fw485"]
+atlas = ExtResource("7_yicrl")
+region = Rect2(32, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_tq5tv"]
+atlas = ExtResource("7_yicrl")
+region = Rect2(0, 0, 32, 32)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_ktqc6"]
 atlas = ExtResource("5_ndun7")
@@ -43,6 +93,23 @@ region = Rect2(96, 0, 32, 32)
 animations = [{
 "frames": [{
 "duration": 1.0,
+"texture": SubResource("AtlasTexture_suhm7")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_bjc7u")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_fnkd4")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_8y7qi")
+}],
+"loop": true,
+"name": &"Ghost_Move",
+"speed": 6.0
+}, {
+"frames": [{
+"duration": 1.0,
 "texture": SubResource("AtlasTexture_2g48j")
 }, {
 "duration": 1.0,
@@ -57,6 +124,40 @@ animations = [{
 "loop": true,
 "name": &"Idle",
 "speed": 6.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_53ihx")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_vimb5")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_uy017")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_bvkpd")
+}],
+"loop": false,
+"name": &"Poof",
+"speed": 6.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_jcvgl")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_qxtqi")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_fw485")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_tq5tv")
+}],
+"loop": false,
+"name": &"Unpoof",
+"speed": 5.0
 }, {
 "frames": [{
 "duration": 1.0,
@@ -95,6 +196,7 @@ polygon = PackedVector2Array(-11, -11, -11, 12, 10, 12, 10, -11)
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=936637707]
 sprite_frames = SubResource("SpriteFrames_2g48j")
-animation = &"Idle"
+animation = &"Unpoof"
 autoplay = "Idle"
-frame_progress = 0.15274191
+frame = 3
+frame_progress = 1.0

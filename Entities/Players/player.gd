@@ -35,6 +35,9 @@ var prev_dir = 1
 @onready var camera: Camera2D = $"../Camera2D"
 @onready var cam_size = camera.get_viewport_rect().size * camera.zoom
 
+func _ready() -> void:
+	animated.animation_finished.connect(_on_animation_finished)
+
 func _physics_process(delta: float) -> void:
 	_update_inputs()
 	if mask:
@@ -72,14 +75,15 @@ func _physics_process(delta: float) -> void:
 	else:
 		direction = Input.get_axis("p1_move_left_k" if joystick_id == 0 else "p2_move_left_k", "p1_move_right_k" if joystick_id == 0 else "p2_move_right_k")
 	var moving_away = direction != 0 and sign(direction) == -sign(to_other.x)
-	if direction and not throwing and not waiting and mask and ((players_dist < _get_max_distance() or not moving_away) or not camera_on):
+	if direction and not throwing and not waiting and animated.animation != "Unpoof" and mask and ((players_dist < _get_max_distance() or not moving_away) or not camera_on):
 		animated.play("Walk")
 		velocity.x = direction * SPEED
 		animated.flip_h = prev_dir < 0
 		sprite.flip_h = prev_dir < 0
 		prev_dir = direction
 	else:
-		animated.play("Idle")
+		if mask and not waiting and animated.animation != "Unpoof":
+			animated.play("Idle")
 		velocity.x = move_toward(velocity.x, 0, SPEED)
 	
 	#ghost movement
@@ -108,8 +112,9 @@ func _physics_process(delta: float) -> void:
 			else:
 				velocity.x = stick.x * GSPEED
 				velocity.y = stick.y * GSPEED
+			animated.play("Ghost_Move")
 			if stick.x != 0:
-				sprite.flip_h = prev_dir < 0
+				animated.flip_h = prev_dir < 0
 			prev_dir = stick.x
 		else:
 			var h_dir := Input.get_axis("p1_move_left_k" if joystick_id == 0 else "p2_move_left_k", "p1_move_right_k" if joystick_id == 0 else "p2_move_right_k")
@@ -131,8 +136,9 @@ func _physics_process(delta: float) -> void:
 			else:
 				velocity.x = h_dir * GSPEED
 				velocity.y = v_dir * GSPEED
+			animated.play("Ghost_Move")
 			if h_dir != 0:
-				sprite.flip_h = prev_dir < 0
+				animated.flip_h = prev_dir < 0
 			prev_dir = h_dir
 		
 	var arrow = _update_arrow()
@@ -231,7 +237,7 @@ func _throw_mask(direction: Vector2, speed: float):
 	self.add_child(projectile)
 	projectile.global_position = global_position
 	projectile.throw(direction, speed, self)
-	
+	animated.play("Poof")
 	projectile.connect("hit_player", Callable(self, "_on_mask_hit"))
 
 func _on_mask_hit(body):
@@ -240,6 +246,7 @@ func _on_mask_hit(body):
 	mask = false
 	throwing = false
 	queue_redraw()
+	body.animated.play("Unpoof")
 	body.mask = true
 	body.ammo = 1
 
@@ -254,3 +261,7 @@ func _get_max_distance():
 
 func _get_other_player():
 	return $"../Player2" if joystick_id == 0 else $"../Player1"
+	
+func _on_animation_finished():
+	if animated.animation == "Unpoof":
+		animated.play("Idle")
