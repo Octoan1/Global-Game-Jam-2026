@@ -1,6 +1,6 @@
 [gd_scene format=4 uid="uid://dcrp8y2ts0weu"]
 
-[ext_resource type="Script" uid="uid://cjiat2yv0tcle" path="res://Scenes/Levels/level_data.gd" id="1_3mqfk"]
+[ext_resource type="Script" path="res://Scenes/Levels/level_data.gd" id="1_3mqfk"]
 [ext_resource type="Texture2D" uid="uid://dwjdlqk7ymxl8" path="res://Aseprite/Environment/Tilemap/Tilemap.png" id="1_4dpyx"]
 [ext_resource type="PackedScene" uid="uid://liirdi4so46o" path="res://Objects/Level Things/exit_area.tscn" id="2_3mqfk"]
 [ext_resource type="PackedScene" uid="uid://lg1amvhr8ems" path="res://Objects/Level Things/death_plane.tscn" id="3_iixi8"]
@@ -415,12 +415,12 @@ anchors_preset = 5
 anchor_left = 0.5
 anchor_right = 0.5
 offset_left = 3.0
-offset_top = -14.0
+offset_top = -5.0
 offset_right = 320.0
-offset_bottom = 959.0
+offset_bottom = 968.0
 grow_horizontal = 2
 bbcode_enabled = true
-text = "[font_size=12][outline_color=black][outline_size=4]
+text = "[font_size=10][outline_color=black][outline_size=4]
 1 and 2 on the keyboard Toggles between controller and keyboard
 
 Keyboard:
