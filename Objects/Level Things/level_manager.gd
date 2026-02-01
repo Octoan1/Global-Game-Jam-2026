@@ -31,6 +31,7 @@ func update_vars(level_id:int):
 	
 
 func next_level(next_level_id, player1_position, player2_position):
+	
 	player1_spawn = player1_position
 	player2_spawn = player2_position
 	
