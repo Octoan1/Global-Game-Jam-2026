@@ -21,6 +21,8 @@ extends Control
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	pause_center.visible = false
+	get_tree().paused = true
+
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
@@ -36,9 +38,10 @@ func _process(delta: float) -> void:
 		await get_tree().create_timer(1).timeout
 #PLAY THE GAME
 func _on_main_play_pressed() -> void:
-	var start_game = load("res://Scenes/game_world.tscn")
-	var game_instantiate = start_game.instantiate()
-	call_deferred("add_child", game_instantiate)
+	#var start_game = load("res://Scenes/game_world.tscn")
+	#var game_instantiate = start_game.instantiate()
+	#call_deferred("add_child", game_instantiate)
+	get_tree().paused = false
 	main_center.visible = false
 	main_center.PROCESS_MODE_DISABLED
 #Resume
