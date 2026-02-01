@@ -5,6 +5,14 @@
 [ext_resource type="Texture2D" uid="uid://cu44wfwxwtmja" path="res://Aseprite/Environment/flat_background.png" id="2_p4c8d"]
 [ext_resource type="PackedScene" uid="uid://spfqakfdgeq1" path="res://Entities/Players/player2.tscn" id="3_d0bjv"]
 [ext_resource type="PackedScene" uid="uid://dcrp8y2ts0weu" path="res://Scenes/Levels/level_1.tscn" id="4_hy2kt"]
+[ext_resource type="Script" path="res://Scenes/camera_2d.gd" id="6_d0bjv"]
+[ext_resource type="Script" uid="uid://dujl3b6wk6lq" path="res://Scenes/tether.gd" id="7_27os8"]
+
+[sub_resource type="Resource" id="Resource_d0bjv"]
+metadata/__load_path__ = "res://Aseprite/Player/dingle.png"
+
+[sub_resource type="Resource" id="Resource_27os8"]
+metadata/__load_path__ = "res://Aseprite/Player/dingle_ghost.png"
 
 [node name="GameWorld" type="Node2D" unique_id=311252913]
 
@@ -18,12 +26,21 @@ size_flags_horizontal = 3
 texture = ExtResource("2_p4c8d")
 metadata/_edit_use_anchors_ = true
 
+[node name="Level1" parent="." unique_id=1906136548 instance=ExtResource("4_hy2kt")]
+
+[node name="Camera2D" type="Camera2D" parent="." unique_id=564133212]
+script = ExtResource("6_d0bjv")
+
+[node name="Tether" type="Node2D" parent="." unique_id=817668206]
+script = ExtResource("7_27os8")
+
 [node name="Player1" parent="." unique_id=501140443 instance=ExtResource("2_f1ejf")]
 z_index = 1
-position = Vector2(19, 212)
+position = Vector2(20, 212)
+mask = true
+real_tex = SubResource("Resource_d0bjv")
+ghost_tex = SubResource("Resource_27os8")
 
 [node name="Player2" parent="." unique_id=1845162299 instance=ExtResource("3_d0bjv")]
 z_index = 1
-position = Vector2(49, 212)
-
-[node name="Level1" parent="." unique_id=1906136548 instance=ExtResource("4_hy2kt")]
+position = Vector2(50, 212)
