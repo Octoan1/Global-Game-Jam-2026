@@ -9,6 +9,7 @@
 [ext_resource type="Texture2D" uid="uid://bnrurhr2kt2x4" path="res://Aseprite/Player/Dingle/Ghost/dingle_ghost_walk-Sheet.png" id="5_rpa8b"]
 [ext_resource type="Texture2D" uid="uid://ehab72wgl0wf" path="res://Aseprite/Player/Dingle/Ghost/dingle_ghost_idle-Sheet.png" id="5_yicrl"]
 [ext_resource type="Texture2D" uid="uid://dn7tee30eiels" path="res://Aseprite/Player/Dingle/Transition/dingle_poofed-Sheet.png" id="7_yicrl"]
+[ext_resource type="AudioStream" uid="uid://bar4xufjgyo7t" path="res://Sound/SFX/footstep4.ogg" id="10_2g48j"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_07fpm"]
 atlas = ExtResource("5_2g48j")
@@ -279,3 +280,7 @@ sprite_frames = SubResource("SpriteFrames_2g48j")
 animation = &"Become_Ghost"
 frame = 6
 frame_progress = 1.0
+
+[node name="WalkSound" type="AudioStreamPlayer" parent="." unique_id=1809939202]
+stream = ExtResource("10_2g48j")
+bus = &"SFX"
