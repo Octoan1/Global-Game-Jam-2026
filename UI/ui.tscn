@@ -68,6 +68,7 @@ layout_mode = 2
 
 [node name="Sound" type="TextureButton" parent="PauseCenter/PauseMenu/CenterSound" unique_id=427813246]
 layout_mode = 2
+focus_mode = 0
 focus_behavior_recursive = 2
 texture_normal = ExtResource("3_c7tqi")
 texture_hover = ExtResource("4_cbfhl")
@@ -192,6 +193,7 @@ layout_mode = 2
 
 [node name="Sound" type="TextureButton" parent="MainCenter/MainMenu/CenterSound" unique_id=1055180718]
 layout_mode = 2
+focus_mode = 0
 texture_normal = ExtResource("3_c7tqi")
 texture_hover = ExtResource("4_cbfhl")
 texture_focused = ExtResource("4_cbfhl")
@@ -257,7 +259,15 @@ bus = &"SFX"
 [connection signal="value_changed" from="PauseCenter/PauseMenu/CenterSound/Sound/VBoxContainer/PauseMusicVolume" to="." method="_on_pause_music_volume_value_changed"]
 [connection signal="value_changed" from="PauseCenter/PauseMenu/CenterSound/Sound/VBoxContainer/PauseSFXVolume" to="." method="_on_pause_sfx_volume_value_changed"]
 [connection signal="pressed" from="PauseCenter/PauseMenu/CenterQuit/PauseQuit" to="." method="_on_pause_quit_pressed"]
+[connection signal="focus_entered" from="MainCenter/MainMenu/CenterPlay/MainPlay" to="." method="_on_main_play_focus_entered"]
+[connection signal="mouse_entered" from="MainCenter/MainMenu/CenterPlay/MainPlay" to="." method="_on_main_play_mouse_entered"]
 [connection signal="pressed" from="MainCenter/MainMenu/CenterPlay/MainPlay" to="." method="_on_main_play_pressed"]
+[connection signal="focus_entered" from="MainCenter/MainMenu/CenterQuit/MainQuit" to="." method="_on_main_quit_focus_entered"]
+[connection signal="mouse_entered" from="MainCenter/MainMenu/CenterQuit/MainQuit" to="." method="_on_main_quit_mouse_entered"]
 [connection signal="pressed" from="MainCenter/MainMenu/CenterQuit/MainQuit" to="." method="_on_main_quit_pressed"]
+[connection signal="focus_entered" from="MainCenter/MainMenu/CenterSound/Sound/CenterSliders/VBoxContainer/MainMusicVolume" to="." method="_on_main_music_volume_focus_entered"]
+[connection signal="mouse_entered" from="MainCenter/MainMenu/CenterSound/Sound/CenterSliders/VBoxContainer/MainMusicVolume" to="." method="_on_main_music_volume_mouse_entered"]
 [connection signal="value_changed" from="MainCenter/MainMenu/CenterSound/Sound/CenterSliders/VBoxContainer/MainMusicVolume" to="." method="_on_main_music_volume_value_changed"]
+[connection signal="focus_entered" from="MainCenter/MainMenu/CenterSound/Sound/CenterSliders/VBoxContainer/MainSFXVolume" to="." method="_on_main_sfx_volume_focus_entered"]
+[connection signal="mouse_entered" from="MainCenter/MainMenu/CenterSound/Sound/CenterSliders/VBoxContainer/MainSFXVolume" to="." method="_on_main_sfx_volume_mouse_entered"]
 [connection signal="value_changed" from="MainCenter/MainMenu/CenterSound/Sound/CenterSliders/VBoxContainer/MainSFXVolume" to="." method="_on_main_sfx_volume_value_changed"]
