@@ -9,7 +9,6 @@
 [ext_resource type="Script" uid="uid://eaeyihiq0nd7" path="res://Scenes/camera_2d.gd" id="5_21xkr"]
 [ext_resource type="Texture2D" uid="uid://bmv5avhirqnqk" path="res://Aseprite/Environment/flat_background_green.png" id="5_kry3j"]
 [ext_resource type="Script" uid="uid://dujl3b6wk6lq" path="res://Scenes/tether.gd" id="6_21xkr"]
-[ext_resource type="PackedScene" uid="uid://b0u4oebqc8klt" path="res://UI/ui.tscn" id="7_6bp64"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_jjvhh"]
 texture = ExtResource("4_jjvhh")
@@ -404,6 +403,7 @@ ghost_tex = ExtResource("3_hptm8")
 pile_scene = ExtResource("4_hptm8")
 
 [node name="Player2" parent="." unique_id=1845162299 instance=ExtResource("3_8gbba")]
+position = Vector2(44, -5)
 pile_scene = ExtResource("4_hptm8")
 
 [node name="Walls" type="TileMapLayer" parent="." unique_id=157024126]
@@ -419,20 +419,8 @@ texture = ExtResource("5_kry3j")
 metadata/_edit_use_anchors_ = true
 
 [node name="Camera2D" type="Camera2D" parent="." unique_id=2093000635]
+enabled = false
 script = ExtResource("5_21xkr")
 
 [node name="Tether" type="Node2D" parent="." unique_id=577630155]
 script = ExtResource("6_21xkr")
-
-[node name="UI" parent="." unique_id=1993868164 instance=ExtResource("7_6bp64")]
-process_mode = 4
-visible = false
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = 154.0
-offset_top = 120.0
-offset_right = 154.0
-offset_bottom = 120.0

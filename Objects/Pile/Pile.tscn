@@ -1,8 +1,8 @@
 [gd_scene format=3 uid="uid://bg3sg6k20q6v0"]
 
-[ext_resource type="Texture2D" uid="uid://dn7tee30eiels" path="res://Aseprite/Player/Dingle/Normal/dingle_poofed-Sheet.png" id="1_8wtjx"]
+[ext_resource type="Texture2D" uid="uid://dn7tee30eiels" path="res://Aseprite/Player/Dingle/Transition/dingle_poofed-Sheet.png" id="1_8wtjx"]
 [ext_resource type="Script" uid="uid://crfqgcd5g025t" path="res://Objects/Pile/pile.gd" id="1_wslh4"]
-[ext_resource type="Texture2D" uid="uid://myswj4faflo5" path="res://Aseprite/Player/Doo/Normal/doo_poofed-Sheet.png" id="2_r03kp"]
+[ext_resource type="Texture2D" uid="uid://myswj4faflo5" path="res://Aseprite/Player/Doo/Transition/doo_poofed-Sheet.png" id="2_r03kp"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_vmjvf"]
 atlas = ExtResource("2_r03kp")

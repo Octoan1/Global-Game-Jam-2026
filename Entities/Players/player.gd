@@ -31,6 +31,7 @@ var prev_dir = 1
 #Throwing
 @export var mask_scene: PackedScene
 @export var pile_scene: PackedScene
+@warning_ignore("unused_signal")
 signal gather_leaves
 
 #Camera

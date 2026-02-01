@@ -76,11 +76,6 @@ tile_set = SubResource("TileSet_qc4db")
 
 [node name="Player1" parent="." unique_id=501140443 instance=ExtResource("2_qc4db")]
 position = Vector2(56, 117)
-mask = true
-thickness = 2.0
-max_length = 50.0
-joystick_id = 0
-deadzone = 0.2
 
 [node name="Player2" parent="." unique_id=1845162299 instance=ExtResource("3_ys1qc")]
 position = Vector2(138, 114)

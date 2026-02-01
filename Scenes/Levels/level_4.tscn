@@ -3,7 +3,7 @@
 [ext_resource type="Script" uid="uid://cjiat2yv0tcle" path="res://Scenes/Levels/level_data.gd" id="1_6grq2"]
 [ext_resource type="PackedScene" uid="uid://liirdi4so46o" path="res://Objects/Level Things/exit_area.tscn" id="1_xq0e5"]
 [ext_resource type="Texture2D" uid="uid://dwjdlqk7ymxl8" path="res://Aseprite/Environment/Tilemap/Tilemap.png" id="2_6grq2"]
-[ext_resource type="Script" uid="uid://cq7fj3g7306mb" path="res://Scenes/Levels/death_plane.gd" id="3_vwhew"]
+[ext_resource type="Script" path="res://Scenes/Levels/death_plane.gd" id="3_vwhew"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_jqrsn"]
 
