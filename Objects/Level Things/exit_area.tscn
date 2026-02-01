@@ -2,6 +2,8 @@
 
 [ext_resource type="Script" uid="uid://dq12qi1isj4hc" path="res://Objects/Level Things/level_exit.gd" id="1_d0ldc"]
 [ext_resource type="Texture2D" uid="uid://dwjdlqk7ymxl8" path="res://Aseprite/Environment/Tilemap/Tilemap.png" id="2_yqluf"]
+[ext_resource type="AudioStream" uid="uid://mgfm6mdfs6x4" path="res://Sound/SFX/Doo/doo-treasure.ogg" id="3_o824s"]
+[ext_resource type="AudioStream" uid="uid://d117nwlry46v0" path="res://Sound/SFX/Dingle/dingle-treasure.ogg" id="4_s3dto"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_7p6j4"]
 size = Vector2(32, 32)
@@ -20,6 +22,12 @@ shape = SubResource("RectangleShape2D_7p6j4")
 
 [node name="Sprite2D" type="Sprite2D" parent="." unique_id=1019555957]
 texture = SubResource("AtlasTexture_nci6k")
+
+[node name="DooComplete" type="AudioStreamPlayer" parent="." unique_id=1972822343]
+stream = ExtResource("3_o824s")
+
+[node name="DingleComplete" type="AudioStreamPlayer" parent="." unique_id=729416319]
+stream = ExtResource("4_s3dto")
 
 [connection signal="body_entered" from="." to="." method="_on_body_entered"]
 [connection signal="body_exited" from="." to="." method="_on_body_exited"]
