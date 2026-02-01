@@ -299,7 +299,7 @@ animations = [{
 }]
 
 [node name="Player2" type="CharacterBody2D" unique_id=1845162299]
-z_index = 1
+z_index = 2
 collision_layer = 4
 script = ExtResource("1_fgtas")
 mask = false
