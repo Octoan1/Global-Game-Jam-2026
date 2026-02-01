@@ -10,6 +10,8 @@
 [ext_resource type="Texture2D" uid="uid://nromkmd3bxhw" path="res://Aseprite/UI/Tick.png" id="7_4fiuh"]
 [ext_resource type="Texture2D" uid="uid://dm7p8nuy4r4t4" path="res://Aseprite/UI/PauseMenuQuit.png" id="8_4fiuh"]
 [ext_resource type="Texture2D" uid="uid://brlgxksnb4j1f" path="res://Aseprite/UI/PauseMenuQuitOutline.png" id="9_h81ot"]
+[ext_resource type="Texture2D" uid="uid://c7slnks7y5hss" path="res://Aseprite/UI/MainMenuPlay.png" id="11_0w6e5"]
+[ext_resource type="Texture2D" uid="uid://cypcg8we4qoco" path="res://Aseprite/UI/MainMenuPlayOutline.png" id="12_o2jkc"]
 
 [sub_resource type="StyleBoxTexture" id="StyleBoxTexture_3sbvi"]
 texture = ExtResource("4_hat8c")
@@ -28,34 +30,38 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="ScreenSpace" type="CenterContainer" parent="." unique_id=691167076]
-layout_mode = 0
-offset_right = 320.0
-offset_bottom = 240.0
+[node name="PauseCenter" type="CenterContainer" parent="." unique_id=691167076]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
 
-[node name="PauseMenu" type="VBoxContainer" parent="ScreenSpace" unique_id=574174089]
+[node name="PauseMenu" type="VBoxContainer" parent="PauseCenter" unique_id=574174089]
 layout_mode = 2
 alignment = 1
 
-[node name="CenterResume" type="CenterContainer" parent="ScreenSpace/PauseMenu" unique_id=105370644]
+[node name="CenterResume" type="CenterContainer" parent="PauseCenter/PauseMenu" unique_id=105370644]
 layout_mode = 2
 
-[node name="Resume" type="TextureButton" parent="ScreenSpace/PauseMenu/CenterResume" unique_id=1674715464]
+[node name="Resume" type="TextureButton" parent="PauseCenter/PauseMenu/CenterResume" unique_id=1674715464]
 layout_mode = 2
 action_mode = 0
 texture_normal = ExtResource("1_3sbvi")
 texture_hover = ExtResource("2_nm1m0")
+texture_focused = ExtResource("2_nm1m0")
 
-[node name="CenterSound" type="CenterContainer" parent="ScreenSpace/PauseMenu" unique_id=634211090]
+[node name="CenterSound" type="CenterContainer" parent="PauseCenter/PauseMenu" unique_id=634211090]
 layout_mode = 2
 
-[node name="Sound" type="TextureButton" parent="ScreenSpace/PauseMenu/CenterSound" unique_id=427813246]
+[node name="Sound" type="TextureButton" parent="PauseCenter/PauseMenu/CenterSound" unique_id=427813246]
 layout_mode = 2
 texture_normal = ExtResource("3_c7tqi")
 texture_hover = ExtResource("4_cbfhl")
 texture_focused = ExtResource("4_cbfhl")
 
-[node name="CenterSliders" type="CenterContainer" parent="ScreenSpace/PauseMenu/CenterSound/Sound" unique_id=83416982]
+[node name="CenterSliders" type="CenterContainer" parent="PauseCenter/PauseMenu/CenterSound/Sound" unique_id=83416982]
 clip_contents = true
 layout_mode = 1
 anchors_preset = 8
@@ -70,11 +76,12 @@ offset_bottom = 20.0
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="VBoxContainer" type="VBoxContainer" parent="ScreenSpace/PauseMenu/CenterSound/Sound/CenterSliders" unique_id=91053494]
+[node name="VBoxContainer" type="VBoxContainer" parent="PauseCenter/PauseMenu/CenterSound/Sound/CenterSliders" unique_id=91053494]
 layout_mode = 2
 
-[node name="MusicVolume" type="HSlider" parent="ScreenSpace/PauseMenu/CenterSound/Sound/CenterSliders/VBoxContainer" unique_id=1643443772]
+[node name="MusicVolume" type="HSlider" parent="PauseCenter/PauseMenu/CenterSound/Sound/CenterSliders/VBoxContainer" unique_id=1643443772]
 layout_mode = 2
+mouse_filter = 1
 theme_override_icons/grabber = ExtResource("2_e6gg6")
 theme_override_icons/grabber_highlight = ExtResource("3_hat8c")
 theme_override_icons/tick = ExtResource("7_4fiuh")
@@ -82,8 +89,9 @@ theme_override_styles/slider = SubResource("StyleBoxTexture_3sbvi")
 value = 50.0
 ticks_position = 3
 
-[node name="SFXVolume" type="HSlider" parent="ScreenSpace/PauseMenu/CenterSound/Sound/CenterSliders/VBoxContainer" unique_id=1079109579]
+[node name="SFXVolume" type="HSlider" parent="PauseCenter/PauseMenu/CenterSound/Sound/CenterSliders/VBoxContainer" unique_id=1079109579]
 layout_mode = 2
+mouse_filter = 1
 theme_override_icons/grabber = ExtResource("2_e6gg6")
 theme_override_icons/grabber_highlight = ExtResource("3_hat8c")
 theme_override_icons/tick = ExtResource("7_4fiuh")
@@ -91,10 +99,94 @@ theme_override_styles/slider = SubResource("StyleBoxTexture_h81ot")
 value = 50.0
 ticks_position = 3
 
-[node name="CenterQuit" type="CenterContainer" parent="ScreenSpace/PauseMenu" unique_id=1591970760]
+[node name="CenterQuit" type="CenterContainer" parent="PauseCenter/PauseMenu" unique_id=1591970760]
 layout_mode = 2
 
-[node name="Quit" type="TextureButton" parent="ScreenSpace/PauseMenu/CenterQuit" unique_id=2102496521]
+[node name="Quit" type="TextureButton" parent="PauseCenter/PauseMenu/CenterQuit" unique_id=2102496521]
 layout_mode = 2
 texture_normal = ExtResource("8_4fiuh")
 texture_hover = ExtResource("9_h81ot")
+texture_focused = ExtResource("9_h81ot")
+
+[node name="MainCenter" type="CenterContainer" parent="." unique_id=42359563]
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -68.0
+offset_top = -104.0
+offset_right = 68.0
+grow_horizontal = 2
+grow_vertical = 0
+
+[node name="MainMenu" type="VBoxContainer" parent="MainCenter" unique_id=727198819]
+layout_mode = 2
+alignment = 1
+
+[node name="CenterPlay" type="CenterContainer" parent="MainCenter/MainMenu" unique_id=1873601929]
+layout_mode = 2
+
+[node name="Play" type="TextureButton" parent="MainCenter/MainMenu/CenterPlay" unique_id=1288299835]
+layout_mode = 2
+action_mode = 0
+texture_normal = ExtResource("11_0w6e5")
+texture_hover = ExtResource("12_o2jkc")
+texture_focused = ExtResource("12_o2jkc")
+
+[node name="CenterQuit" type="CenterContainer" parent="MainCenter/MainMenu" unique_id=1084190926]
+layout_mode = 2
+
+[node name="Quit" type="TextureButton" parent="MainCenter/MainMenu/CenterQuit" unique_id=128585606]
+layout_mode = 2
+texture_normal = ExtResource("8_4fiuh")
+texture_hover = ExtResource("9_h81ot")
+texture_focused = ExtResource("9_h81ot")
+
+[node name="CenterSound" type="CenterContainer" parent="MainCenter/MainMenu" unique_id=1511208442]
+layout_mode = 2
+
+[node name="Sound" type="TextureButton" parent="MainCenter/MainMenu/CenterSound" unique_id=1055180718]
+layout_mode = 2
+texture_normal = ExtResource("3_c7tqi")
+texture_hover = ExtResource("4_cbfhl")
+texture_focused = ExtResource("4_cbfhl")
+
+[node name="CenterSliders" type="CenterContainer" parent="MainCenter/MainMenu/CenterSound/Sound" unique_id=795187344]
+clip_contents = true
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -44.0
+offset_top = -20.0
+offset_right = 56.0
+offset_bottom = 20.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="MainCenter/MainMenu/CenterSound/Sound/CenterSliders" unique_id=411284029]
+layout_mode = 2
+
+[node name="MusicVolume" type="HSlider" parent="MainCenter/MainMenu/CenterSound/Sound/CenterSliders/VBoxContainer" unique_id=1456084339]
+layout_mode = 2
+mouse_filter = 1
+theme_override_icons/grabber = ExtResource("2_e6gg6")
+theme_override_icons/grabber_highlight = ExtResource("3_hat8c")
+theme_override_icons/tick = ExtResource("7_4fiuh")
+theme_override_styles/slider = SubResource("StyleBoxTexture_3sbvi")
+value = 50.0
+ticks_position = 3
+
+[node name="SFXVolume" type="HSlider" parent="MainCenter/MainMenu/CenterSound/Sound/CenterSliders/VBoxContainer" unique_id=1107913425]
+layout_mode = 2
+mouse_filter = 1
+theme_override_icons/grabber = ExtResource("2_e6gg6")
+theme_override_icons/grabber_highlight = ExtResource("3_hat8c")
+theme_override_icons/tick = ExtResource("7_4fiuh")
+theme_override_styles/slider = SubResource("StyleBoxTexture_h81ot")
+value = 50.0
+ticks_position = 3
