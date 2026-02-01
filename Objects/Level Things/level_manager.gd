@@ -70,6 +70,9 @@ func reset_player2():
 	player_2.global_position = player2_spawn
 
 func reset_players():
+	print("hi")
+	print(player_1.mask)
+	print(player_2.mask)
 	if(player_1.mask == true):
 		player_1.global_position = player1_spawn
 		player_2.global_position = player2_spawn
