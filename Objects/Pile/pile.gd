@@ -32,6 +32,9 @@ func _physics_process(delta: float):
 
 func _on_player_gather_leaves():
 	flying = true
-	sprite.play("Flying_Blue")
+	if red:
+		sprite.play("Flying_Red")
+	else:
+		sprite.play("Flying_Blue")
 	set_collision_mask_value(1, false)
 	player.respawning = true
