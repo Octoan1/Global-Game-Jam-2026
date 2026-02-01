@@ -135,7 +135,7 @@ func _physics_process(delta: float) -> void:
 			else:
 				velocity.x = stick.x * GSPEED
 				velocity.y = stick.y * GSPEED
-			if velocity == Vector2.ZERO:
+			if velocity.x == 0:
 				animated.play("Ghost_Idle")
 			else:
 				animated.play("Ghost_Move")
@@ -162,7 +162,7 @@ func _physics_process(delta: float) -> void:
 			else:
 				velocity.x = h_dir * GSPEED
 				velocity.y = v_dir * GSPEED
-			if velocity == Vector2.ZERO:
+			if velocity.x == 0:
 				animated.play("Ghost_Idle")
 			else:
 				animated.play("Ghost_Move")
@@ -189,7 +189,7 @@ func _physics_process(delta: float) -> void:
 		if Input.is_action_just_pressed("p1_back_k" if joystick_id == 0 else "p2_back_k") and throwing:
 			throwing = false
 	
-	if Input.is_action_just_pressed("ui_accept"):
+	if Input.is_action_just_pressed("Dev_Key"):
 		mask = !mask
 	_update_sprite()
 		
@@ -220,8 +220,8 @@ func _update_arrow():
 		var h_dir := Input.get_axis("p1_move_left_k" if joystick_id == 0 else "p2_move_left_k", "p1_move_right_k" if joystick_id == 0 else "p2_move_right_k")
 		var v_dir := Input.get_axis("p1_move_up" if joystick_id == 0 else "p2_move_up", "p1_move_down" if joystick_id == 0 else "p2_move_down")
 		
-		pointer.global_position.x += h_dir
-		pointer.global_position.y += v_dir
+		pointer.global_position.x += h_dir * 2
+		pointer.global_position.y += v_dir * 2
 	
 	var pointer_pos = Vector2(pointer.global_position.x, pointer.global_position.y)
 	var length = pointer_pos.length()
