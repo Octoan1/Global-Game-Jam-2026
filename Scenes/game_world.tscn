@@ -37,7 +37,6 @@ script = ExtResource("6_d0bjv")
 script = ExtResource("7_27os8")
 
 [node name="Player1" parent="." unique_id=501140443 instance=ExtResource("2_f1ejf")]
-z_index = 1
 position = Vector2(20, 212)
 real_tex = SubResource("Resource_d0bjv")
 ghost_tex = SubResource("Resource_27os8")
