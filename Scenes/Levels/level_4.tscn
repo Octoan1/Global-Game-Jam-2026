@@ -425,7 +425,7 @@ player_2_spawn = Vector2(45, 212)
 
 [node name="ExitArea" parent="." unique_id=2084659212 instance=ExtResource("1_xq0e5")]
 unique_name_in_owner = true
-position = Vector2(304, 96)
+position = Vector2(304, 112)
 next_level_id = 5
 
 [node name="DeathPlane" type="Area2D" parent="." unique_id=1614042331]

@@ -38,6 +38,8 @@ func next_level(next_level_id, player1_position, player2_position):
 	# update paths and names
 	update_vars(next_level_id)
 	
+	reset_players()
+	
 	# access desired level and load it
 	
 	var load_level = load(level_path_file)
@@ -54,7 +56,7 @@ func next_level(next_level_id, player1_position, player2_position):
 	
 	# access desired player position for the new level
 	# and set the player position to that
-	reset_players()
+	#reset_players()
 	
 
 func reset_players():
