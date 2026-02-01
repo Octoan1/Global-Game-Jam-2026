@@ -33,6 +33,7 @@ var prev_dir = 1
 @export var pile_scene: PackedScene
 @warning_ignore("unused_signal")
 signal gather_leaves
+signal remove_leaves
 
 #Camera
 @export var camera_on = false
@@ -293,6 +294,18 @@ func _on_mask_hit(body):
 	pile.player = self
 	pile.red = self.joystick_id == 0
 	pile.global_position = global_position
+
+func update_pile(player):
+	# creating new pile at the player
+	var pile = pile_scene.instantiate()
+	var parent = self.get_parent()
+	parent.add_child.call_deferred(pile)
+	pile.player = self
+	pile.red = self.joystick_id == 0
+	pile.global_position = global_position
+	
+	# deleting old pile
+	player.emit_signal("remove_leaves")
 
 func _update_inputs():
 	if Input.is_action_just_pressed("p1_connect_controller" if joystick_id == 0 else "p2_connect_controller"):

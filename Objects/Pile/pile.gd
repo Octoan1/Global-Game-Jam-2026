@@ -10,6 +10,7 @@ var red: bool
 func _physics_process(delta: float):
 	if not connected:
 		player.gather_leaves.connect(_on_player_gather_leaves)
+		player.remove_leaves.connect(_on_player_remove_leaves)
 		connected = true
 		if red:
 			sprite.play("Red")
@@ -29,6 +30,9 @@ func _physics_process(delta: float):
 
 	linear_velocity = dir / distance * fly_speed
 	rotation = dir.angle()
+
+func _on_player_remove_leaves():
+	queue_free()
 
 func _on_player_gather_leaves():
 	flying = true
