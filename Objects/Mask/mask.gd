@@ -20,6 +20,7 @@ func _physics_process(_delta: float) -> void:
 	if returning and thrower != null:
 		if global_position.distance_to(thrower.global_position) < 10:
 			thrower.ammo = 1
+			thrower.animated.play("Unpoof")
 			thrower.waiting = false
 			queue_free()
 			returning = false

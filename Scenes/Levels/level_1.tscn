@@ -3,8 +3,11 @@
 [ext_resource type="Script" uid="uid://cjiat2yv0tcle" path="res://Scenes/Levels/level_data.gd" id="1_3mqfk"]
 [ext_resource type="Texture2D" uid="uid://dwjdlqk7ymxl8" path="res://Aseprite/Environment/Tilemap/Tilemap.png" id="1_4dpyx"]
 [ext_resource type="PackedScene" uid="uid://liirdi4so46o" path="res://Objects/Level Things/exit_area.tscn" id="2_3mqfk"]
+[ext_resource type="Script" uid="uid://cq7fj3g7306mb" path="res://Scenes/Levels/death_plane.gd" id="3_iixi8"]
 
-[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_4dpyx"]
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_cyadu"]
+
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_3mqfk"]
 texture = ExtResource("1_4dpyx")
 0:0/0 = 0
 0:0/0/terrain_set = 0
@@ -385,22 +388,6 @@ terrain_set_0/terrain_0/name = "Real Walls"
 terrain_set_0/terrain_0/color = Color(0.419809, 0.01945558, 0.31512094, 1)
 terrain_set_0/terrain_1/name = "Ghost Walls 1"
 terrain_set_0/terrain_1/color = Color(0.2862138, 0.40377316, 0.82391006, 1)
-sources/0 = SubResource("TileSetAtlasSource_4dpyx")
-
-[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_3mqfk"]
-texture = ExtResource("1_4dpyx")
-1:8/0 = 0
-1:8/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
-2:8/0 = 0
-2:8/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
-1:9/0 = 0
-1:9/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
-2:9/0 = 0
-2:9/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
-
-[sub_resource type="TileSet" id="TileSet_xfk5q"]
-physics_layer_0/collision_layer = 0
-physics_layer_0/collision_mask = 0
 sources/0 = SubResource("TileSetAtlasSource_3mqfk")
 
 [node name="Level1" type="Node2D" unique_id=1906136548]
@@ -410,12 +397,19 @@ player_2_spawn = Vector2(36, 164)
 
 [node name="ExitArea" parent="." unique_id=2084659212 instance=ExtResource("2_3mqfk")]
 unique_name_in_owner = true
+position = Vector2(272, 208)
 next_level_id = 2
+
+[node name="DeathPlane" type="Area2D" parent="." unique_id=2135296874]
+position = Vector2(162, 255)
+scale = Vector2(20, 0.5199976)
+script = ExtResource("3_iixi8")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="DeathPlane" unique_id=1746299383]
+shape = SubResource("RectangleShape2D_cyadu")
 
 [node name="Walls" type="TileMapLayer" parent="." unique_id=758775280]
 tile_map_data = PackedByteArray("AAAAAA4AAAABAAAAAAABAA4AAAABAAAAAAACAA4AAAABAAAAAAADAA4AAAABAAAAAAAEAA4AAAABAAAAAAAFAA4AAAABAAAAAAAGAA4AAAABAAAAAAAHAA4AAAABAAAAAAAIAA4AAAABAAAAAAAJAA4AAAAFAAIAAAAKAA4AAAADAAIAAAALAA4AAAABAAAAAAAMAA4AAAABAAAAAAANAA4AAAABAAAAAAAOAA4AAAABAAAAAAAPAA4AAAABAAAAAAAQAA4AAAABAAAAAAARAA4AAAABAAAAAAASAA4AAAABAAAAAAATAA4AAAABAAAAAAAKAA0AAAACAAEAAAAJAA0AAAAAAAEAAAAJAAwAAAAAAAEAAAAJAAsAAAAAAAEAAAAJAAoAAAAAAAAAAAAKAAoAAAACAAAAAAAKAAsAAAACAAEAAAAKAAwAAAACAAEAAAA=")
 tile_set = SubResource("TileSet_7p6j4")
 
-[node name="LevelExit" type="TileMapLayer" parent="." unique_id=2034227848]
-tile_map_data = PackedByteArray("AAAQAAwAAAABAAgAAAAQAA0AAAABAAkAAAARAAwAAAACAAgAAAARAA0AAAACAAkAAAA=")
-tile_set = SubResource("TileSet_xfk5q")
+[connection signal="body_entered" from="DeathPlane" to="DeathPlane" method="_on_body_entered"]
