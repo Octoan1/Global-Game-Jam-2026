@@ -18,8 +18,8 @@
 [ext_resource type="AudioStream" uid="uid://drkpnvvi66aa7" path="res://Sound/SFX/UI/UIAccept.mp3" id="14_o2t6a"]
 [ext_resource type="AudioStream" uid="uid://s441jqhif6hj" path="res://Sound/SFX/UI/UIClick.wav" id="15_8gukh"]
 [ext_resource type="AudioStream" uid="uid://cwsjdqkxdmnlo" path="res://Sound/SFX/UI/GameStart.wav" id="16_8gkfd"]
-[ext_resource type="AudioStream" uid="uid://4p5jp4c0nqfp" path="res://Sound/song.ogg" id="18_0tr35"]
 [ext_resource type="AudioStream" uid="uid://cdtpfm71pyom5" path="res://Sound/birds.ogg" id="19_7j5ik"]
+[ext_resource type="AudioStream" uid="uid://m2yogabcuue4" path="res://Sound/dingle-doo-ost.ogg" id="19_i1yd8"]
 
 [sub_resource type="StyleBoxTexture" id="StyleBoxTexture_3sbvi"]
 texture = ExtResource("4_hat8c")
@@ -282,8 +282,8 @@ stream = ExtResource("16_8gkfd")
 bus = &"SFX"
 
 [node name="Music" type="AudioStreamPlayer2D" parent="." unique_id=1003611714]
-stream = ExtResource("18_0tr35")
-volume_db = -15.0
+stream = ExtResource("19_i1yd8")
+volume_db = -17.0
 bus = &"Music"
 
 [node name="MainMuicAmbient" type="AudioStreamPlayer2D" parent="." unique_id=1100796650]

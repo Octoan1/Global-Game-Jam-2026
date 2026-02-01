@@ -98,10 +98,12 @@ texture = SubResource("AtlasTexture_nci6k")
 
 [node name="DooComplete" type="AudioStreamPlayer" parent="." unique_id=1972822343]
 stream = ExtResource("3_o824s")
+volume_db = -15.0
 bus = &"SFX"
 
 [node name="DingleComplete" type="AudioStreamPlayer" parent="." unique_id=729416319]
 stream = ExtResource("4_s3dto")
+volume_db = -12.0
 bus = &"SFX"
 
 [connection signal="body_entered" from="." to="." method="_on_body_entered"]
