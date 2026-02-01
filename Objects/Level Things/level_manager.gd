@@ -10,8 +10,8 @@ var level_path_file: String = "res://Scenes/Levels/" + current_level_name + ".ts
 var target_node: Node
 @onready var remove_node: Node = $"../Level1"
 
-var player1_spawn: Vector2
-var player2_spawn: Vector2
+var player1_spawn: Vector2 = Vector2(20,212)
+var player2_spawn: Vector2 = Vector2(50,212)
 
 func _ready():
 	update_vars(1)
@@ -19,6 +19,8 @@ func _ready():
 	
 	if target_node:
 		target_node.get_child(0).connect("exit_level", next_level)
+		target_node.get_child(1).connect("player1_reset", reset_player1)
+		target_node.get_child(1).connect("player2_reset", reset_player2)
 
 func update_vars(level_id:int):
 	current_level_name = "level_" + str(level_id)
