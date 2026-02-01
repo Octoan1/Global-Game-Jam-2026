@@ -15,6 +15,7 @@ func _process(delta):
 			sprite.play("Red")
 		else:
 			sprite.play("Blue")
+		set_collision_mask_value(1, true)
 	if not flying or not player:
 		return
 
@@ -31,4 +32,6 @@ func _process(delta):
 
 func _on_player_gather_leaves():
 	flying = true
+	sprite.play("Flying_Blue")
+	set_collision_mask_value(1, false)
 	player.respawning = true
