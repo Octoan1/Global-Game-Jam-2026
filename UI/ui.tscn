@@ -255,9 +255,17 @@ bus = &"SFX"
 stream = ExtResource("16_8gkfd")
 bus = &"SFX"
 
+[connection signal="focus_entered" from="PauseCenter/PauseMenu/CenterResume/PauseResume" to="." method="_on_pause_resume_focus_entered"]
+[connection signal="mouse_entered" from="PauseCenter/PauseMenu/CenterResume/PauseResume" to="." method="_on_pause_resume_mouse_entered"]
 [connection signal="pressed" from="PauseCenter/PauseMenu/CenterResume/PauseResume" to="." method="_on_pause_resume_pressed"]
+[connection signal="focus_entered" from="PauseCenter/PauseMenu/CenterSound/Sound/VBoxContainer/PauseMusicVolume" to="." method="_on_pause_music_volume_focus_entered"]
+[connection signal="mouse_entered" from="PauseCenter/PauseMenu/CenterSound/Sound/VBoxContainer/PauseMusicVolume" to="." method="_on_pause_music_volume_mouse_entered"]
 [connection signal="value_changed" from="PauseCenter/PauseMenu/CenterSound/Sound/VBoxContainer/PauseMusicVolume" to="." method="_on_pause_music_volume_value_changed"]
+[connection signal="focus_entered" from="PauseCenter/PauseMenu/CenterSound/Sound/VBoxContainer/PauseSFXVolume" to="." method="_on_pause_sfx_volume_focus_entered"]
+[connection signal="mouse_entered" from="PauseCenter/PauseMenu/CenterSound/Sound/VBoxContainer/PauseSFXVolume" to="." method="_on_pause_sfx_volume_mouse_entered"]
 [connection signal="value_changed" from="PauseCenter/PauseMenu/CenterSound/Sound/VBoxContainer/PauseSFXVolume" to="." method="_on_pause_sfx_volume_value_changed"]
+[connection signal="focus_entered" from="PauseCenter/PauseMenu/CenterQuit/PauseQuit" to="." method="_on_pause_quit_focus_entered"]
+[connection signal="mouse_entered" from="PauseCenter/PauseMenu/CenterQuit/PauseQuit" to="." method="_on_pause_quit_mouse_entered"]
 [connection signal="pressed" from="PauseCenter/PauseMenu/CenterQuit/PauseQuit" to="." method="_on_pause_quit_pressed"]
 [connection signal="focus_entered" from="MainCenter/MainMenu/CenterPlay/MainPlay" to="." method="_on_main_play_focus_entered"]
 [connection signal="mouse_entered" from="MainCenter/MainMenu/CenterPlay/MainPlay" to="." method="_on_main_play_mouse_entered"]

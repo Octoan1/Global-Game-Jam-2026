@@ -41,6 +41,7 @@ func _process(delta: float) -> void:
 		get_tree().paused = false
 		pause_center.visible = false
 		await get_tree().create_timer(1).timeout
+
 #Play
 func _on_main_play_pressed() -> void:
 	get_tree().paused = false
@@ -51,33 +52,54 @@ func _on_main_play_focus_entered() -> void:
 	ui_click.play()
 func _on_main_play_mouse_entered() -> void:
 	ui_click.play()
+
 #Resume
 func _on_pause_resume_pressed() -> void:
 	get_tree().paused = false
 	pause_center.visible = false
 	await get_tree().create_timer(1).timeout
+func _on_pause_resume_focus_entered() -> void:
+	ui_click.play()
+func _on_pause_resume_mouse_entered() -> void:
+	ui_click.play()
+	
 #Volume Control
 	#Pause
 func _on_pause_music_volume_value_changed(value: float) -> void:
 	pass # Replace with function body.
+func _on_pause_music_volume_focus_entered() -> void:
+	ui_click.play()
+func _on_pause_music_volume_mouse_entered() -> void:
+	ui_click.play()
+func _on_pause_sfx_volume_value_changed(value: float) -> void:
+	pass # Replace with function body.
+func _on_pause_sfx_volume_focus_entered() -> void:
+	ui_click.play()
+func _on_pause_sfx_volume_mouse_entered() -> void:
+	ui_click.play()
+	#Main
 func _on_main_music_volume_focus_entered() -> void:
 	ui_click.play()
 func _on_main_music_volume_mouse_entered() -> void:
 	ui_click.play()
-func _on_pause_sfx_volume_value_changed(value: float) -> void:
+func _on_main_music_volume_value_changed(value: float) -> void:
+	pass # Replace with function body.
+func _on_main_sfx_volume_value_changed(value: float) -> void:
 	pass # Replace with function body.
 func _on_main_sfx_volume_focus_entered() -> void:
 	ui_click.play()
 func _on_main_sfx_volume_mouse_entered() -> void:
 	ui_click.play()
-	#Main
-func _on_main_sfx_volume_value_changed(value: float) -> void:
-	pass # Replace with function body.
-func _on_main_music_volume_value_changed(value: float) -> void:
-	pass # Replace with function body.
+	
 #Quit
+	#Pause
 func _on_pause_quit_pressed() -> void:
 	get_tree().quit()
+func _on_pause_quit_focus_entered() -> void:
+	ui_click.play()
+func _on_pause_quit_mouse_entered() -> void:
+	ui_click.play()
+	#Main
 func _on_main_quit_pressed() -> void:
 	get_tree().quit()
 func _on_main_quit_focus_entered() -> void:
