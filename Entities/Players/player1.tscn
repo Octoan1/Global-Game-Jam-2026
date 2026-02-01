@@ -295,7 +295,7 @@ animations = [{
 }]
 
 [node name="Player1" type="CharacterBody2D" unique_id=501140443]
-z_index = 1
+z_index = 2
 collision_layer = 2
 script = ExtResource("1_yscd2")
 arrow_color = Color(1, 0, 0, 1)

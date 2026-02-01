@@ -13,6 +13,7 @@ atlas = ExtResource("2_yqluf")
 region = Rect2(16, 128, 32, 32)
 
 [node name="ExitArea" type="Area2D" unique_id=2084659212]
+z_index = 1
 collision_layer = 17
 collision_mask = 6
 script = ExtResource("1_d0ldc")
