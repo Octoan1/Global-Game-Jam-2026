@@ -3,15 +3,15 @@
 importer="texture"
 type="CompressedTexture2D"
 uid="uid://dn7tee30eiels"
-path="res://.godot/imported/dingle_poofed-Sheet.png-68b9d836a984b6feca47d2c7a92b8bc8.ctex"
+path="res://.godot/imported/dingle_poofed-Sheet.png-f873392d20a8c886ad21242b7c8b7c24.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Aseprite/Player/Dingle/dingle_poofed-Sheet.png"
-dest_files=["res://.godot/imported/dingle_poofed-Sheet.png-68b9d836a984b6feca47d2c7a92b8bc8.ctex"]
+source_file="res://Aseprite/Player/Dingle/Normal/dingle_poofed-Sheet.png"
+dest_files=["res://.godot/imported/dingle_poofed-Sheet.png-f873392d20a8c886ad21242b7c8b7c24.ctex"]
 
 [params]
 

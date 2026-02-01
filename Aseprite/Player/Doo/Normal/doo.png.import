@@ -3,15 +3,15 @@
 importer="texture"
 type="CompressedTexture2D"
 uid="uid://bqrg3jrwvampx"
-path="res://.godot/imported/doo.png-48163bf902df5d8a7d76dd49e6842d43.ctex"
+path="res://.godot/imported/doo.png-3d4cb9111ee5f62e0da98329989dddb2.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Aseprite/Player/Doo/doo.png"
-dest_files=["res://.godot/imported/doo.png-48163bf902df5d8a7d76dd49e6842d43.ctex"]
+source_file="res://Aseprite/Player/Doo/Normal/doo.png"
+dest_files=["res://.godot/imported/doo.png-3d4cb9111ee5f62e0da98329989dddb2.ctex"]
 
 [params]
 

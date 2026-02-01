@@ -3,15 +3,15 @@
 importer="texture"
 type="CompressedTexture2D"
 uid="uid://kdkvyeuk03i1"
-path="res://.godot/imported/dingle_walk-Sheet.png-67b05f9917f4656b4395fec3644c16c3.ctex"
+path="res://.godot/imported/dingle_walk-Sheet.png-e84836927d3fbd19729536356ff6ac13.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Aseprite/Player/Dingle/dingle_walk-Sheet.png"
-dest_files=["res://.godot/imported/dingle_walk-Sheet.png-67b05f9917f4656b4395fec3644c16c3.ctex"]
+source_file="res://Aseprite/Player/Dingle/Normal/dingle_walk-Sheet.png"
+dest_files=["res://.godot/imported/dingle_walk-Sheet.png-e84836927d3fbd19729536356ff6ac13.ctex"]
 
 [params]
 

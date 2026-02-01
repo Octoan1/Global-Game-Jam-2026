@@ -3,15 +3,15 @@
 importer="texture"
 type="CompressedTexture2D"
 uid="uid://dmg3qe84q1rgd"
-path="res://.godot/imported/doo_ghost_walk-Sheet.png-c49c66b0b7183f06263959fa5d006cf8.ctex"
+path="res://.godot/imported/doo_ghost_walk-Sheet.png-b0399b0e11d86a09d52aa4af111cd112.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Aseprite/Player/Doo/doo_ghost_walk-Sheet.png"
-dest_files=["res://.godot/imported/doo_ghost_walk-Sheet.png-c49c66b0b7183f06263959fa5d006cf8.ctex"]
+source_file="res://Aseprite/Player/Doo/Ghost/doo_ghost_walk-Sheet.png"
+dest_files=["res://.godot/imported/doo_ghost_walk-Sheet.png-b0399b0e11d86a09d52aa4af111cd112.ctex"]
 
 [params]
 

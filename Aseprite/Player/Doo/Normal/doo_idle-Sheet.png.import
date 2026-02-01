@@ -3,15 +3,15 @@
 importer="texture"
 type="CompressedTexture2D"
 uid="uid://ys5rj70sdnb1"
-path="res://.godot/imported/doo_idle-Sheet.png-fe2d4729ea60bdf17112332e421ad274.ctex"
+path="res://.godot/imported/doo_idle-Sheet.png-ab0554ffcfa73b535d4bb16b97fc09b2.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Aseprite/Player/Doo/doo_idle-Sheet.png"
-dest_files=["res://.godot/imported/doo_idle-Sheet.png-fe2d4729ea60bdf17112332e421ad274.ctex"]
+source_file="res://Aseprite/Player/Doo/Normal/doo_idle-Sheet.png"
+dest_files=["res://.godot/imported/doo_idle-Sheet.png-ab0554ffcfa73b535d4bb16b97fc09b2.ctex"]
 
 [params]
 
