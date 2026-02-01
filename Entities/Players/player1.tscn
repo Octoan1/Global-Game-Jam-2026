@@ -1,13 +1,30 @@
 [gd_scene format=3 uid="uid://dfg58lmub4mlf"]
 
 [ext_resource type="Script" uid="uid://bn1k6elpp2y4r" path="res://Entities/Players/player.gd" id="1_yscd2"]
-[ext_resource type="Texture2D" uid="uid://co0lum64xquic" path="res://Aseprite/Player/Dingle/dingle_ghost.png" id="3_2m8x8"]
-[ext_resource type="Texture2D" uid="uid://pelbol6dtsld" path="res://Aseprite/Player/Dingle/dingle.png" id="4_k3pxy"]
+[ext_resource type="Texture2D" uid="uid://co0lum64xquic" path="res://Aseprite/Player/Dingle/Ghost/dingle_ghost.png" id="3_2m8x8"]
+[ext_resource type="Texture2D" uid="uid://pelbol6dtsld" path="res://Aseprite/Player/Dingle/Normal/dingle.png" id="4_k3pxy"]
 [ext_resource type="PackedScene" uid="uid://ir766e3jwv8n" path="res://Objects/Mask/mask.tscn" id="4_xwwn8"]
-[ext_resource type="Texture2D" uid="uid://bqwpikbrdth8b" path="res://Aseprite/Player/Dingle/dingle_idle-Sheet.png" id="5_ktqc6"]
-[ext_resource type="Texture2D" uid="uid://kdkvyeuk03i1" path="res://Aseprite/Player/Dingle/dingle_walk-Sheet.png" id="5_ndun7"]
-[ext_resource type="Texture2D" uid="uid://bnrurhr2kt2x4" path="res://Aseprite/Player/Dingle/dingle_ghost_walk-Sheet.png" id="5_rpa8b"]
-[ext_resource type="Texture2D" uid="uid://dn7tee30eiels" path="res://Aseprite/Player/Dingle/dingle_poofed-Sheet.png" id="7_yicrl"]
+[ext_resource type="Texture2D" uid="uid://bqwpikbrdth8b" path="res://Aseprite/Player/Dingle/Normal/dingle_idle-Sheet.png" id="5_ktqc6"]
+[ext_resource type="Texture2D" uid="uid://kdkvyeuk03i1" path="res://Aseprite/Player/Dingle/Normal/dingle_walk-Sheet.png" id="5_ndun7"]
+[ext_resource type="Texture2D" uid="uid://bnrurhr2kt2x4" path="res://Aseprite/Player/Dingle/Ghost/dingle_ghost_walk-Sheet.png" id="5_rpa8b"]
+[ext_resource type="Texture2D" uid="uid://cdgu80dkvrl4t" path="res://Aseprite/Player/Doo/Ghost/doo_ghost_idle-Sheet.png" id="5_yicrl"]
+[ext_resource type="Texture2D" uid="uid://dn7tee30eiels" path="res://Aseprite/Player/Dingle/Normal/dingle_poofed-Sheet.png" id="7_yicrl"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_bgymn"]
+atlas = ExtResource("5_yicrl")
+region = Rect2(0, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_2tm5f"]
+atlas = ExtResource("5_yicrl")
+region = Rect2(32, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ihcqc"]
+atlas = ExtResource("5_yicrl")
+region = Rect2(64, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_07fpm"]
+atlas = ExtResource("5_yicrl")
+region = Rect2(96, 0, 32, 32)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_suhm7"]
 atlas = ExtResource("5_rpa8b")
@@ -57,10 +74,6 @@ region = Rect2(64, 0, 32, 32)
 atlas = ExtResource("7_yicrl")
 region = Rect2(96, 0, 32, 32)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_jcvgl"]
-atlas = ExtResource("7_yicrl")
-region = Rect2(96, 0, 32, 32)
-
 [sub_resource type="AtlasTexture" id="AtlasTexture_qxtqi"]
 atlas = ExtResource("7_yicrl")
 region = Rect2(64, 0, 32, 32)
@@ -91,6 +104,23 @@ region = Rect2(96, 0, 32, 32)
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_2g48j"]
 animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_bgymn")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_2tm5f")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ihcqc")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_07fpm")
+}],
+"loop": true,
+"name": &"Ghost_Idle",
+"speed": 6.0
+}, {
 "frames": [{
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_suhm7")
@@ -144,9 +174,6 @@ animations = [{
 }, {
 "frames": [{
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_jcvgl")
-}, {
-"duration": 1.0,
 "texture": SubResource("AtlasTexture_qxtqi")
 }, {
 "duration": 1.0,
@@ -196,7 +223,5 @@ polygon = PackedVector2Array(-11, -11, -11, 12, 10, 12, 10, -11)
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=936637707]
 sprite_frames = SubResource("SpriteFrames_2g48j")
-animation = &"Unpoof"
+animation = &"Idle"
 autoplay = "Idle"
-frame = 3
-frame_progress = 1.0
