@@ -5,10 +5,10 @@
 [ext_resource type="PackedScene" uid="uid://ir766e3jwv8n" path="res://Objects/Mask/mask.tscn" id="4_xwwn8"]
 [ext_resource type="Texture2D" uid="uid://bu57o874woypj" path="res://Aseprite/Player/Dingle/Transition/dingle_normal_to_ghost-Sheet.png" id="5_2g48j"]
 [ext_resource type="Texture2D" uid="uid://bqwpikbrdth8b" path="res://Aseprite/Player/Dingle/Normal/dingle_idle-Sheet.png" id="5_ktqc6"]
-[ext_resource type="Texture2D" uid="uid://kdkvyeuk03i1" path="res://Aseprite/Player/Dingle/Normal/dingle_walk-Sheet.png" id="5_ndun7"]
 [ext_resource type="Texture2D" uid="uid://bnrurhr2kt2x4" path="res://Aseprite/Player/Dingle/Ghost/dingle_ghost_walk-Sheet.png" id="5_rpa8b"]
 [ext_resource type="Texture2D" uid="uid://ehab72wgl0wf" path="res://Aseprite/Player/Dingle/Ghost/dingle_ghost_idle-Sheet.png" id="5_yicrl"]
 [ext_resource type="Texture2D" uid="uid://dn7tee30eiels" path="res://Aseprite/Player/Dingle/Transition/dingle_poofed-Sheet.png" id="7_yicrl"]
+[ext_resource type="Texture2D" uid="uid://bumq8lwg8il2w" path="res://Aseprite/Player/Dingle/Normal/dingle_walk_NEW-Sheet.png" id="9_yicrl"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_07fpm"]
 atlas = ExtResource("5_2g48j")
@@ -114,21 +114,41 @@ region = Rect2(32, 0, 32, 32)
 atlas = ExtResource("7_yicrl")
 region = Rect2(0, 0, 32, 32)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_ktqc6"]
-atlas = ExtResource("5_ndun7")
+[sub_resource type="AtlasTexture" id="AtlasTexture_ig3af"]
+atlas = ExtResource("9_yicrl")
 region = Rect2(0, 0, 32, 32)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_0i6i3"]
-atlas = ExtResource("5_ndun7")
+[sub_resource type="AtlasTexture" id="AtlasTexture_oyxhl"]
+atlas = ExtResource("9_yicrl")
 region = Rect2(32, 0, 32, 32)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_rpa8b"]
-atlas = ExtResource("5_ndun7")
+[sub_resource type="AtlasTexture" id="AtlasTexture_0idp7"]
+atlas = ExtResource("9_yicrl")
 region = Rect2(64, 0, 32, 32)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_yicrl"]
-atlas = ExtResource("5_ndun7")
+[sub_resource type="AtlasTexture" id="AtlasTexture_mu1m6"]
+atlas = ExtResource("9_yicrl")
 region = Rect2(96, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_v8qgk"]
+atlas = ExtResource("9_yicrl")
+region = Rect2(128, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ca402"]
+atlas = ExtResource("9_yicrl")
+region = Rect2(160, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ye73t"]
+atlas = ExtResource("9_yicrl")
+region = Rect2(192, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ioobh"]
+atlas = ExtResource("9_yicrl")
+region = Rect2(224, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_teylc"]
+atlas = ExtResource("9_yicrl")
+region = Rect2(256, 0, 32, 32)
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_2g48j"]
 animations = [{
@@ -242,23 +262,39 @@ animations = [{
 }, {
 "frames": [{
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_ktqc6")
+"texture": SubResource("AtlasTexture_ig3af")
 }, {
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_0i6i3")
+"texture": SubResource("AtlasTexture_oyxhl")
 }, {
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_rpa8b")
+"texture": SubResource("AtlasTexture_0idp7")
 }, {
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_yicrl")
+"texture": SubResource("AtlasTexture_mu1m6")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_v8qgk")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ca402")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ye73t")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ioobh")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_teylc")
 }],
 "loop": true,
 "name": &"Walk",
-"speed": 6.0
+"speed": 24.0
 }]
 
 [node name="Player1" type="CharacterBody2D" unique_id=501140443]
+z_index = 1
 collision_layer = 2
 script = ExtResource("1_yscd2")
 arrow_color = Color(1, 0, 0, 1)
@@ -276,6 +312,5 @@ polygon = PackedVector2Array(-11, -11, -11, 12, 10, 12, 10, -11)
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=936637707]
 sprite_frames = SubResource("SpriteFrames_2g48j")
-animation = &"Become_Ghost"
-frame = 6
-frame_progress = 1.0
+animation = &"Walk"
+frame_progress = 0.45043984
