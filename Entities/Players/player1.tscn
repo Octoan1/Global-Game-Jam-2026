@@ -8,8 +8,8 @@
 [ext_resource type="Texture2D" uid="uid://bnrurhr2kt2x4" path="res://Aseprite/Player/Dingle/Ghost/dingle_ghost_walk-Sheet.png" id="5_rpa8b"]
 [ext_resource type="Texture2D" uid="uid://ehab72wgl0wf" path="res://Aseprite/Player/Dingle/Ghost/dingle_ghost_idle-Sheet.png" id="5_yicrl"]
 [ext_resource type="Texture2D" uid="uid://dn7tee30eiels" path="res://Aseprite/Player/Dingle/Transition/dingle_poofed-Sheet.png" id="7_yicrl"]
-[ext_resource type="AudioStream" uid="uid://bar4xufjgyo7t" path="res://Sound/SFX/footstep4.ogg" id="10_2g48j"]
 [ext_resource type="Texture2D" uid="uid://bumq8lwg8il2w" path="res://Aseprite/Player/Dingle/Normal/dingle_walk_NEW-Sheet.png" id="9_yicrl"]
+[ext_resource type="AudioStream" uid="uid://bar4xufjgyo7t" path="res://Sound/SFX/footstep4.ogg" id="10_2g48j"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_07fpm"]
 atlas = ExtResource("5_2g48j")
@@ -291,7 +291,7 @@ animations = [{
 }],
 "loop": true,
 "name": &"Walk",
-"speed": 24.0
+"speed": 32.0
 }]
 
 [node name="Player1" type="CharacterBody2D" unique_id=501140443]
@@ -313,12 +313,8 @@ polygon = PackedVector2Array(-11, -11, -11, 12, 10, 12, 10, -11)
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=936637707]
 sprite_frames = SubResource("SpriteFrames_2g48j")
-animation = &"Become_Ghost"
-frame = 6
-frame_progress = 1.0
+animation = &"Walk"
 
 [node name="WalkSound" type="AudioStreamPlayer" parent="." unique_id=1809939202]
 stream = ExtResource("10_2g48j")
 bus = &"SFX"
-animation = &"Walk"
-frame_progress = 0.45043984
