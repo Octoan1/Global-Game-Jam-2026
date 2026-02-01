@@ -4,6 +4,8 @@ extends Control
 @onready var ui_accept: AudioStreamPlayer2D = $UIAccept
 @onready var ui_click: AudioStreamPlayer2D = $UIClick
 @onready var game_start: AudioStreamPlayer2D = $GameStart
+@onready var game_music: AudioStreamPlayer2D = $Music
+@onready var main_ambient: AudioStreamPlayer2D = $MainMuicAmbient
 
 #Ready Main Menu
 @onready var main_center: CenterContainer = $MainCenter
@@ -11,6 +13,10 @@ extends Control
 @onready var main_quit: TextureButton = $MainCenter/MainMenu/CenterQuit/MainQuit
 @onready var main_music: Slider = $MainCenter/MainMenu/CenterSound/Sound/CenterSliders/VBoxContainer/MainMusicVolume
 @onready var main_sfx: Slider = $MainCenter/MainMenu/CenterSound/Sound/CenterSliders/VBoxContainer/MainSFXVolume
+@onready var main_bg: TextureRect = $MainBG
+@onready var logo: TextureRect = $Logo
+
+
 
 #Ready Pause
 @onready var pause_center: CenterContainer = $PauseCenter
@@ -28,8 +34,11 @@ extends Control
 
 @onready var menu: bool = false
 
+
+
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
+	main_ambient.play()
 	pause_center.visible = false
 	get_tree().paused = true
 	main_play.grab_focus()
@@ -52,6 +61,10 @@ func _on_main_play_pressed() -> void:
 	get_tree().paused = false
 	main_center.visible = false
 	game_start.play()
+	main_ambient.stop()
+	game_music.play()
+	main_bg.visible = false
+	logo.visible = false
 	main_center.PROCESS_MODE_DISABLED
 func _on_main_play_focus_entered() -> void:
 	ui_click.play()
