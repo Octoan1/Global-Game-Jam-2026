@@ -334,10 +334,12 @@ volume_db = -7.0
 bus = &"SFX"
 
 [node name="PoofSound" type="AudioStreamPlayer" parent="." unique_id=1047441868]
+volume_db = -5.0
 bus = &"SFX"
 
 [node name="ReformSound" type="AudioStreamPlayer" parent="." unique_id=1256530323]
 stream = ExtResource("13_0yl1h")
+volume_db = -10.0
 bus = &"SFX"
 
 [node name="MaskEquipSound" type="AudioStreamPlayer" parent="." unique_id=1328519367]

@@ -48,6 +48,9 @@ var await_walk = false
 @onready var reform_sound = $ReformSound
 @onready var mask_equip_sound = $MaskEquipSound
 
+#Conner additions
+@onready var level_manager = $"../LevelManager"
+
 
 
 func _ready() -> void:
@@ -225,6 +228,9 @@ func _physics_process(delta: float) -> void:
 	
 	if throwing:
 		queue_redraw()
+	
+	if Input.is_action_just_pressed("reset_level"):
+		level_manager.reset_players()
 	
 func _update_arrow():
 	if not throwing:

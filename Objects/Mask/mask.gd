@@ -26,8 +26,7 @@ func _return_to_thrower():
 	#return sound
 	if returning == true:
 		if return_sound.has_stream_playback() == false:
-			#return_sound.play()
-			pass
+			return_sound.play()
 
 func _physics_process(_delta: float) -> void:
 	if returning and thrower != null:
