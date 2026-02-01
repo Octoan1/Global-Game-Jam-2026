@@ -3,8 +3,9 @@
 [ext_resource type="Texture2D" uid="uid://dn7tee30eiels" path="res://Aseprite/Player/Dingle/Transition/dingle_poofed-Sheet.png" id="1_8wtjx"]
 [ext_resource type="Script" uid="uid://crfqgcd5g025t" path="res://Objects/Pile/pile.gd" id="1_wslh4"]
 [ext_resource type="Texture2D" uid="uid://myswj4faflo5" path="res://Aseprite/Player/Doo/Transition/doo_poofed-Sheet.png" id="2_r03kp"]
-[ext_resource type="Texture2D" uid="uid://p5voa585ueam" path="res://Aseprite/Player/Doo/Transition/doo_body_traveling.png" id="3_vmjvf"]
+[ext_resource type="Texture2D" uid="uid://dabev8dud7l83" path="res://Aseprite/Player/Doo/Transition/doo_body_traveling.png" id="3_vmjvf"]
 [ext_resource type="Texture2D" uid="uid://cggndpajr2hky" path="res://Aseprite/Player/Dingle/Transition/dingle_body_traveling.png" id="4_vnxf8"]
+[ext_resource type="AudioStream" uid="uid://c3xjvnyorjw3n" path="res://Sound/swing.ogg" id="6_t40gy"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_vmjvf"]
 atlas = ExtResource("2_r03kp")
@@ -84,3 +85,6 @@ frame_progress = 0.74876374
 
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="." unique_id=1836554734]
 polygon = PackedVector2Array(-14, 12, 14, 12, 14, 10, 9, 5, 2, 2, -2, 2, -7, 4, -10, 6, -14, 10)
+
+[node name="FlyingLeavesSound" type="AudioStreamPlayer" parent="." unique_id=1291438749]
+stream = ExtResource("6_t40gy")

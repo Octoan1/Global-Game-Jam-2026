@@ -10,6 +10,9 @@
 [ext_resource type="Texture2D" uid="uid://dn7tee30eiels" path="res://Aseprite/Player/Dingle/Transition/dingle_poofed-Sheet.png" id="7_yicrl"]
 [ext_resource type="Texture2D" uid="uid://bumq8lwg8il2w" path="res://Aseprite/Player/Dingle/Normal/dingle_walk_NEW-Sheet.png" id="9_yicrl"]
 [ext_resource type="AudioStream" uid="uid://iiangmoo7lj6" path="res://Sound/footstep6.ogg" id="10_2g48j"]
+[ext_resource type="AudioStream" uid="uid://3mqi17tfdeiy" path="res://Sound/SFX/jump3.ogg" id="11_e6s7n"]
+[ext_resource type="AudioStream" uid="uid://d3pamiks1b4k0" path="res://Sound/reform.ogg" id="12_cdada"]
+[ext_resource type="AudioStream" uid="uid://b7c6uhuqxa72r" path="res://Sound/swoop.ogg" id="13_wbpkj"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_07fpm"]
 atlas = ExtResource("5_2g48j")
@@ -318,4 +321,22 @@ frame_progress = 0.83778954
 
 [node name="WalkSound" type="AudioStreamPlayer" parent="." unique_id=1809939202]
 stream = ExtResource("10_2g48j")
+bus = &"SFX"
+
+[node name="JumpSound" type="AudioStreamPlayer" parent="." unique_id=866958174]
+stream = ExtResource("11_e6s7n")
+volume_db = -7.0
+bus = &"SFX"
+
+[node name="PoofSound" type="AudioStreamPlayer" parent="." unique_id=1002640386]
+volume_db = -5.0
+bus = &"SFX"
+
+[node name="ReformSound" type="AudioStreamPlayer" parent="." unique_id=1835540579]
+stream = ExtResource("12_cdada")
+volume_db = -10.0
+bus = &"SFX"
+
+[node name="MaskEquipSound" type="AudioStreamPlayer" parent="." unique_id=1157209043]
+stream = ExtResource("13_wbpkj")
 bus = &"SFX"

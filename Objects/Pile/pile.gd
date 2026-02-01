@@ -6,6 +6,9 @@ var flying = false
 var connected = false
 var red: bool
 @onready var sprite: AnimatedSprite2D = $AnimatedSprite2D
+
+@onready var flying_leaves_sound = $FlyingLeavesSound
+
 		
 func _physics_process(delta: float):
 	if not connected:
@@ -38,7 +41,9 @@ func _on_player_gather_leaves():
 	flying = true
 	if red:
 		sprite.play("Flying_Red")
+		flying_leaves_sound.play()
 	else:
 		sprite.play("Flying_Blue")
+		flying_leaves_sound.play()
 	set_collision_mask_value(1, false)
 	player.respawning = true
