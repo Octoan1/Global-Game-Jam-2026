@@ -3,6 +3,9 @@
 [ext_resource type="Script" uid="uid://cjiat2yv0tcle" path="res://Scenes/Levels/level_data.gd" id="1_oylv5"]
 [ext_resource type="Texture2D" uid="uid://dwjdlqk7ymxl8" path="res://Aseprite/Environment/Tilemap/Tilemap.png" id="1_ucdhh"]
 [ext_resource type="PackedScene" uid="uid://liirdi4so46o" path="res://Objects/Level Things/exit_area.tscn" id="2_oylv5"]
+[ext_resource type="Script" uid="uid://cq7fj3g7306mb" path="res://Scenes/Levels/death_plane.gd" id="4_w2ac1"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_oylv5"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_w2ac1"]
 texture = ExtResource("1_ucdhh")
@@ -387,22 +390,6 @@ terrain_set_0/terrain_1/name = "Ghost Walls 1"
 terrain_set_0/terrain_1/color = Color(0.2862138, 0.40377316, 0.82391006, 1)
 sources/0 = SubResource("TileSetAtlasSource_w2ac1")
 
-[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_8qsmg"]
-texture = ExtResource("1_ucdhh")
-1:8/0 = 0
-1:8/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
-2:8/0 = 0
-2:8/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
-1:9/0 = 0
-1:9/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
-2:9/0 = 0
-2:9/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
-
-[sub_resource type="TileSet" id="TileSet_fphuk"]
-physics_layer_0/collision_layer = 0
-physics_layer_0/collision_mask = 0
-sources/0 = SubResource("TileSetAtlasSource_8qsmg")
-
 [node name="Level2" type="Node2D" unique_id=1624626228]
 script = ExtResource("1_oylv5")
 player_1_spawn = Vector2(87, 212)
@@ -410,13 +397,21 @@ player_2_spawn = Vector2(87, 70)
 
 [node name="ExitArea" parent="." unique_id=2084659212 instance=ExtResource("2_oylv5")]
 unique_name_in_owner = true
-position = Vector2(32, -48)
+position = Vector2(304, 128)
 next_level_id = 3
 
+[node name="DeathPlane" type="Area2D" parent="." unique_id=442349805]
+position = Vector2(162, 255)
+scale = Vector2(20, 0.5199976)
+collision_layer = 17
+collision_mask = 6
+script = ExtResource("4_w2ac1")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="DeathPlane" unique_id=1270607555]
+shape = SubResource("RectangleShape2D_oylv5")
+
 [node name="Walls" type="TileMapLayer" parent="." unique_id=1148790277]
-tile_map_data = PackedByteArray("AAAAAA4AAAAAAAEAAAAAAA0AAAAAAAEAAAAAAAwAAAAAAAEAAAAAAAsAAAAAAAAAAAABAAsAAAABAAAAAAACAAsAAAACAAAAAAACAAwAAAACAAEAAAACAA0AAAACAAEAAAACAA4AAAACAAEAAAAJAAsAAAABAAAAAAATAA4AAAACAAEAAAATAA0AAAACAAEAAAATAAwAAAACAAEAAAATAAsAAAACAAAAAAASAAsAAAABAAAAAAARAAsAAAAAAAAAAAARAAwAAAAAAAEAAAARAA0AAAAAAAEAAAARAA4AAAAAAAEAAAALAAsAAAACAAAAAAALAAwAAAACAAEAAAALAA0AAAACAAEAAAALAA4AAAACAAEAAAAKAAsAAAABAAAAAAAIAAsAAAAAAAAAAAAIAAwAAAAAAAEAAAAIAA0AAAAAAAEAAAAIAA4AAAAAAAEAAAAKAAwAAAABAAEAAAAKAA0AAAABAAEAAAAKAA4AAAABAAEAAAAJAA4AAAABAAEAAAAJAA0AAAABAAEAAAAJAAwAAAABAAEAAAABAAwAAAABAAEAAAABAA0AAAABAAEAAAABAA4AAAABAAEAAAASAAwAAAABAAEAAAASAA0AAAABAAEAAAASAA4AAAABAAEAAAA=")
+tile_map_data = PackedByteArray("AAAAAA4AAAAAAAEAAAAAAA0AAAAAAAEAAAAAAAwAAAAAAAEAAAAAAAsAAAAAAAAAAAABAAsAAAABAAAAAAACAAsAAAACAAAAAAACAAwAAAACAAEAAAACAA0AAAACAAEAAAACAA4AAAACAAEAAAAJAAsAAAABAAEAAAATAA4AAAACAAEAAAATAA0AAAACAAEAAAATAAwAAAACAAEAAAATAAsAAAACAAEAAAASAAsAAAABAAEAAAARAAsAAAAAAAEAAAARAAwAAAAAAAEAAAARAA0AAAAAAAEAAAARAA4AAAAAAAEAAAALAAsAAAACAAEAAAALAAwAAAACAAEAAAALAA0AAAACAAEAAAALAA4AAAACAAEAAAAKAAsAAAABAAEAAAAIAAsAAAAAAAEAAAAIAAwAAAAAAAEAAAAIAA0AAAAAAAEAAAAIAA4AAAAAAAEAAAAKAAwAAAABAAEAAAAKAA0AAAABAAEAAAAKAA4AAAABAAEAAAAJAA4AAAABAAEAAAAJAA0AAAABAAEAAAAJAAwAAAABAAEAAAABAAwAAAABAAEAAAABAA0AAAABAAEAAAABAA4AAAABAAEAAAASAAwAAAABAAEAAAASAA0AAAABAAEAAAASAA4AAAABAAEAAAAKAAoAAAABAAAAAAAJAAoAAAABAAAAAAALAAoAAAACAAAAAAAIAAoAAAAAAAAAAAASAAkAAAABAAAAAAARAAkAAAAAAAAAAAATAAkAAAACAAAAAAATAAoAAAACAAEAAAARAAoAAAAAAAEAAAASAAoAAAABAAEAAAA=")
 tile_set = SubResource("TileSet_ovj6s")
 
-[node name="LevelExit" type="TileMapLayer" parent="." unique_id=1439619174]
-tile_map_data = PackedByteArray("AAASAAkAAAABAAgAAAASAAoAAAABAAkAAAATAAkAAAACAAgAAAATAAoAAAACAAkAAAA=")
-tile_set = SubResource("TileSet_fphuk")
+[connection signal="body_entered" from="DeathPlane" to="DeathPlane" method="_on_body_entered"]

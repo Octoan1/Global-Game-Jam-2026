@@ -1,9 +1,14 @@
 [gd_scene format=3 uid="uid://liirdi4so46o"]
 
 [ext_resource type="Script" uid="uid://dq12qi1isj4hc" path="res://Objects/Level Things/level_exit.gd" id="1_d0ldc"]
+[ext_resource type="Texture2D" uid="uid://dwjdlqk7ymxl8" path="res://Aseprite/Environment/Tilemap/Tilemap.png" id="2_yqluf"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_7p6j4"]
 size = Vector2(32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_nci6k"]
+atlas = ExtResource("2_yqluf")
+region = Rect2(16, 128, 32, 32)
 
 [node name="ExitArea" type="Area2D" unique_id=2084659212]
 collision_layer = 17
@@ -11,8 +16,10 @@ collision_mask = 6
 script = ExtResource("1_d0ldc")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1223758195]
-position = Vector2(272, 208)
 shape = SubResource("RectangleShape2D_7p6j4")
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=1019555957]
+texture = SubResource("AtlasTexture_nci6k")
 
 [connection signal="body_entered" from="." to="." method="_on_body_entered"]
 [connection signal="body_exited" from="." to="." method="_on_body_exited"]
