@@ -19,6 +19,7 @@ metadata/__load_path__ = "res://Aseprite/Player/dingle_ghost.png"
 [node name="GameWorld" type="Node2D" unique_id=311252913]
 
 [node name="LevelManager" parent="." unique_id=2114957057 instance=ExtResource("1_p4c8d")]
+process_mode = 3
 
 [node name="LevelBackground" type="TextureRect" parent="." unique_id=2143649183]
 z_index = -1
@@ -49,3 +50,7 @@ pile_scene = ExtResource("7_rr1si")
 [node name="CanvasLayer" type="CanvasLayer" parent="." unique_id=372853444]
 
 [node name="UI" parent="CanvasLayer" unique_id=1993868164 instance=ExtResource("8_27os8")]
+
+[node name="bgMusic" type="AudioStreamPlayer" parent="." unique_id=526700438]
+
+[node name="TitleMusic" type="AudioStreamPlayer" parent="." unique_id=1785132600]
