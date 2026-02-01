@@ -292,7 +292,7 @@ animations = [{
 }],
 "loop": true,
 "name": &"Walk",
-"speed": 16.0
+"speed": 24.0
 }]
 
 [node name="Player2" type="CharacterBody2D" unique_id=1845162299]
@@ -315,9 +315,12 @@ polygon = PackedVector2Array(-11, -11, -11, 12, 10, 12, 10, -11)
 [node name="Pointer" type="Node2D" parent="." unique_id=398357479]
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=965665565]
+z_index = 1
 sprite_frames = SubResource("SpriteFrames_swfhw")
 animation = &"Become_Ghost"
 
 [node name="WalkSound" type="AudioStreamPlayer" parent="." unique_id=190349772]
 stream = ExtResource("11_0la2m")
 bus = &"SFX"
+animation = &"Walk"
+frame_progress = 0.43207487

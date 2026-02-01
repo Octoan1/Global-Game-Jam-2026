@@ -4,6 +4,7 @@
 [ext_resource type="Script" uid="uid://crfqgcd5g025t" path="res://Objects/Pile/pile.gd" id="1_wslh4"]
 [ext_resource type="Texture2D" uid="uid://myswj4faflo5" path="res://Aseprite/Player/Doo/Transition/doo_poofed-Sheet.png" id="2_r03kp"]
 [ext_resource type="Texture2D" uid="uid://p5voa585ueam" path="res://Aseprite/Player/Doo/Transition/doo_body_traveling.png" id="3_vmjvf"]
+[ext_resource type="Texture2D" uid="uid://cggndpajr2hky" path="res://Aseprite/Player/Dingle/Transition/dingle_body_traveling.png" id="4_vnxf8"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_vmjvf"]
 atlas = ExtResource("2_r03kp")
@@ -15,6 +16,14 @@ region = Rect2(0, 0, 16, 32)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_t40gy"]
 atlas = ExtResource("3_vmjvf")
+region = Rect2(16, 0, 16, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_0kavq"]
+atlas = ExtResource("4_vnxf8")
+region = Rect2(0, 0, 16, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_up3e3"]
+atlas = ExtResource("4_vnxf8")
 region = Rect2(16, 0, 16, 32)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_wslh4"]
@@ -40,7 +49,18 @@ animations = [{
 }],
 "loop": true,
 "name": &"Flying_Blue",
-"speed": 5.0
+"speed": 6.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_0kavq")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_up3e3")
+}],
+"loop": true,
+"name": &"Flying_Red",
+"speed": 6.0
 }, {
 "frames": [{
 "duration": 1.0,
@@ -59,7 +79,8 @@ script = ExtResource("1_wslh4")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=756965035]
 sprite_frames = SubResource("SpriteFrames_r03kp")
-animation = &"Blue"
+animation = &"Flying_Red"
+frame_progress = 0.74876374
 
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="." unique_id=1836554734]
 polygon = PackedVector2Array(-14, 12, 14, 12, 14, 10, 9, 5, 2, 2, -2, 2, -7, 4, -10, 6, -14, 10)
