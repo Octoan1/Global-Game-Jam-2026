@@ -6,9 +6,10 @@
 [ext_resource type="PackedScene" uid="uid://ir766e3jwv8n" path="res://Objects/Mask/mask.tscn" id="4_vps4q"]
 [ext_resource type="Texture2D" uid="uid://cdgu80dkvrl4t" path="res://Aseprite/Player/Doo/Ghost/doo_ghost_idle-Sheet.png" id="5_b43ch"]
 [ext_resource type="Texture2D" uid="uid://dmg3qe84q1rgd" path="res://Aseprite/Player/Doo/Ghost/doo_ghost_walk-Sheet.png" id="5_jcshi"]
+[ext_resource type="PackedScene" uid="uid://bg3sg6k20q6v0" path="res://Objects/Pile/Pile.tscn" id="5_swfhw"]
 [ext_resource type="Texture2D" uid="uid://ys5rj70sdnb1" path="res://Aseprite/Player/Doo/Normal/doo_idle-Sheet.png" id="6_b43ch"]
-[ext_resource type="Texture2D" uid="uid://myswj4faflo5" path="res://Aseprite/Player/Doo/Normal/doo_poofed-Sheet.png" id="7_swfhw"]
-[ext_resource type="Texture2D" uid="uid://d4jtx3b13rafk" path="res://Aseprite/Player/Doo/Normal/doo_walk_2-Sheet.png" id="8_jcshi"]
+[ext_resource type="Texture2D" uid="uid://myswj4faflo5" path="res://Aseprite/Player/Doo/Transition/doo_poofed-Sheet.png" id="7_swfhw"]
+[ext_resource type="Texture2D" uid="uid://d4jtx3b13rafk" path="res://Aseprite/Player/Doo/Normal/doo_walk-Sheet.png" id="8_jcshi"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_5uxf5"]
 atlas = ExtResource("5_b43ch")
@@ -247,6 +248,7 @@ joystick_id = 1
 real_tex = ExtResource("2_vq5c7")
 ghost_tex = ExtResource("2_fgtas")
 mask_scene = ExtResource("4_vps4q")
+pile_scene = ExtResource("5_swfhw")
 
 [node name="Sprite" type="Sprite2D" parent="." unique_id=1031015456]
 visible = false

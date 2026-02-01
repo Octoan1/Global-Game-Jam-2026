@@ -237,6 +237,7 @@ func _draw():
 	draw_line(end_pos, end_pos - arrow_dir * head_size - perp, arrow_color, thickness)
 
 func _update_sprite():
+	pass
 	if mask:
 		sprite.texture = real_tex
 	else:
