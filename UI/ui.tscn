@@ -27,6 +27,7 @@ texture_margin_top = 4.0
 texture_margin_right = 102.0
 
 [node name="UI" type="Control" unique_id=1993868164]
+process_mode = 3
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
@@ -36,6 +37,7 @@ grow_vertical = 2
 script = ExtResource("1_o2jkc")
 
 [node name="PauseCenter" type="CenterContainer" parent="." unique_id=691167076]
+process_mode = 2
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -135,6 +137,7 @@ texture_hover = ExtResource("9_h81ot")
 texture_focused = ExtResource("9_h81ot")
 
 [node name="MainCenter" type="CenterContainer" parent="." unique_id=42359563]
+visible = false
 layout_mode = 1
 anchors_preset = 7
 anchor_left = 0.5
