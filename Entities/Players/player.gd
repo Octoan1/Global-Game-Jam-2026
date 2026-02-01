@@ -46,6 +46,9 @@ func _ready() -> void:
 		parent.add_child.call_deferred(pile)
 		pile.player = self
 		pile.global_position = global_position
+		animated.play("Ghost_Idle")
+	else:
+		animated.play("Idle")
 
 func _physics_process(delta: float) -> void:
 	_update_inputs()
@@ -96,7 +99,7 @@ func _physics_process(delta: float) -> void:
 		velocity.x = move_toward(velocity.x, 0, SPEED)
 	
 	#ghost movement
-	if not mask and not respawning:
+	if not mask and not respawning and animated.animation != "Become_Ghost":
 		if controller:
 			var stick = Vector2(
 			Input.get_joy_axis(joystick_id, JOY_AXIS_LEFT_X),
@@ -261,14 +264,16 @@ func _on_mask_hit(body):
 		return
 	mask = false
 	throwing = false
+	animated.play("Become_Ghost")
 	queue_redraw()
 	body.animated.play("Unpoof")
 	body.ammo = 1
 	body.emit_signal("gather_leaves")
 	var pile = pile_scene.instantiate()
 	var parent = self.get_parent()
-	parent.add_child(pile)
+	parent.add_child.call_deferred(pile)
 	pile.player = self
+	pile.red = self.joystick_id == 0
 	pile.global_position = global_position
 
 func _update_inputs():
@@ -286,6 +291,8 @@ func _get_other_player():
 func _on_animation_finished():
 	if animated.animation == "Unpoof":
 		animated.play("Idle")
+	if animated.animation == "Become_Ghost":
+		animated.play("Ghost_Idle")
 		
 func unpoof_from_leaves():
 	respawning = false
