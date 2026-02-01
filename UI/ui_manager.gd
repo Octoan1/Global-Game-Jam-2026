@@ -75,12 +75,14 @@ func _on_pause_resume_mouse_entered() -> void:
 	#Pause
 func _on_pause_music_volume_value_changed(value: float) -> void:
 	AudioServer.set_bus_volume_db(music, linear_to_db(value))
+	ui_click.play()
 func _on_pause_music_volume_focus_entered() -> void:
 	ui_click.play()
 func _on_pause_music_volume_mouse_entered() -> void:
 	ui_click.play()
 func _on_pause_sfx_volume_value_changed(value: float) -> void:
 	AudioServer.set_bus_volume_db(sfx, linear_to_db(value))
+	ui_click.play()
 func _on_pause_sfx_volume_focus_entered() -> void:
 	ui_click.play()
 func _on_pause_sfx_volume_mouse_entered() -> void:
@@ -92,8 +94,10 @@ func _on_main_music_volume_mouse_entered() -> void:
 	ui_click.play()
 func _on_main_music_volume_value_changed(value: float) -> void:
 	AudioServer.set_bus_volume_db(music, linear_to_db(value))
+	ui_click.play()
 func _on_main_sfx_volume_value_changed(value: float) -> void:
 	AudioServer.set_bus_volume_db(sfx, linear_to_db(value))
+	ui_click.play()
 func _on_main_sfx_volume_focus_entered() -> void:
 	ui_click.play()
 func _on_main_sfx_volume_mouse_entered() -> void:
