@@ -7,12 +7,17 @@ extends Node2D
 @onready var camera: Camera2D = $"../Camera2D"
 @onready var cam_size = camera.get_viewport_rect().size * camera.zoom
 
+func _ready() -> void:
+	print(player1)
+	print(player2)
+	print(camera)
+
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(_delta: float) -> void:
 	queue_redraw()
 	
 func _draw():
-	if player1 == null or player2 == null or not player1.camera_on:
+	if player1 == null or player2 == null:
 		return
 
 	var dist = player1.global_position.distance_to(player2.global_position)
