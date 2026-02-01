@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://d4jtx3b13rafk"
-path="res://.godot/imported/doo_walk_2-Sheet.png-252d02ec7946eb68482c9f26b2c76b62.ctex"
+uid="uid://deunmrtq8qvj3"
+path="res://.godot/imported/doo_ghost_to_normal-Sheet.png-875096b2a057b64e6db6bfadc7a79511.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Aseprite/Player/Doo/Normal/doo_walk_2-Sheet.png"
-dest_files=["res://.godot/imported/doo_walk_2-Sheet.png-252d02ec7946eb68482c9f26b2c76b62.ctex"]
+source_file="res://Aseprite/Player/Doo/Transition/doo_ghost_to_normal-Sheet.png"
+dest_files=["res://.godot/imported/doo_ghost_to_normal-Sheet.png-875096b2a057b64e6db6bfadc7a79511.ctex"]
 
 [params]
 
