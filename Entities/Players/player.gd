@@ -327,4 +327,3 @@ func unpoof_from_leaves():
 	mask = true
 	animated.modulate.a = 1
 	animated.play("Unpoof")
-
