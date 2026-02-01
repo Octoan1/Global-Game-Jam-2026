@@ -55,6 +55,20 @@ func _ready() -> void:
 	else:
 		animated.play("Idle")
 
+	if not mask:
+		var pile = pile_scene.instantiate()
+		var parent = self.get_parent()
+		parent.add_child.call_deferred(pile)
+		pile.player = self
+		pile.global_position = global_position
+		animated.play("Ghost_Idle")
+		animated.modulate.a = 0.8
+	else:
+		animated.play("Idle")
+		animated.modulate.a = 1
+	
+
+
 func _physics_process(delta: float) -> void:
 	_update_inputs()
 	if mask:
@@ -276,6 +290,8 @@ func _on_mask_hit(body):
 		return
 	mask = false
 	throwing = false
+
+	animated.modulate.a = .8
 	animated.play("Become_Ghost")
 	queue_redraw()
 	body.animated.play("Unpoof")
@@ -309,4 +325,6 @@ func _on_animation_finished():
 func unpoof_from_leaves():
 	respawning = false
 	mask = true
+	animated.modulate.a = 1
 	animated.play("Unpoof")
+
