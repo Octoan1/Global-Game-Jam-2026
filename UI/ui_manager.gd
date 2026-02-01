@@ -19,6 +19,13 @@ extends Control
 @onready var pause_sfx_volume: Slider = $PauseCenter/PauseMenu/CenterSound/Sound/VBoxContainer/PauseSFXVolume
 @onready var pause_quit: TextureButton = $PauseCenter/PauseMenu/CenterQuit/PauseQuit
 
+#Audio
+@export var audio_bus_music := "Music"
+@export var audio_bus_sfx := "SFX"
+
+@onready var music := AudioServer.get_bus_index("Music")
+@onready var sfx := AudioServer.get_bus_index("SFX")
+
 
 @onready var menu: bool = false
 
@@ -27,6 +34,7 @@ func _ready() -> void:
 	pause_center.visible = false
 	get_tree().paused = true
 	main_play.grab_focus()
+	
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
@@ -66,13 +74,13 @@ func _on_pause_resume_mouse_entered() -> void:
 #Volume Control
 	#Pause
 func _on_pause_music_volume_value_changed(value: float) -> void:
-	pass # Replace with function body.
+	AudioServer.set_bus_volume_db(music, linear_to_db(value))
 func _on_pause_music_volume_focus_entered() -> void:
 	ui_click.play()
 func _on_pause_music_volume_mouse_entered() -> void:
 	ui_click.play()
 func _on_pause_sfx_volume_value_changed(value: float) -> void:
-	pass # Replace with function body.
+	AudioServer.set_bus_volume_db(sfx, linear_to_db(value))
 func _on_pause_sfx_volume_focus_entered() -> void:
 	ui_click.play()
 func _on_pause_sfx_volume_mouse_entered() -> void:
@@ -83,9 +91,9 @@ func _on_main_music_volume_focus_entered() -> void:
 func _on_main_music_volume_mouse_entered() -> void:
 	ui_click.play()
 func _on_main_music_volume_value_changed(value: float) -> void:
-	pass # Replace with function body.
+	AudioServer.set_bus_volume_db(music, linear_to_db(value))
 func _on_main_sfx_volume_value_changed(value: float) -> void:
-	pass # Replace with function body.
+	AudioServer.set_bus_volume_db(sfx, linear_to_db(value))
 func _on_main_sfx_volume_focus_entered() -> void:
 	ui_click.play()
 func _on_main_sfx_volume_mouse_entered() -> void:
