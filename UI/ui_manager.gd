@@ -7,6 +7,10 @@ extends Control
 
 #Ready Main Menu
 @onready var main_center: CenterContainer = $MainCenter
+@onready var main_play: TextureButton = $MainCenter/MainMenu/CenterPlay/MainPlay
+@onready var main_quit: TextureButton = $MainCenter/MainMenu/CenterQuit/MainQuit
+@onready var main_music: Slider = $MainCenter/MainMenu/CenterSound/Sound/CenterSliders/VBoxContainer/MainMusicVolume
+@onready var main_sfx: Slider = $MainCenter/MainMenu/CenterSound/Sound/CenterSliders/VBoxContainer/MainSFXVolume
 
 #Ready Pause
 @onready var pause_center: CenterContainer = $PauseCenter
@@ -22,6 +26,7 @@ extends Control
 func _ready() -> void:
 	pause_center.visible = false
 	get_tree().paused = true
+	main_play.grab_focus()
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
@@ -30,7 +35,7 @@ func _process(delta: float) -> void:
 	if Input.is_action_just_pressed("pause") and not (get_tree().paused):
 		get_tree().paused = true
 		pause_center.visible = true
-		pause_resume.focus_mode = 1
+		pause_resume.grab_focus()
 		await get_tree().create_timer(1).timeout
 	if Input.is_action_just_pressed("pause") and (get_tree().paused):
 		get_tree().paused = false
