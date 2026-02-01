@@ -109,7 +109,7 @@ theme_override_icons/grabber_highlight = ExtResource("3_hat8c")
 theme_override_icons/tick = ExtResource("7_4fiuh")
 theme_override_styles/slider = SubResource("StyleBoxTexture_3sbvi")
 max_value = 1.0
-step = 0.1
+step = 0.05
 value = 0.5
 ticks_position = 3
 
@@ -126,7 +126,7 @@ theme_override_icons/grabber_highlight = ExtResource("3_hat8c")
 theme_override_icons/tick = ExtResource("7_4fiuh")
 theme_override_styles/slider = SubResource("StyleBoxTexture_h81ot")
 max_value = 1.0
-step = 0.1
+step = 0.05
 value = 0.5
 ticks_position = 3
 
@@ -232,7 +232,7 @@ theme_override_icons/grabber_highlight = ExtResource("3_hat8c")
 theme_override_icons/tick = ExtResource("7_4fiuh")
 theme_override_styles/slider = SubResource("StyleBoxTexture_3sbvi")
 max_value = 1.0
-step = 0.1
+step = 0.05
 value = 0.5
 ticks_position = 3
 

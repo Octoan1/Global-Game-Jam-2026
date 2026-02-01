@@ -41,6 +41,7 @@ signal gather_leaves
 
 #Sound
 @onready var walk_sound = $WalkSound
+var await_walk = false
 
 
 func _ready() -> void:
@@ -113,9 +114,14 @@ func _physics_process(delta: float) -> void:
 		sprite.flip_h = prev_dir < 0
 		prev_dir = direction
 		
-		if walk_sound.has_stream_playback() == false:
-			if is_on_floor():
-				walk_sound.play()
+		if await_walk == false:
+			if walk_sound.has_stream_playback() == false:
+				if is_on_floor():
+					walk_sound.pitch_scale = randf_range(0.9, 1.1)
+					walk_sound.play()
+					await_walk = true
+					await get_tree().create_timer(0.325).timeout
+					await_walk = false
 		
 		
 	else:
@@ -293,6 +299,7 @@ func _on_mask_hit(body):
 
 	animated.modulate.a = .8
 	animated.play("Become_Ghost")
+	z_index = -1
 	queue_redraw()
 	body.animated.play("Unpoof")
 	body.ammo = 1
@@ -320,6 +327,7 @@ func _on_animation_finished():
 	if animated.animation == "Unpoof":
 		animated.play("Idle")
 	if animated.animation == "Become_Ghost":
+		z_index = 1
 		animated.play("Ghost_Idle")
 		
 func unpoof_from_leaves():
