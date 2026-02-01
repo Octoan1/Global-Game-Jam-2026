@@ -50,7 +50,8 @@ func next_level(next_level_id, player1_position, player2_position):
 	#target_node = get_node(level_path_tree)
 	#target_node.get_child(0).connect("exit_level", next_level)
 	level_instantiate.get_child(0).connect("exit_level", next_level)
-	level_instantiate.get_child(1).connect("player_reset", reset_players)
+	level_instantiate.get_child(1).connect("player1_reset", reset_player1)
+	level_instantiate.get_child(1).connect("player2_reset", reset_player2)
 	
 	remove_node = level_instantiate
 	
@@ -58,6 +59,12 @@ func next_level(next_level_id, player1_position, player2_position):
 	# and set the player position to that
 	#reset_players()
 	
+
+func reset_player1():
+	player_1.global_position = player1_spawn
+
+func reset_player2():
+	player_2.global_position = player2_spawn
 
 func reset_players():
 	if(player_1.mask == true):

@@ -1,0 +1,25 @@
+[gd_scene format=3 uid="uid://lg1amvhr8ems"]
+
+[ext_resource type="Script" uid="uid://cq7fj3g7306mb" path="res://Objects/Level Things/death_plane.gd" id="1_0q8ue"]
+[ext_resource type="AudioStream" uid="uid://bhriyiye05mv" path="res://Sound/SFX/Dingle/dingle-dead.ogg" id="2_ydahn"]
+[ext_resource type="AudioStream" uid="uid://bdmt48fc7ff00" path="res://Sound/SFX/Doo/doo-dead.ogg" id="3_l47p1"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_cyadu"]
+
+[node name="DeathPlane" type="Area2D" unique_id=895598098]
+position = Vector2(162, 255)
+scale = Vector2(20, 0.5199976)
+collision_layer = 17
+collision_mask = 6
+script = ExtResource("1_0q8ue")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1300863069]
+shape = SubResource("RectangleShape2D_cyadu")
+
+[node name="DingleDies" type="AudioStreamPlayer" parent="." unique_id=27185175]
+stream = ExtResource("2_ydahn")
+
+[node name="DooDies" type="AudioStreamPlayer" parent="." unique_id=1345938207]
+stream = ExtResource("3_l47p1")
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]
