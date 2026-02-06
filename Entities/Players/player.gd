@@ -9,7 +9,7 @@ const JUMP_VELOCITY = -200.0
 @onready var waiting = false
 @onready var respawning = false
 @onready var ammo = 1
-var controller = true
+var facing = 1
 
 #Arrow
 @export var thickness := 2.0
@@ -80,7 +80,6 @@ func _ready() -> void:
 
 
 func _physics_process(delta: float) -> void:
-	_update_inputs()
 	if mask:
 		self.set_collision_layer_value(2, true)
 		self.set_collision_layer_value(3, false)
@@ -95,14 +94,11 @@ func _physics_process(delta: float) -> void:
 	# Add the gravity.
 	if not is_on_floor() and mask:
 		velocity += get_gravity() * delta / 2
+	else:
+		velocity = Vector2.ZERO
 		
 	# Handle jump.
-	if controller:
-		if Input.is_action_pressed("p1_jump_c" if joystick_id == 0 else "p2_jump_c") and is_on_floor() and not throwing and not waiting and mask:
-			velocity.y = JUMP_VELOCITY
-			jump_sound.play()
-	else:
-		if Input.is_action_pressed("p1_jump_k" if joystick_id == 0 else "p2_jump_k") and is_on_floor() and not throwing and not waiting and mask:
+	if Input.is_action_pressed("p1_jump_c" if joystick_id == 0 else "p2_jump_c") and is_on_floor() and not throwing and not waiting and mask:
 			velocity.y = JUMP_VELOCITY
 			jump_sound.play()
 
@@ -112,14 +108,12 @@ func _physics_process(delta: float) -> void:
 	var other = _get_other_player()
 	var players_dist = global_position.distance_to(other.global_position)
 	var to_other = (_get_other_player().global_position - global_position).normalized()
-	var direction
-	if controller:
-		direction = Input.get_axis("p1_move_left_c" if joystick_id == 0 else "p2_move_left_c", "p1_move_right_c" if joystick_id == 0 else "p2_move_right_c")
-	else:
-		direction = Input.get_axis("p1_move_left_k" if joystick_id == 0 else "p2_move_left_k", "p1_move_right_k" if joystick_id == 0 else "p2_move_right_k")
+	var direction = Input.get_axis("p1_move_left_c" if joystick_id == 0 else "p2_move_left_c", "p1_move_right_c" if joystick_id == 0 else "p2_move_right_c")
 	var moving_away = direction != 0 and sign(direction) == -sign(to_other.x)
 	if direction and not throwing and not waiting and animated.animation != "Unpoof" and mask and ((players_dist < _get_max_distance() or not moving_away) or not camera_on):
 		animated.play("Walk")
+		if sign(facing) != sign(direction):
+			facing = -facing
 		velocity.x = direction * SPEED
 		animated.flip_h = prev_dir < 0
 		sprite.flip_h = prev_dir < 0
@@ -144,83 +138,43 @@ func _physics_process(delta: float) -> void:
 	
 	#ghost movement
 	if not mask and not respawning and animated.animation != "Become_Ghost":
-		if controller:
-			var stick = Vector2(
-			Input.get_joy_axis(joystick_id, JOY_AXIS_LEFT_X),
-			Input.get_joy_axis(joystick_id, JOY_AXIS_LEFT_Y)
-			)
-			if stick.length() < deadzone:
-				stick = Vector2.ZERO
-			if camera_on:
-				var desired_velocity = stick * GSPEED
+		var h_dir := Input.get_axis("p1_move_left_c" if joystick_id == 0 else "p2_move_left_c", "p1_move_right_c" if joystick_id == 0 else "p2_move_right_c")
+		var v_dir := Input.get_axis("p1_move_up" if joystick_id == 0 else "p2_move_up", "p1_move_down" if joystick_id == 0 else "p2_move_down")
+		var desired_velocity = Vector2(h_dir, v_dir) * GSPEED
 
-				if desired_velocity != Vector2.ZERO:
-					var move_dir = desired_velocity.normalized()
-					moving_away = move_dir.dot(to_other) < 0
+		if camera_on:
+			if desired_velocity != Vector2.ZERO:
+				var move_dir = desired_velocity.normalized()
+				moving_away = move_dir.dot(to_other) < 0
 
-					if players_dist < _get_max_distance() or not moving_away:
-						velocity = desired_velocity
-					else:
-						velocity = Vector2.ZERO
+				if players_dist < _get_max_distance() or not moving_away:
+					velocity = desired_velocity
 				else:
-					velocity.x = 0
-					velocity.y = 0
+					velocity = Vector2.ZERO
 			else:
-				velocity.x = stick.x * GSPEED
-				velocity.y = stick.y * GSPEED
-			if velocity.x == 0:
-				animated.play("Ghost_Idle")
-			else:
-				animated.play("Ghost_Move")
-			if stick.x != 0:
-				animated.flip_h = prev_dir < 0
-			prev_dir = stick.x
+				velocity.x = 0
+				velocity.y = 0
 		else:
-			var h_dir := Input.get_axis("p1_move_left_k" if joystick_id == 0 else "p2_move_left_k", "p1_move_right_k" if joystick_id == 0 else "p2_move_right_k")
-			var v_dir := Input.get_axis("p1_move_up" if joystick_id == 0 else "p2_move_up", "p1_move_down" if joystick_id == 0 else "p2_move_down")
-			var desired_velocity = Vector2(h_dir, v_dir) * GSPEED
-
-			if camera_on:
-				if desired_velocity != Vector2.ZERO:
-					var move_dir = desired_velocity.normalized()
-					moving_away = move_dir.dot(to_other) < 0
-
-					if players_dist < _get_max_distance() or not moving_away:
-						velocity = desired_velocity
-					else:
-						velocity = Vector2.ZERO
-				else:
-					velocity.x = 0
-					velocity.y = 0
-			else:
-				velocity.x = h_dir * GSPEED
-				velocity.y = v_dir * GSPEED
-			if velocity.x == 0:
-				animated.play("Ghost_Idle")
-			else:
-				animated.play("Ghost_Move")
-			if h_dir != 0:
-				animated.flip_h = prev_dir < 0
-			prev_dir = h_dir
+			velocity.x = h_dir * GSPEED
+			velocity.y = v_dir * GSPEED
+		if velocity.x == 0:
+			animated.play("Ghost_Idle")
+		else:
+			animated.play("Ghost_Move")
+		if h_dir != 0:
+			animated.flip_h = prev_dir < 0
+		prev_dir = h_dir
 	if respawning:
 		animated.play("Ghost_Idle")
 	var arrow = _update_arrow()
-	if controller:
-		if Input.is_action_just_pressed("p1_throw_c" if joystick_id == 0 else "p2_throw_c") and throwing:
-			_throw_mask(arrow[0], arrow[1])
-		elif Input.is_action_just_pressed("p1_throw_c" if joystick_id == 0 else "p2_throw_c") and mask and not waiting:
-			throwing = true
-			_update_arrow()
-		if Input.is_action_just_pressed("p1_back_c" if joystick_id == 0 else "p2_back_c") and throwing:
-			throwing = false
-	else:
-		if Input.is_action_just_pressed("p1_throw_k" if joystick_id == 0 else "p2_throw_k") and throwing:
-			_throw_mask(arrow[0], arrow[1])
-		elif Input.is_action_just_pressed("p1_throw_k" if joystick_id == 0 else "p2_throw_k") and mask and not waiting:
-			throwing = true
-			_update_arrow()
-		if Input.is_action_just_pressed("p1_back_k" if joystick_id == 0 else "p2_back_k") and throwing:
-			throwing = false
+	
+	if Input.is_action_just_pressed("p1_throw_c" if joystick_id == 0 else "p2_throw_c") and throwing:
+		_throw_mask(arrow[0], arrow[1])
+	elif Input.is_action_just_pressed("p1_throw_c" if joystick_id == 0 else "p2_throw_c") and mask and not waiting:
+		throwing = true
+		_update_arrow()
+	if Input.is_action_just_pressed("p1_back_c" if joystick_id == 0 else "p2_back_c") and throwing:
+		throwing = false
 	
 	if Input.is_action_just_pressed("Dev_Key"):
 		mask = !mask
@@ -236,39 +190,26 @@ func _physics_process(delta: float) -> void:
 	
 func _update_arrow():
 	if not throwing:
-		pointer.global_position.x = 30
-		pointer.global_position.y = 0
+		pointer.global_position.x = global_position.x + 30 * facing
+		pointer.global_position.y = global_position.y
 		queue_redraw()
-	# Get joystick input
-	if controller:
-		var stick = Vector2(
-		Input.get_joy_axis(joystick_id, JOY_AXIS_LEFT_X),
-		Input.get_joy_axis(joystick_id, JOY_AXIS_LEFT_Y)
-		)
-
-		if stick.length() < deadzone:
-			stick = Vector2.ZERO
-			
-		pointer.global_position.x += stick.x * 2
-		pointer.global_position.y += stick.y * 2
-	#Get keyboard input
-	else:
-		var h_dir := Input.get_axis("p1_move_left_k" if joystick_id == 0 else "p2_move_left_k", "p1_move_right_k" if joystick_id == 0 else "p2_move_right_k")
-		var v_dir := Input.get_axis("p1_move_up" if joystick_id == 0 else "p2_move_up", "p1_move_down" if joystick_id == 0 else "p2_move_down")
-		
-		pointer.global_position.x += h_dir * 2
-		pointer.global_position.y += v_dir * 2
+		return
+	var h_dir := Input.get_axis("p1_move_left_c" if joystick_id == 0 else "p2_move_left_c", "p1_move_right_c" if joystick_id == 0 else "p2_move_right_c")
+	var v_dir := Input.get_axis("p1_move_up" if joystick_id == 0 else "p2_move_up", "p1_move_down" if joystick_id == 0 else "p2_move_down")
 	
-	var pointer_pos = Vector2(pointer.global_position.x, pointer.global_position.y)
-	var length = pointer_pos.length()
+	pointer.global_position.x += h_dir * 2
+	pointer.global_position.y += v_dir * 2
+	
+	
+	var length = (pointer.global_position - global_position).length()
 	if length > max_length:
-		var unit_vector = pointer_pos / length
-		pointer.global_position.x = unit_vector.x * max_length
-		pointer.global_position.y = unit_vector.y * max_length
+		var unit_vector = (pointer.global_position - global_position) / length
+		pointer.global_position.x = global_position.x + unit_vector.x * max_length
+		pointer.global_position.y = global_position.y + unit_vector.y * max_length
 		
-	arrow_dir = Vector2(pointer.global_position.x, pointer.global_position.y).normalized()
-	arrow_length = Vector2(pointer.global_position.x, pointer.global_position.y).length()
-	return [Vector2(pointer.global_position.x, pointer.global_position.y) / arrow_length, arrow_length * 10]
+	arrow_dir = (pointer.global_position - global_position).normalized()
+	arrow_length = (pointer.global_position - global_position).length()
+	return [(pointer.global_position - global_position) / arrow_length, arrow_length * 10]
 	
 func _draw():
 	if arrow_length == 0 or not throwing:
@@ -346,12 +287,6 @@ func update_pile(player):
 	
 	# deleting old pile
 	player.emit_signal("remove_leaves")
-
-func _update_inputs():
-	if Input.is_action_just_pressed("p1_connect_controller" if joystick_id == 0 else "p2_connect_controller"):
-		controller = true
-	if Input.is_action_just_pressed("p1_connect_keyboard" if joystick_id == 0 else "p2_connect_keyboard"):
-		controller = false
 
 func _get_max_distance():
 	return min(cam_size.x, cam_size.y) - 30
